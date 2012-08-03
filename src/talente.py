@@ -42,23 +42,23 @@ class Talentkategorie(object):
             ATKampfTalent('Blasrohr', kampf, BE('BE-5'), 'D'),
             ATKampfTalent('Bogen', kampf, BE('BE-3'), 'E'),
             ATKampfTalent('Diskus', kampf, BE('BE-2'), 'D'),
-            KampfTalent('Dolche', kampf, BE('BE-1'), 'D'),
+            KampfTalent('Dolche', kampf, BE('BE-1'), 'D', ist_basis=True),
             KampfTalent('Fechtwaffen', kampf, BE('BE-1'), 'E'),
-            KampfTalent('Hiebwaffen', kampf, BE('BE-4'), 'D'),
+            KampfTalent('Hiebwaffen', kampf, BE('BE-4'), 'D', ist_basis=True),
             KampfTalent('Infanteriewaffen', kampf, BE('BE-3'), 'D'),
             KampfTalent('Kettenstäbe', kampf, BE('BE-1'), 'E'),
             KampfTalent('Kettenwaffen', kampf, BE('BE-3'), 'D'),
             ATKampfTalent('Lanzenreiten', kampf, BE('0'), 'E'),
             ATKampfTalent('Peitsche', kampf, BE('BE-1'), 'E'),
-            KampfTalent('Raufen', kampf, BE('BE'), 'C'),
-            KampfTalent('Ringen', kampf, BE('BE'), 'D'),
-            KampfTalent('Säbel', kampf, BE('BE-2'), 'D'),
+            KampfTalent('Raufen', kampf, BE('BE'), 'C', ist_basis=True),
+            KampfTalent('Ringen', kampf, BE('BE'), 'D', ist_basis=True),
+            KampfTalent('Säbel', kampf, BE('BE-2'), 'D', ist_basis=True),
             ATKampfTalent('Schleuder', kampf, BE('BE-2'), 'E'),
             KampfTalent('Schwerter', kampf, BE('BE-2'), 'E'),
             KampfTalent('Speere', kampf, BE('BE-3'), 'D'),
             KampfTalent('Stäbe', kampf, BE('BE-2'), 'D'),
             ATKampfTalent('Wurfbeile', kampf, BE('BE-2'), 'D'),
-            ATKampfTalent('Wurfmesser', kampf, BE('BE-3'), 'C'),
+            ATKampfTalent('Wurfmesser', kampf, BE('BE-3'), 'C', ist_basis=True),
             ATKampfTalent('Wurfspeere', kampf, BE('BE-2'), 'C'),
             KampfTalent('Zweihandflegel', kampf, BE('BE-3'), 'D'),
             KampfTalent('Zweihand-Hiebwaffen', kampf, BE('BE-3'), 'D'),
@@ -71,22 +71,23 @@ class Talentkategorie(object):
         koerper = cls('Körper', 'D', 'BE')
         koerper.setze_talente([
             BETalent('Akrobatik', 'MU·GE·KO', koerper, BE('BE*2')),
-            BETalent('Athletik', 'MU·KO·KK', koerper, BE('BE*2')),
+            BETalent('Athletik', 'MU·KO·KK', koerper, BE('BE*2'), ist_basis=True),
             BETalent('Fliegen', 'MI·IN·GE', koerper, BE('BE')),
             BETalent('Gaukeleien', 'MU·CH·FF', koerper, BE('BE*2')),
-            BETalent('Klettern', 'MU·GE·KK', koerper, BE('BE*2')),
-            BETalent('Körperbeherrschung', 'MU·IN·GE', koerper, BE('BE*2')),
+            BETalent('Klettern', 'MU·GE·KK', koerper, BE('BE*2'), ist_basis=True),
+            BETalent('Körperbeherrschung', 'MU·IN·GE', koerper, BE('BE*2'), ist_basis=True),
             BETalent('Reiten', 'CH·GE·KK', koerper, BE('BE-2')),
-            BETalent('Schleichen', 'MU·IN·GE', koerper, BE('BE')),
-            BETalent('Schwimmen', 'GE·KO·KK', koerper, BE('BE*2')),
-            BETalent('Selbstbeherrschung', 'MU·KO·KK/MU·KL', koerper, BE('0')),
-            BETalent('Sich Verstecken', 'MU·IN·GE', koerper, BE('BE-2')),
-            BETalent('Singen', 'IN·CH·CH/KO', koerper, BE('BE-3')),
-            BETalent('Sinnenschärfe', 'KL·IN·IN/FF', koerper, BE('0')),
+            BETalent('Schleichen', 'MU·IN·GE', koerper, BE('BE'), ist_basis=True),
+            BETalent('Schwimmen', 'GE·KO·KK', koerper, BE('BE*2'), ist_basis=True),
+            BETalent('Selbstbeherrschung', 'MU·KO·KK/MU·KL', koerper, BE('0'), ist_basis=True),
+            BETalent('Sich Verstecken', 'MU·IN·GE', koerper, BE('BE-2'), ist_basis=True),
+            BETalent('Singen', 'IN·CH·CH/KO', koerper, BE('BE-3'), ist_basis=True),
+            BETalent('Sinnenschärfe', 'KL·IN·IN/FF', koerper, BE('0'), ist_basis=True),
             BETalent('Skifahren', 'GE·GE·KO', koerper, BE('BE-2')),
             BETalent('Stimmen Immitieren', 'KL·IN·CH', koerper, BE('BE-4')),
-            BETalent('Tanzen', 'CH·GE·GE', koerper, BE('BE*2')),
-            BETalent('Zechen', 'IN·KO·KK', koerper, BE('0')),
+            BETalent('Tanzen', 'CH·GE·GE', koerper, BE('BE*2'), ist_basis=True),
+            BETalent('Taschendiebstahl', 'MU·IN·FF', koerper, BE('BEx2')),
+            BETalent('Zechen', 'IN·KO·KK', koerper, BE('0'), ist_basis=True),
         ])
         return koerper
 
@@ -98,11 +99,11 @@ class Talentkategorie(object):
             StandardTalent('Etikette','KL·IN·CH',gesellschaft),
             StandardTalent('Gassenwissen','KL·IN·CH',gesellschaft),
             StandardTalent('Lehren','KL·IN·CH',gesellschaft),
-            StandardTalent('Menschenkenntnis','KL·IN·CH',gesellschaft),
+            StandardTalent('Menschenkenntnis','KL·IN·CH',gesellschaft, ist_basis=True),
             StandardTalent('Schauspielerei','MU·KL·CH',gesellschaft),
             StandardTalent('Schriftlicher Ausdruck','KL·IN·IN',gesellschaft),
             StandardTalent('Sich Verkleiden','MU·CH·GE',gesellschaft),
-            StandardTalent('Überreden','MU·IN·CH',gesellschaft),
+            StandardTalent('Überreden','MU·IN·CH',gesellschaft, ist_basis=True),
             StandardTalent('Überzeugen','KL·IN·CH',gesellschaft),
         ])
         return gesellschaft
@@ -111,13 +112,13 @@ class Talentkategorie(object):
     def Natur(cls):
         natur = cls('Natur', 'B')
         natur.setze_talente([
-            StandardTalent('Fährtensuchen','KL·IN·IN/KO',natur),
+            StandardTalent('Fährtensuchen','KL·IN·IN/KO',natur, ist_basis=True),
             StandardTalent('Fallenstellen','KL·KL·FF',natur),
             StandardTalent('Fesseln/Entfesseln','FS·GE·KK',natur),
             StandardTalent('Fischen/Angeln','IN·FF·KK',natur),
-            StandardTalent('Orientierung','KL·IN·IN',natur),
+            StandardTalent('Orientierung','KL·IN·IN',natur, ist_basis=True),
             StandardTalent('Wettervorhersage','KL·IN·IN',natur),
-            StandardTalent('Wildnisleben','IN·GE·KO',natur),
+            StandardTalent('Wildnisleben','IN·GE·KO',natur, ist_basis=True),
         ])
         return natur
     
@@ -131,7 +132,7 @@ class Talentkategorie(object):
             StandardTalent('Geographie','KL·KL·IN',wissen),
             StandardTalent('Geschichtswissen','KL·KL·IN',wissen),
             StandardTalent('Gesteinskunde','KL·IN·FF',wissen),
-            StandardTalent('Götter/Kulte','KL·KL·IN',wissen),
+            StandardTalent('Götter/Kulte','KL·KL·IN',wissen, ist_basis=True),
             StandardTalent('Heraldik','KL·KL·IN/FF',wissen),
             StandardTalent('Hüttenkunde','KL·IN·KO',wissen),
             StandardTalent('Kriegskunst','MU·KL·CH',wissen),
@@ -140,9 +141,9 @@ class Talentkategorie(object):
             StandardTalent('Mechanik','KL·KL·FF',wissen),
             StandardTalent('Pflanzenkunde','KL·IN·FF',wissen),
             StandardTalent('Philosophie','KL·KL·IN',wissen),
-            StandardTalent('Rechnen','KL·KL·IN',wissen),
+            StandardTalent('Rechnen','KL·KL·IN',wissen, ist_basis=True),
             StandardTalent('Rechtskunde','KL·KL·IN',wissen),
-            StandardTalent('Sagen/Legenden','KL·IN·CH',wissen),
+            StandardTalent('Sagen/Legenden','KL·IN·CH',wissen, ist_basis=True),
             StandardTalent('Schätzen','KL·IN·IN',wissen),
             StandardTalent('Sprachenkunde','KL·KL·IN',wissen),
             StandardTalent('Staatskunst','KL·IN·CH',wissen),
@@ -176,20 +177,20 @@ class Talentkategorie(object):
             StandardTalent('Heilkunde Gift','MU·KL·IN',handwerk),
             StandardTalent('Heilkunde Krankheiten','MU·KL·CH',handwerk),
             StandardTalent('Heilkunde Seele','IN·CH·CH',handwerk),
-            StandardTalent('Heilkunde Wunden','KL·CH·FF',handwerk),
-            StandardTalent('Holzbearbeitung','KL·FF·KK',handwerk),
+            StandardTalent('Heilkunde Wunden','KL·CH·FF',handwerk, ist_basis=True),
+            StandardTalent('Holzbearbeitung','KL·FF·KK',handwerk, ist_basis=True),
             StandardTalent('Instrumentenbauer','KL·IN·FF',handwerk),
             StandardTalent('Kartographie','KL·KL·FF',handwerk),
-            StandardTalent('Kochen','KL·IN·FF',handwerk),
+            StandardTalent('Kochen','KL·IN·FF',handwerk, ist_basis=True),
             StandardTalent('Kristallzucht','KL·IN·FF',handwerk),
-            StandardTalent('Lederarbeiten','KL·FF·FF',handwerk),
-            StandardTalent('Malen/Zeichnen','KL·IN·FF',handwerk),
+            StandardTalent('Lederarbeiten','KL·FF·FF',handwerk, ist_basis=True),
+            StandardTalent('Malen/Zeichnen','KL·IN·FF',handwerk, ist_basis=True),
             StandardTalent('Maurer','FF·GE·KK',handwerk),
             StandardTalent('Metallguss','KL·FF·KK',handwerk),
             StandardTalent('Musizieren','IN·CH·FF',handwerk),
             StandardTalent('Schlösser Knacken','IN·FF·FF',handwerk),
             StandardTalent('Schnapps Brennen','KL·IN·FF',handwerk),
-            StandardTalent('Schneidern','KL·FF·FF',handwerk),
+            StandardTalent('Schneidern','KL·FF·FF',handwerk, ist_basis=True),
             StandardTalent('Seefahrt','FF·GE·KK',handwerk),
             StandardTalent('Seiler','FF·FF·KK',handwerk),
             StandardTalent('Steinmetz','FF·FF·KK',handwerk),
@@ -312,7 +313,7 @@ class Talent(object):
     Repräsentiert ein allgemeines Talent mit all seinen Eigenheiten
     '''
 
-    def __init__(self, name, probe, kategorie, schwierigkeit=None):
+    def __init__(self, name, probe, kategorie, schwierigkeit=None, ist_basis=False):
         self.name = name
         self.probe = probe
         self.kategorie = kategorie
@@ -320,6 +321,7 @@ class Talent(object):
             self.schwierigkeit = schwierigkeit
         else:
             self.schwierigkeit = kategorie.schwierigkeit
+        self.ist_basis = ist_basis
 
     def get_print_dict(self, taw, *arg, **kwd):
         return {
@@ -336,8 +338,8 @@ class StandardTalent(Talent):
 
 class BETalent(Talent):
         
-    def __init__(self, name, probe, kategorie, be, schwierigkeit=None):
-        Talent.__init__(self, name, probe, kategorie, schwierigkeit)
+    def __init__(self, name, probe, kategorie, be, schwierigkeit=None, ist_basis=False):
+        Talent.__init__(self, name, probe, kategorie, schwierigkeit, ist_basis)
         self.be = be
         
     def get_print_dict(self, taw, *arg, **kwd):
@@ -349,7 +351,7 @@ class BETalent(Talent):
 class KomplexTalent(Talent):
     
     def __init__(self, name, kategorie, komplexitaet, schwierigkeit='A', dialekte=None):
-        Talent.__init__(self, name, None, kategorie, schwierigkeit)
+        Talent.__init__(self, name, None, kategorie, schwierigkeit, ist_basis=None)
         self.komplexitaet = komplexitaet
         if not dialekte:
             self.dialekte = []
@@ -370,8 +372,8 @@ class KomplexTalent(Talent):
 
 class KampfTalent(BETalent):
 
-    def __init__(self, name, kategorie, be, schwierigkeit=None):
-        BETalent.__init__(self, name, None, kategorie, be, schwierigkeit)
+    def __init__(self, name, kategorie, be, schwierigkeit=None, ist_basis=False):
+        BETalent.__init__(self, name, None, kategorie, be, schwierigkeit, ist_basis)
         
     def get_print_dict(self, taw, at=' ', pa=' ', *arg, **kwd):
         d = BETalent.get_print_dict(self, taw)

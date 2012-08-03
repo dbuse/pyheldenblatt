@@ -14,10 +14,10 @@ import math
 from pyfpdf import FPDF
 import talente
 from carisolan import held
+from talente import Talentkategorie
 
 FONT = 'Times'
 OBENLINKS = {'links':(12,35),'rechts':(106.5,35)}
-
 
 class Talentblatt(FPDF):
     
@@ -228,18 +228,31 @@ class Talentblatt(FPDF):
     def talentblock(self, titel, zeilen, leerzeilen=0):
         alle = talente.Talentkategorie.alle()
         self.zeilentitel(titel, alle[titel].schwierigkeit, alle[titel].be_komp, alle[titel].at_pa)
-        namen = zeilen.keys()
-        namen.sort()
-        for talent in namen:
+        #namen = zeilen.keys()
+        #namen.sort()
+        #for talent in namen:
+        for talent, talentobj in alle[titel].talente.iteritems():
+            if talent not in zeilen:
+                if talentobj.ist_basis:
+                    zeilen[talent] = {'taw':0}
+                else:
+                    continue 
             d = alle[titel].talente[talent].get_print_dict(**zeilen[talent])
             self.zeile(**d)
         for _ in xrange(leerzeilen):
             self.zeile(leerzeile=True, **d)
             
+    def anzahl_zeilen(self, held, gruppe):
+        anzahl = len(held['Talente'][gruppe])
+        for talent, talentobj in Talentkategorie.alle()[gruppe].talente.iteritems():
+            if talent not in held['Talente'][gruppe] and talentobj.ist_basis:
+                anzahl += 1
+        return anzahl
+            
     def platz_pro_seite(self, held, verteilung, leerzeilen={}, sonderfertigkeiten_sind='links'):
         platz = {'links':-99,'rechts':-99}
         for seite, gruppen in verteilung.iteritems():
-            summe = sum(len(held['Talente'][gruppe]) + leerzeilen[gruppe] for gruppe in gruppen)
+            summe = sum(self.anzahl_zeilen(held, gruppe) + leerzeilen[gruppe] for gruppe in gruppen)
             summe += len(gruppen) * 2
             if sonderfertigkeiten_sind == seite:
                 summe += self.sonderfertigkeiten_zeilen(held['Sonderfertigkeiten'], held['Besonderheiten']) + 2
