@@ -168,9 +168,9 @@ class Talentblatt(FPDF):
         self.set_font(family=FONT, style='B', size=self.zeilen_fontsize)
         # untere Linie Ziehen
         self.line(self.get_x() + self.zeilen_seitenabstand,
-                            self.get_y() + self.zeilen_h,
-                            self.get_x() + self.zeilen_w - self.zeilen_seitenabstand,
-                            self.get_y() + self.zeilen_h)
+                  self.get_y() + self.zeilen_h,
+                  self.get_x() + self.zeilen_w - self.zeilen_seitenabstand,
+                  self.get_y() + self.zeilen_h)
         felder = self._konfiguriere_zeile(talent, taw, linienfelder, textfelder)
         # Felder und begrenzungslinien Drucken
         for feld in felder:
@@ -249,7 +249,7 @@ class Talentblatt(FPDF):
             
     def helden_drucken(self, held):
         seiten = {'links':['Kampf','Körper','Gesellschaft'],
-                            'rechts':['Natur','Wissen','Sprachen','Schriften','Handwerk']}
+                  'rechts':['Natur','Wissen','Sprachen','Schriften','Handwerk']}
         gruppen = ['Kampf','Körper','Gesellschaft','Natur','Wissen','Sprachen','Schriften','Handwerk']
         leerzeilen = {}
         for gruppe in gruppen:
