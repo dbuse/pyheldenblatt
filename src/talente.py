@@ -210,12 +210,13 @@ class Talentkategorie(object):
         sprachen = cls('Sprachen', None, 'Kom')
         sprachen.setze_talente([
             # Garethi-Familie
-            KomplexTalent('Garethi',sprachen,18),
+            KomplexTalent('Garethi',sprachen,18, dialekte=['Horathi','Bornländisch','Brabaci','Maraskani','Alberned',
+                                                           'Andergastisch','Charypto','Gatamo']),
             KomplexTalent('Bosparano',sprachen,21),
             KomplexTalent('Aureliani',sprachen,21),
             KomplexTalent('Zyklopäisch',sprachen,18),
             # Tulamidya-Familie
-            KomplexTalent('Tulamidya',sprachen,18),
+            KomplexTalent('Tulamidya',sprachen,18, dialekte=['Khom-Novadisch','Aranisch','Mhanadisch-Balahdisch']),
             KomplexTalent('Ur-Tulamidya',sprachen,21),
             KomplexTalent('Zelemja',sprachen,18),
             KomplexTalent('Alaani',sprachen,21),
@@ -249,7 +250,7 @@ class Talentkategorie(object):
             KomplexTalent('Nujuka',sprachen,15),
             KomplexTalent('Rssahh',sprachen,18),
             KomplexTalent('Trollisch',sprachen,15),
-            KomplexTalent('Waldmenschen-Sprache',sprachen,15),
+            KomplexTalent('Waldmenschen-Sprache',sprachen,15,dialekte=['Mohisch','Tocamuyac','Puka-Puka']),
             KomplexTalent("Z'Lit",sprachen,17),
             # Geheimsprachen
             KomplexTalent('Zhayad',sprachen,15),
@@ -347,13 +348,23 @@ class BETalent(Talent):
                 
 class KomplexTalent(Talent):
     
-    def __init__(self, name, kategorie, komplexitaet, schwierigkeit='A'):
+    def __init__(self, name, kategorie, komplexitaet, schwierigkeit='A', dialekte=None):
         Talent.__init__(self, name, None, kategorie, schwierigkeit)
         self.komplexitaet = komplexitaet
+        if not dialekte:
+            self.dialekte = []
+        else:
+            self.dialekte = dialekte
+        self.dialekte.append(name)
     
-    def get_print_dict(self, taw, *arg, **kwd):
+    def get_print_dict(self, taw, Typ=None, Dialekt=None, *arg, **kwd):
         d = Talent.get_print_dict(self, taw)
         d['linienfelder']['Kom'] = self.komplexitaet
+        if Dialekt:
+            d['talent'] = Dialekt
+        if Typ is None:
+            Typ = 'Sprache kennen' if self.kategorie.name == 'Sprachen' else 'Lesen/Schreiben'
+        d['talent'] = ' '.join((Typ, d['talent']))
         return d
 
 
@@ -362,7 +373,7 @@ class KampfTalent(BETalent):
     def __init__(self, name, kategorie, be, schwierigkeit=None):
         BETalent.__init__(self, name, None, kategorie, be, schwierigkeit)
         
-    def get_print_dict(self, taw, at, pa, *arg, **kwd):
+    def get_print_dict(self, taw, at=' ', pa=' ', *arg, **kwd):
         d = BETalent.get_print_dict(self, taw)
         d['linienfelder']['AT'] = at
         d['linienfelder']['PA'] = pa
