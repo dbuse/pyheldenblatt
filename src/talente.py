@@ -226,8 +226,8 @@ class Talentkategorie(object):
             KomplexTalent('Altes Kemi',sprachen,18),
             KomplexTalent('Rabensprache',sprachen,15),
             # Thorwal-Familie
-            KomplexTalent('Thorwalsch',sprachen,18),
-            KomplexTalent('Hjaldings',sprachen,18),
+            KomplexTalent('Thorwalsch',sprachen,18, dialekte=['Gjalskisch', 'Fjarningsch']),
+            KomplexTalent('Hjaldingsch',sprachen,18),
             # Elfische Sprachen
             KomplexTalent('Isdira',sprachen,21),
             KomplexTalent('Asdharia',sprachen,24,'B'),
