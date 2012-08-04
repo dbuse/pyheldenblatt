@@ -331,6 +331,19 @@ class Talent(object):
             'taw': taw,
         }
         
+    @staticmethod
+    def ist_talent(gesucht):
+        for gruppe in Talentkategorie.alle().itervalues():
+            if gesucht in gruppe.talente:
+                return True
+        return Talent.ist_dialekt(gesucht)
+        
+    @staticmethod
+    def ist_dialekt(gesucht):
+        for sprache in Talentkategorie.alle()['Sprachen'].itervalues():
+            if gesucht in sprache.dialekte:
+                return True
+        return False
                 
 class StandardTalent(Talent):
     pass
@@ -368,7 +381,7 @@ class KomplexTalent(Talent):
             Typ = 'Sprache kennen' if self.kategorie.name == 'Sprachen' else 'Lesen/Schreiben'
         d['talent'] = ' '.join((Typ, d['talent']))
         return d
-
+    
 
 class KampfTalent(BETalent):
 

@@ -6,17 +6,9 @@ Created on 03.08.2012
 @author: joti
 '''
 
-import xlrd, talente
+import xlrd
+from talente import Talent
 
-def isTalent(talent):
-    alle = talente.Talentkategorie.alle()
-    for name, gruppe in alle.iteritems() :
-        if talent in gruppe.talente :
-            return True   
-    return False
-     
-
-   
     
 def importXls(path):
     zeile1=""
@@ -63,7 +55,7 @@ def importXls(path):
             
         else :
             if sh.cell(rx, 2).ctype!=0 :
-                if isTalent(sh.cell(rx,2).value.encode('utf8')):
+                if Talent.ist_talent(sh.cell(rx,2).value.encode('utf8')):
                     if sh.cell(rx,3).ctype!= 0 :
                         zeile1_dict[sh.cell(rx,2).value.encode('utf8')] = sh.cell(rx,3).value
                 else :
@@ -80,7 +72,7 @@ def importXls(path):
             
         else :
             if sh.cell(rx, 6).ctype!=0 :
-                if isTalent(sh.cell(rx,6).value.encode('utf8')):
+                if Talent.ist_talent(sh.cell(rx,6).value.encode('utf8')):
                     if sh.cell(rx,7).ctype!= 0 :
                         zeile2_dict[sh.cell(rx,6).value.encode('utf8')] = sh.cell(rx,7).value
                 else :
@@ -96,7 +88,7 @@ def importXls(path):
             
        
         if sh.cell(rx, 10).ctype!=0 :
-            if isTalent(sh.cell(rx,10).value.encode('utf8')):
+            if Talent.ist_talent(sh.cell(rx,10).value.encode('utf8')):
                 if sh.cell(rx,11).ctype!= 0 :
                     zeile3_dict[sh.cell(rx,10).value.encode('utf8')] = sh.cell(rx,11).value
             else :
