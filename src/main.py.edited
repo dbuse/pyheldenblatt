@@ -14,12 +14,14 @@ import math
 from pyfpdf import FPDF
 import talente
 from carisolan import held
+<<<<<<< .mine
 from import_xls import importXls
+=======
 from talente import Talentkategorie
+>>>>>>> .r9
 
 FONT = 'Times'
 OBENLINKS = {'links':(12,35),'rechts':(106.5,35)}
-
 
 class Talentblatt(FPDF):
     
@@ -306,5 +308,7 @@ if __name__ == '__main__':
     pdf.set_auto_page_break(auto=False)
     pdf.add_page()
     pdf.image('../in/bg-03.png',0,0,210,297)
+    
+    
     pdf.helden_drucken(importXls("/home/joti/Dokumente/python/Talentblatt/xls/Fedesco_Salingor.xls"))
     pdf.output('../out/test.pdf','F')
