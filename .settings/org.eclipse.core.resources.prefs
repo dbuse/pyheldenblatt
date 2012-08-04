@@ -2,6 +2,6 @@ eclipse.preferences.version=1
 encoding//pyfpdf/examples/form.py=iso-8859-1
 encoding//pyfpdf/html.py=latin1
 encoding//pyfpdf/template.py=iso-8859-1
-encoding//src/carisolan.py=utf-8
+encoding//src/import_xls.py=utf-8
 encoding//src/main.py=utf-8
 encoding//src/talente.py=utf-8

@@ -13,7 +13,7 @@ import math
 
 from pyfpdf import FPDF
 import talente
-from carisolan import held
+#from carisolan import held
 from import_xls import importXls
 from talente import Talentkategorie
 
