@@ -344,6 +344,13 @@ class Talent(object):
             if gesucht in sprache.dialekte:
                 return True
         return False
+    
+    @staticmethod
+    def sprache_zu_dialekt(dialekt):
+        for sprache in Talentkategorie.alle()['Sprachen'].talente.itervalues():
+            if dialekt in sprache.dialekte:
+                return sprache
+        return None
                 
 class StandardTalent(Talent):
     pass
