@@ -351,6 +351,13 @@ class Talent(object):
             if dialekt in sprache.dialekte:
                 return sprache
         return None
+    
+    @staticmethod
+    def talent_nach_name(talent):
+        for gruppe in Talentkategorie.alle().itervalues():
+            if talent in gruppe.talente:
+                return gruppe.talente[talent]
+        return None
                 
 class StandardTalent(Talent):
     pass

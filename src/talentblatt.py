@@ -7,6 +7,7 @@ Created on 04.08.2012
 import math
 from libs.pyfpdf import FPDF
 from talente import Talentkategorie
+import config
 
 FONT = 'Times'
 OBENLINKS = {'links':(12,35),'rechts':(106.5,35)}
@@ -257,7 +258,7 @@ class Talentblatt(FPDF):
     def helden_drucken(self, held):
         seiten = {'links':['Kampf','Körper','Gesellschaft'],
                   'rechts':['Natur','Wissen','Sprachen','Schriften','Handwerk']}
-        gruppen = ['Kampf','Körper','Gesellschaft','Natur','Wissen','Sprachen','Schriften','Handwerk']
+        gruppen = config.gruppen
         leerzeilen = {}
         for gruppe in gruppen:
             leerzeilen[gruppe] = 0 

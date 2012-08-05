@@ -5,7 +5,7 @@ Created on 16.07.2012
 @author: dom
 '''
 
-from import_xls import importXls
+from import_xls import importXLS
 from talentblatt import Talentblatt
     
     
@@ -22,6 +22,6 @@ if __name__ == '__main__':
         # setzt die variable "held" selbst: 
         execfile('../inhalt/helden/carisolan.py')
     elif mode == 'xls':
-        held = importXls("../inhalt/helden/Fedesco_Salingor.xls")
+        held = importXLS("../inhalt/helden/Fedesco_Salingor.xls")
     pdf.helden_drucken(held)
     pdf.output('../inhalt/ausgabe/test.pdf','F')
