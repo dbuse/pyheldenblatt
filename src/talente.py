@@ -340,7 +340,7 @@ class Talent(object):
         
     @staticmethod
     def ist_dialekt(gesucht):
-        for sprache in Talentkategorie.alle()['Sprachen'].itervalues():
+        for sprache in Talentkategorie.alle()['Sprachen'].talente.itervalues():
             if gesucht in sprache.dialekte:
                 return True
         return False

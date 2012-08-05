@@ -10,7 +10,7 @@ from talentblatt import Talentblatt
     
     
 # Entweder python oder xls (später vielleicht auch xml)
-mode = 'python'
+mode = 'xls'
 
 if __name__ == '__main__':
     pdf = Talentblatt(orientation='P', unit='mm', format='A4')
@@ -22,6 +22,6 @@ if __name__ == '__main__':
         # setzt die variable "held" selbst: 
         execfile('../inhalt/helden/carisolan.py')
     elif mode == 'xls':
-        held = importXls("/home/joti/Dokumente/python/Talentblatt/xls/Fedesco_Salingor.xls")
+        held = importXls("../inhalt/helden/Fedesco_Salingor.xls")
     pdf.helden_drucken(held)
     pdf.output('../inhalt/ausgabe/test.pdf','F')

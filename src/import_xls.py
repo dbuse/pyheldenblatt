@@ -100,5 +100,5 @@ def importXls(path):
     held["Talente"][zeile3]=zeile3_dict
 
     print held
-    #return held
+    return held
         
