@@ -5,6 +5,7 @@ Created on 19.07.2012
 @author: dom
 '''
 held = {
+    'Name': 'Carisolan Calamar',
     'Attribute': {
         'MU':12,'KL':14,'IN':15,'CH':12,'FF':13,'GE':12,'KO':13,'KK':11,'BE':0
     },
@@ -49,8 +50,13 @@ held = {
             'Etikette':{'taw':5},
             'Gassenwissen':{'taw':3},
             'Lehren':{'taw':3},
-            'Menschenkenntnis':{'taw':4},
+            'Menschenkenntnis':{'taw':5},
             'Überreden':{'taw':4},
+            # testweise mal auffüllen
+            'Schauspielerei':{'taw':-1},
+            'Schriftlicher Ausdruck':{'taw':-1},
+            'Sich Verkleiden':{'taw':-1},
+            'Überzeugen':{'taw':-1},
         },
         'Natur':{
             'Fährtensuchen':{'taw':0},

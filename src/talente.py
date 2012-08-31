@@ -4,6 +4,8 @@ Created on 18.07.2012
 
 @author: dom
 '''
+from collections import OrderedDict
+
 
 
 class BE(object):
@@ -24,7 +26,7 @@ class Talentkategorie(object):
     def __init__(self, name, schwierigkeit, be_komp=None, at_pa=None):
         self.name = name
         self.schwierigkeit = schwierigkeit
-        self.talente = {}
+        self.talente = OrderedDict()
         self.be_komp = be_komp
         self.at_pa = at_pa
 
@@ -295,16 +297,15 @@ class Talentkategorie(object):
     @classmethod
     def alle(cls):
         if not cls.alle_talente:
-            cls.alle_talente = {
-                'Kampf':cls.Kampf(),
-                'Körper':cls.Koerper(),
-                'Gesellschaft':cls.Gesellschaft(),
-                'Natur':cls.Natur(),
-                'Wissen':cls.Wissen(),
-                'Sprachen':cls.Sprachen(),
-                'Schriften':cls.Schriften(),
-                'Handwerk':cls.Handwerk(),
-            }
+            cls.alle_talente = OrderedDict()
+            cls.alle_talente['Kampf'] = cls.Kampf()
+            cls.alle_talente['Körper'] = cls.Koerper()
+            cls.alle_talente['Gesellschaft'] = cls.Gesellschaft()
+            cls.alle_talente['Natur'] = cls.Natur()
+            cls.alle_talente['Wissen'] = cls.Wissen()
+            cls.alle_talente['Sprachen'] = cls.Sprachen()
+            cls.alle_talente['Schriften'] = cls.Schriften()
+            cls.alle_talente['Handwerk'] = cls.Handwerk()
         return cls.alle_talente
         
 
@@ -358,6 +359,17 @@ class Talent(object):
             if talent in gruppe.talente:
                 return gruppe.talente[talent]
         return None
+    
+    @staticmethod
+    def held_pruefen(held):
+        alle = Talentkategorie.alle()
+        for gruppenname, gruppe in held['Talente'].iteritems():
+            if gruppenname not in alle:
+                raise KeyError('Talentgruppe "%s" von Held "%s" ist ungültig!' % (gruppenname, held['Name']))
+            for talent in gruppe:
+                if not Talent.ist_talent(talent):
+                    raise KeyError('Talent "%s" von Held "%s" ist ungültig' % (talent, held['Name']))
+        return True
                 
 class StandardTalent(Talent):
     pass
@@ -414,4 +426,23 @@ class ATKampfTalent(KampfTalent):
     def get_print_dict(self, taw, *arg, **kwd):
         return KampfTalent.get_print_dict(self, taw, taw, '-', *arg, **kwd)
     
+
+class ZauberTalent(Talent):
+    def __init__(self, name, probe, schwierigkeit, zauberdauer, kosten, ziel, reichweite, wirkungsdauer, merkmale,
+                 seite, lernmods=None, lernen=None):
+        Talent.__init__(self, name, probe, kategorie="Zauber", schwierigkeit, ist_basis=False)
+        self.zauberdauer = zauberdauer
+        self.kosten = kosten
+        self.ziel = ziel
+        self.reichweite = reichweite
+        self.wirkungsdauer = wirkungsdauer
+        self.merkmale = merkmale
+        self.seite = seite
+        # TODO: Die beiden werden erst in einer späteren Version behandelt.
+        self.lernmods = lernmods
+        self.lernen = lernen
+        
+    
+    
+
     

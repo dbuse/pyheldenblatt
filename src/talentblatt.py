@@ -247,17 +247,22 @@ class Talentblatt(FPDF):
     def platz_pro_seite(self, held, verteilung, leerzeilen={}, sonderfertigkeiten_sind='links'):
         platz = {'links':-99,'rechts':-99}
         for seite, gruppen in verteilung.iteritems():
-            summe = sum(self.anzahl_zeilen(held, gruppe) + leerzeilen[gruppe] for gruppe in gruppen)
-            summe += len(gruppen) * 2
+            anzahlen = dict([(gruppe,self.anzahl_zeilen(held, gruppe) + leerzeilen[gruppe]) for gruppe in gruppen]) 
+            anzahlen['Gruppen']= len(gruppen) * 2
             if sonderfertigkeiten_sind == seite:
-                summe += self.sonderfertigkeiten_zeilen(held['Sonderfertigkeiten'], held['Besonderheiten']) + 2
-            platz[seite] = math.floor(250.0 / self.zeilen_h) - summe
+                anzahlen['Sonderfertigkeiten'] = self.sonderfertigkeiten_zeilen(held['Sonderfertigkeiten'],
+                                                                                held['Besonderheiten']) + 2
+#            print "Seite %s: Summe: %d, Anteile %s" % (seite, sum(anzahlen.values()), anzahlen)
+            platz[seite] = math.floor(250.0 / self.zeilen_h) - sum(anzahlen.values())
         return platz
             
-            
-    def helden_drucken(self, held):
-        seiten = {'links':['Kampf','Körper','Gesellschaft'],
-                  'rechts':['Natur','Wissen','Sprachen','Schriften','Handwerk']}
+    
+    def leerzeilen_anheaenge(self, held, seiten):
+        gruppen = config.gruppen
+        alle = Talentkategorie.alle()
+        leerzeilen = {}
+        for gruppe in gruppen:
+            leerzeilen[gruppe] = 0
         gruppen = config.gruppen
         leerzeilen = {}
         for gruppe in gruppen:
@@ -269,19 +274,28 @@ class Talentblatt(FPDF):
             platz = self.platz_pro_seite(held, seiten, leerzeilen)
             if platz['links'] <= 0 and platz['rechts'] <= 0:
                 break
-            
             # Gruppe zum Leerzeilen erhöhen suchen
             while True:
                 zeiger = zeiger % len(gruppen)
-                if gruppen[zeiger] in seiten['links']: seite = 'links'
+                gruppe = gruppen[zeiger]
+                # bereits "volle" Gruppen abfangen - nicht mehr Leerzeilen vorsehen als die Gruppe bietet!
+                if len(held['Talente'][gruppe]) + leerzeilen[gruppe] >= len(alle[gruppe].talente):
+                    zeiger += 1
+                    continue 
+                if gruppe in seiten['links']: seite = 'links'
                 else: seite = 'rechts'
                 if platz[seite] > 0:
-                    leerzeilen[gruppen[zeiger]] += 1
+                    leerzeilen[gruppe] += 1
                     zeiger += 1
                     break 
                 else:
                     zeiger += 1
+        return leerzeilen
             
+    def helden_drucken(self, held):
+        seiten = {'links':['Kampf','Körper','Gesellschaft'],
+                  'rechts':['Natur','Wissen','Sprachen','Schriften','Handwerk']}
+        leerzeilen = self.leerzeilen_anheaenge(held, seiten)
         self.attribute_leiste(held['Attribute'])
         self.set_y(35)
         self.sonderfertigkeitenblock(held['Sonderfertigkeiten'],held['Besonderheiten'])
@@ -290,3 +304,5 @@ class Talentblatt(FPDF):
                 self.talentblock(gruppe, held['Talente'][gruppe], leerzeilen[gruppe])
             self.set_y(35)
             self.set_left_margin(106.5)
+            
+            
