@@ -1,13 +1,13 @@
 Abvenenum	KL/KL/FF	15 Akt	je 4	OO	C	1 Schritt	augenblicklich	Objk	11
 Accuratum	KL/CH/FF	40 Akt	je 4, min 7	O	C	B	WSW	Objk	12
-Adamantium	KL/FF/KO	40 Akt	5 + je 2	O C	B	ZfP* SR	Objk, Elem	13
+Adamantium	KL/FF/KO	40 Akt	5 + je 2	O	C	B	ZfP* SR	Objk, Elem	13
 Adlerauge	KL/IN/FF	5 Akt	4	P(f)	B	s	1 SR (A)	Hell,Eign	15
 Adlerschwinge	MU/IN/GE	20 Akt	speziell	P(f)	D	s	variabel	Form	16
 Aeolitus	KL/CH/KP	3 Akt	4	2	B	ZfP* x2 Schritt	augenblicklich	Umwe, Luft	18
 Aerofugo	MU/KO/KK	10 Akt	10 + 1 je 5m³	Z	D	ZfW Schritt	ZfP* KR	Umwe, Luft	19
 Aerogelo	MU/IN/KO	10 Akt	5 + 1 je 20m³	Z	D	ZfW x3 Schritt	ZfP* SR	Umew, Luft	20
 Alpgestalt	MU/CH/GE	20 Akt	MR, min 6	P	C	ZfW Schritt	ZfP* x5 KR	Einf, Herr	21
-Analys	KL/KL/IN	1+ SR	6 + 3 je 6SR	O,W	D	1 Schritt	Hell,Meta	22
+Analys	KL/KL/IN	1+ SR	6 + 3 je 6SR	O,W	D	1 Schritt	Zauberdauer	Hell,Meta	22
 Ängste Lindern	MU/IN/CH	20 Akt	5	P(f)	C	B	augenblicklich	Einf	23
 Animatio	KL/FF/GE	28+ Akt	12+	O	E	B	ZfP* Monate	Tele	24
 Applicatus	KL/FF/FF	40 Akt	2W6	O	C	B	SA	Objk,Meta	25
@@ -21,15 +21,15 @@ Auge des Limbus	MU/KO/KK	15 Akt	3W6 + je 3	Z	E	ZfW Schritt	ZfP* KR	Limb,Krft	32
 Aureolus	IN/CH/FF	5 Akt	3 je m²	O,W(f)	A	s,B	ZfP* x6 Std	Illu	33
 Auris Nasus	KL/CH/FF	je 5 Akt	je4	Z	D	ZfW x3 Schritt	ZfP* / 2 SR	Illu	35
 Axxeleratus	KL/GE/KO	2 Akt	7	P(f)	C	s, 7 Schritt	ZfP* x3 KR (A)	Eign	36
-Balsam	KL/IN/CH	1 SR je 1, min 5	W(f)	C	s,B	augenblicklich	Heil,Form	37
+Balsam	KL/IN/CH	1 SR	je 1, min 5	W(f)	C	s,B	augenblicklich	Heil,Form	37
 Band und Fessel	KL/CH/KK	min 9 Akt	9	W	C	ZfW Schritt	ZfP* Std	Einf	38
-Bannbaladin	IN/CH/CH	5 Akt	P	B	3 Schritt	ZfP* SR	Einf	39
+Bannbaladin	IN/CH/CH	5 Akt	7	P	B	3 Schritt	ZfP* SR	Einf	39
 Bärenruhe	MU/KK/KO	3 SR	2 je Tag	P(f)	D	s,B	ZfW x5 Tage	Form	40
 Beherrschung brechen	KL/IN/CH	40 Akt	7+	W	C	B	augenblicklich	Anti,Herr	41
 Beschwörung vereiteln	MU/IN/CH	15 Akt	7+	Z	C	7 Schritt	augenblicklich	Anti,Besw	42
 Bewegung stören	KL/IN/FF	4 Akt	8+	W,O	C	ZfW x7 Schritt	augenblicklich	Anti,Tele	43
 Blendwerk	IN/CH/GE	5 Akt	0 je SR	Z	C	ZfW x3 Schritt	variabel (A)	Illu	44
-Blick aufs Wesen	KL/IN/CH	30 Akt	6	W	C	ZfW	Schritt	30 Akt	Hell	45
+Blick aufs Wesen	KL/IN/CH	30 Akt	6	W	C	ZfW Schritt	30 Akt	Hell	45
 Blick durch fremde Augen	MU/IN/CH	2 SR	min 8	W	E	ZfW x10 Meilen	variabel (A)	Hell,Vers	46
 Blick in die Gedanken	KL/KL/CH	10 Akt	6 je 5 KR	P	D	3 Schritt	variabel (A)	Hell	47
 Blick in die Vergangenheit	KL(KL/IN	min 1 SR	21 + 3 je Std	O,Z	D	B,Sichtweite	variabel (A)	Hell,Temp	48
@@ -37,7 +37,231 @@ Blitz	KL/IN/GE	1 Akt	4	W	B	ZfW Schritt	ZfW /2 Akt	Einf	49
 Böser Blick	MU/CH/CH	4 Akt	7 / 2W6	P	C	1 Schritt	ZfP* Minuten	Enf	50
 Brenne	MU/KL/KO	3 Akt	11	O	C	B	ZfP* KR	Objk,Feur	51
 Caldofrigo	IN/CH/KO	40 Akt	speziell	O	E	B	ZfP* SR	Obj,Umwe,Feur,Eis	52
-Chamaelioni	IN/CH/GE	2 Akt	4	P(f)	C s	ZfP* x10 KR (A)	Illu	54
+Chamaelioni	IN/CH/GE	2 Akt	4	P(f)	C	s	ZfP* x10 KR (A)	Illu	54
 Chimaeroform	KL/IN/KO	1 Tag	min 40	WW	F	1 Schritt	p	Asfa,Form	55
-Chronoklassis	KL/IN/KO	Stdunden	speziell	O,W	F	speziell variabel	Herb,Temp	56
+Chronoklassis	KL/IN/KO	Stunden	speziell	O,W	F	speziell	variabel	Herb,Temp	56
 Chrononautos	MU/CH/KO	12 Std	speziell	Z	F	1W20 Schritt	variabel	Temp	57
+Claudibus	KL/FF/KK	3 Akt	min 3	O	C	B	ZfP* SR	Objk	58
+Corpofresso	KL/KO/KK	5 Akt	8	W	C	7 Schritt	ZfP* x10 KR	Eign	59
+Corpofrigo	CH/GE/KO	2 Akt	9	W	C	7 Schritt	augenblicklich	Eign,Eis	60
+Cryptographo	CH/GE/KO	2 Akt	min 3	O	C	B	Sonnenwende	Objk,Vers	61
+Custodosigill	KL/KL/IN	1 SR	min 3	O	C	B	Wintersonnenwende	Objk,Meta,Feur	62
+Dämonenbann	KU/CH/KO	40 Akt	9+	Zauber	C	ZfW Schritt	augenblicklich	Anti,Dämo	63
+Delicioso	KL/CH/FF	10 Akt	3 je Stein	O	D	B	ZfP* x2 SR	Illu	64
+Desintegratus	KL/KO/FF	7 Akt	30	Z	D	speziell	augenblicklich	Objk,Scha	65
+Destructibo	KL/KL/FF	1+ Min	speziell	O	E	B	augenblicklich	Anti,Meta,Krft	66
+Dichter und Denker	KL/IN/CH	4 Akt	6	P	C	3 Schritt	ZfP* /2 SR	Herr	67
+Dschinnenruf	MU/KL/CH	6 SR	30	W	E	3 Schritt	speziell	Elem,Herb	68
+Dunkelheit	KL/KL/FF	5 Akt	3 je SR	Z	C	ZfW /2 Schritt	ZfP* SR	Umwe	69
+Duplicatus	KL/CH/GE	5 Akt	6(+3)	W(f)	C	s,B	ZfP* x2 KR (A)	Illu	70
+Ecliptifactus	MU/KL/KO	6 Akt	5 + 1 je KR	P(f)	D	s	variabel (A)	Dämo,Form	71
+Eigenschaft wiederherstellen	KL/IN/CH	40 Akt	7+	W	C	s,B	augenblicklich	Anti,Eign	73
+Eigne Ängste	MU/IN/CH	3 Akt	11	P	C	B	ZfP* Str	Einf,Eign	74
+Einfluss bannen	IN/CH/CH	40 Akt	5+	W	B	B	augenblicklich	Anti,Einf	75
+Eins mit der Natur	IN/GEK/KO	3 SR	6	P(f)	C	s	Sonnenaufgang	Eign,Elem	76
+Eisenrost	KL/CH/GE	2 Akt	2 + 2 je Stein	O	C	B	augenblicklich	Obj,Temp	77
+Eiseskälte	MU/IN/KO	2 Akt	5 + 1 je KR	P(f)	C	s	ZfW x2 KR (A)	Eign	78
+Elementarbann	IN/CH/KO	40 Akt	9+	Zauber	C	ZfW Schritt	augenblicklich	Anti,Elem	79
+Elementarer Diener	MU/KL/CH	1 SR	12	W	D	3 Schritt	Sonnenaufgang	Elem,Herb	80
+Elfenstimme	IN/CH/KO	40 Akt	6 + 1 je SR	P(f)	D	s	ZfP /2 SR	Vers	81
+Erinnerung verlasse dich	MU/IN/CH	3 Akt	11	P	D	B	ZfP* Std	Herr	82
+Exposami	KL/IN/IN	15 Akt	4	P(f)	B	s	15 Akt	Hell	83
+Falkenauge	IN/FF/GE	4 Akt	5	P(f)	B	s,B	ZfW KR	Eign	84
+Favilludo	IN/CH/FF	2 Akt	3	W,O	A	1 Schritt	ZfP* x10 KR (A)	Illu	85
+Firnlauf	MU/KL/GE	6 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Eign,Eis	86
+Flim Flam	KL/KL/FF	2 Akt	1 je SR	Z	A	ZfW Schritt	variabel	Umwe	87
+Fluch der Pestilenz	MU/KL/CH	10 Akt	Stufe x2	P	D	3 Schritt	augenblicklich	Mish	88
+Foramen	KL/KL/FF	5 Akt	min 2	O	C	B	augenblicklich	Hell,Tele	89
+Fortifex	IN/GE/KO	10 Akt	11	Z	D	3 Schritt	ZfP* x10 KR	Umwe,Erz	90
+Fulminictus	IN/GE/KO	2 Akt	SP	W	C	7 Schritt	augenblicklich	Scha,Krft	91
+Gardianum	KL/IN/KO	2 Akt	min 3	Z	D	3 Schritt	1 SR	Anti,Krft,Meta	92
+Gedankenbilder	KL/IN/CH	5 AKt	4 je 5 KR	P(f)	B	ZfP* x100 Schritt	ZfP* 5 KR	Vers	94
+Gefäß der Jahre	MU/KL/KO	ca 6 Str	49 + W6 perm	P(f),O	E	s	permanent	Besw,Form,Temp	95
+Gefunden!	KL/IN/GE	6 SR	17	O	C	ZfW x500 Schritt	speziell	Hell	96
+Geisterbann	MU/MU/CH	1 SR	min 1	W	C	ZfW x3 Schritt	speziell	Anti,Geis	97
+Geisterruf	MU/MU/CH	1 SR	9 je Geist	W	D	ZfW x20 Schritt	speziell	Geis,Herr	98
+Granit und Mamor	MU/CH/KO	10 Akt	30	W	D	3 Schritt	ZfP* Wochen	Erz,Form	99
+Große Gier	KL/KL/CH	5 Akt	6	P	C	B	ZfP* SR	Einf,Herr	100
+Große Verwirrung	KL/KL/CH	2 Akt	6	P	C	B	ZfP* SR	Eign	101
+Halluzination	KL/IN/CH	5 Akt	7 + 2 je SR	P	C	B	ZfW /2 SR	Herr	102
+Harmlose Gestalt	KL/CH/KK	3 Akt	min 7	O	C	B	ZfP* SR (A)	Einf,Illu	103
+Hartes schmelze!	MU/KL/KK	3 Akt	min 7	O	C	B	ZfP* /2 SR	Objk,Wass	104
+Haselbusch	CH/FF/KO	1 SR je AsP	min 3 	W	D	B	augenblicklich	Eign,Humu	105
+Heilkraft bannen	KL/CH/FF	8 Akt	4+	P	C	B	augenblicklich	Anti,Heil	107
+Hellsicht trüben	KL/IN/CH	2 Akt	min 6	P	C	ZfW Schritt	ZfP* /2 SR	Anti,Hell	108
+Herbeirufung vereiteln	MU/IN/CH	12 AKt	8+	Z	C	7 Schritt	augenblicklich	Anti,Herb	109
+Herr über das Tierreich	MU/MU/CH	5 Akt	min 4	W	D	3 Schritt	ZfP* SR	Herr	110
+Herzschlag ruhe!	MU/CH/KK	20 Akt	W20 je 10 KR	P	D	B	variabel (A)	Blak	111
+Hexenblick	IN/IN/CH	4 Akt	je 1	P	B	3 Schritt	4 Akt	Vers	112
+Hexengalle	MU/IN/CH	2 Akt	speziell	P(f)	C	s	augenblicklich	Scha	113
+Hexenholz	KL/FF/KK	1 SR	5 je SR	O	B	7 Schritt	variabel (A)	Tele	114
+Hexenknoten	KL/IN/CH	10 Akt	4 	Z	C	speziell	ZfP* /2 SR	Einf,Illu	115
+Hexenkrallen	MU/IN/KO	3 Akt	3 + 1 je SR	P(f)	C	s	max ZfP* /2 SR	Eign,Form	116
+Hexenspeichel	IN/CH/FF	20 Akt	speziell	P(f)	C	B	augenblicklich	Heil	117
+Hilfreiche Tatze	MU/IN/CH	20 Akt	3 + GW	Z	D	ZfP* x100 Schritt	ZfP* SR	Einf,Vers	118
+Höllenpein	KL/CH/KO	2 AKt	11	P	C	B	ZfP* x3 KR	Einf	119
+Holterdiepolter	IN/IN/FF	4 Akt	17	Z	C	7 Schritt Radius	ZfW Minuten	Umwe	120
+Horriphobus	MU/IN/CH	3 Akt	7	P	C	7 Schritt	ZfP* /2 SR	Einf	121
+Ignifaxius	KL/FF/KO	4 Akt	TP	W	C	21 Schritt	augenblicklich	Feur,Scha	122
+Ignisphaero	MU/IN/KO	4 Akt	TP	Z	D	49 Schritt	augenblicklich	Feur,Scha,tele	124
+Ignoratia	IN/CH/GE	10 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Einf,Illu	125
+Illusion auflösen	KL/IN/CH	2 Akt	6+	Zauber	B	3 Schritt	augenblicklich	Anti,Illu	126
+Immortalis	MU/CH/KO	speziell	speziell	P	F	s	augenblicklich	Form,Temp	127
+Imperavi	KL/CH/CH	10 Akt	13	P	E	1 Schritt	ZfP* Stunden	Herr	128
+Impersona	KL/IN/FF	1 SR	9 + 3 je Std	P(f)	D	s,B	variabel (A)	Illu	129
+Infinitum	KL/CH/KO	speziell	speziell	Zauber	F	B	permanent	Meta,Temp	130
+Invercano	MU/IN/FF	7 Akt	13	P(f)	F	s	ZfP* x2 KR	Anti,Krft,Meta	131
+Invocatio maior	MU/MU/CH	40 Akt	19+	Dämon	E	speziell	variabel	Besw,Dämo	132
+Invocatio minor	MU/MU/CH	5 Akt	11+	Dämon	D	speziell	variabel	Besw,Dämo	133
+Iribaars Hand	MU/MU/IN	4 Akt	W20	P	D	B	ZfP* KR	Ama,Einf,Dämo	134
+Juckreiz	MU/IN/CH	4 Akt	7	Z,P	B	ZfW Schritt	ZfP* /2 SR	Einf	135
+Karnifilo	MU/IN/CH	3 Akt	11	P	C	B	ZfP* x5 KR	Einf,Eign	136
+Katzenaugen	KL/FF/KO	10 Akt	1 je 3 SR	P(f)	C	s	variabel (A)	Eign	137
+Klarum Purub	KL/KL/CH	7 Akt	speziell	W(f)	D	s,B	augenblicklich	Form,Heil	138
+Klickeradomms	KL/FF/KK	1 Akt	3	O	A	ZfW Schritt	augenblicklich	Tele	139
+Kobolsvision	MU/CH/CH	10 	10	P(f)	D	s	ZfP* /2 SR	Herr	140
+Komm Kobold	IN/CH/CH	7 Akt	11	W	C	1 Meile	variabel	Herb	142
+Körperlose Reise	MU/KL/IN	6 SR	5 je SR	P(f)	E	s	variabel (A)	Limb,Vers	143
+Krabbelnder Schreckern	MU/MU/CH	20 Akt	15	W	C	7 Schritt	ZfP* KR	Herb,Mish	144
+Kraft des Erzes	KL/KO/KK	40 Akt	9	Z	D	ZfW Schritt	ZfP* SR	Erz,Objk	145
+Krähenruf	MU/CH/CH	7 Akt	11	WW	C	21 Schritt	20 KR	Einf,Herr,Limb	146
+Krötensprung	IN/GE(KK	7 Akt	3	P(f)	B	s,B	augenblicklich	Eign	148
+Kulminatio	MU/IN/FF	6 Akt	W20	W	D	ZfW x3	Schnitt ZfP* x2	Scha	149
+Kusch!	MU/IN/CH	1 Akt	5	W	B	ZfW Schritt	ZfP* /2 SR	Einf	150
+Lach dich gesund	IN/CH/CH	variabel	LeP	P	C	B	augenblicklich	Heil,Einf	151
+Lachkrampf	CH/CH/FF	2 Akt	8	P	C	3 Schritt	ZfP* /2 SR	Einf	152
+Langer Lulatsch	CH/GE/K	4 Akt	10 + 5 je SR	P	D	B	ZfP* /2 SR	Form,Objk	153
+Last des Alters	IN/CH/KO	6 SR	spez	P	E	B	augenblicklich	Temp,Form	154
+Leib der Erde	MU/IN/GE	20 Akt	10 + 1 je SR	P(f)	D	s	ZfP* SR (A)	Form,Humu	155
+Leib der Wogen	MU/KL/GE	20 Akt	12 + 1 je SR	P(f)	E	s	ZfP* SR (A)	Form,Wass	157
+Leib der Eises	MU/KL/GE	20 Akt	13 + 1 je SR	P(f)	E	s	ZfP* SR (A)	Form,Eis	159
+Leib der Erz	MU/KL/KK	20 Akt	12 + 1 je SR	P(f)	E	s	ZfP* SR (A)	Form,Erz	160
+Leib der Feuers	MU/MU/GE	20 Akt	11 + 1 je SR	P(f)	E	s	ZfP* SR (A)	Form,Feur	162
+Leib der Windes	MU/KL/KK	20 Akt	12 + 1 je SR	P(f)	E	s	ZfP* SR (A)	Form,Luft	164
+Leidensbund	MU/IN/KO	1 SR	5	P(f)	C	B	augenblicklich	Heil,Vers	165
+Levthans Feuer	IN/CH/CH	7 Akt	7	P	D	B	Sonnenaufgang	Einf,Vers	166
+Limbus Versiegeln	KL/IN/KO	10 Akt	10+	Z	E	7 Schritt	augenblicklich	Anti,Limb	167
+Lockruf	IN/CH/FF	2 Akt	7	O	B	ZfW Schritt	variabel	Tele,Illu	168
+Lunge des Leviatan	IN/CH/KO	10 Akt	6	P(f)	C	B	augenblicklich	Heil	169
+Madas Spiegel	MU/KL/IN	1 SR	13	P(f)	D	unbegrenzt	ZfP* KR	Vers,Hell	170
+Magischer Raub	MU/KL/KO	40 Akt	4	P	D	B	ZfP* Std	Krft,Vers	171
+Mahlstrom	MU/IN/KK	20 Akt	2 je Schritt	Z	D	ZfW x 20 Schritt	40 KR (A)	Wass,Umwe	172
+Manifesto	KL/IN/CH	10 Akt	3	O,Z	A	1 Schritt	variabel	Elem	173
+Meister der Elemente	MU/KL/CH	1 Std	48	W	F	3 Schritt	variabel	Elem,Herb	174
+Meister minderer Geister	MU/CH/CH	7 Akt	3 je Geist	W	B	1 Meile	variabel	Herb	175
+Memorabia	MU/IN/CH	3 SR	8	P	E	B	ZfW Tage	Herr	176
+Memorans	KL/KL/IN	1 SR	7	P(f)	C	s	ZfP* SR	Hell,Vers	177
+Menetekel	KL/CH/FF	7+ Akt	min 3	Z	B	49 Schritt	ZfP* x5 KR	Illu	178
+Metamagie Neutralisieren	KL/KL/KO	40 At	8+	W,O	F	B	augenblicklich	Anti,Meta	179
+Metamorpho	KL/FF/KK	20+ AKt	5+	ZfW m³	C	B	augenblicklich	Eis,Objk	180
+Motoricus	KL/FF/KK	5 Akt	min 3	O	C	7 Schritt	1 SR (A)	Tele	181
+Movimento	IN/GE/KO	20 Akt	5 + 1 je SR	P(f)	A	s	ZfP* Std (A)	Eign	183
+Murks und Patz	IN/IN/FF	4 Akt	min 17	Z	C	21 Schritt	1 Kampf	Einf	184
+Nackedei	KL/IN/FF	2 Akt	9 + RS x1,5	P	D	ZfW Schritt	augenblicklich	Objk,Tele	185
+Nebeleib	MU/IN/KO	20 Akt	7 + 3 je SR	P(f)	D	s	ZfW SR	Form,Luft,Wass	186
+Nebelwand	KL/FF/KO	5 Akt	min 4	Z	C	ZfW Schritt	ZfP* x2 SR	Luft,Wass,Umwe	187
+Nekropathia	MU/KL/CH	3 SR	9 + 7 je SR	O,P	E	B	max ZfP* SR	Geis,Vers	188
+Nihilogravo	KL/KO/KK	15 Akt	5 je Schritt	Z	E	ZfW Schritt	ZfP* x 10 KR (A)	Umwe	189
+Nuntiovolo	MU/KL/CH	20 Akt	5 + 1 je Std	W	C	variabel	max ZfW x 2 Std	Besw,Lolg	190
+Objecto Obscuro	KL/FF/KO	10 Akt	7 + 2 je SR	O	D	B	ZfP* SR (A)	Objk	191
+Objectofixo	KL/KL/KK	10 Akt	1 je Stein	O	D	B	ZfP* x5 SR	Objk,Temp	192
+Objectovoco	KL/IN/CH	25 Akt	5 + 2 je Frage	O	C	B	1 SR	Vers	193
+Objekt entzaubern	KL/IN/FF	50 Akt	8+	O	C	B	augenblicklich	Anti,Objk	194
+Oculus Astralis	KL/IN/CH	15 Akt	11 + 3 je SR	P(f)	E	s	variabel (A)	Hell,Krft,Limb,Meta	196
+Odem Arcarnum	KL/IN/IN	4 Akt	4	P,O	A	ZfW Schritt	1 KR	Hell,Krft	197
+Pandaemonium	MU/MU/CH	20 Akt	9 + 1 je 100cm²	Z	D	21 Schritt	ZfP* SR	Besw,Dämo	199
+Panik überkomme euch!	MU/MU/CH	6 Akt	2W20	P(f)	E	s	1 SR je AsP	Einf,Amaz	200
+Papperlapapp	IN/IN/FF	10 Akt	27	Z	D	ZfW Schritt	ZfP* SR	Einf	201
+Paralysis	IN/CH/KK	2 Akt	11	P	C	7 Schritt	ZfP* SR	Form,Erz	202
+Pectetondo	KL/CH/FF	6 Akt	4	P(f)	B	s	max ZfP* Tage	Form	203
+Penetritzzel	KL/KL/KO	min 6 Akt	3 + 1 je Spann	P(f)	C	s	ZfP* x2 KR (A)	Hell	204
+Pentagramma	MU/MU/CH	20 Akt	min 7	W	D	7 Schritt	augenblicklich	Anti,Besw,Dämo,Geis	205
+Pestilenz erspüren	KL/IN/CH	3 SR	6	W	C	s,B	ca. 3 SR	Hell	207
+Pfeil des [Elements]	KL/IN/CH	20 Akt	8	O	C	B	ZfP* x10 KR	je Element	208
+Planastrale	MU/MU/KO	50 Akt	min 13	Z	F	3 Schritt	ZfP* x0,5 SR	Limb	210
+Plumbumbarum	CH/GE/KK	3 Akt	4 + 2 je Gegner	WW	B	7 Schritt	5 KR	Einf	211
+Projektimago	MU/IN/CH	10 Akt	speziell	P,Z	D	ZfW Meilen	variabel (A)	Illu,Vers	212
+Protectionis	KL/CH/KO	8 Akt	speziell	Zauber	F	s	20 KR (A)	Anti,Meta	213
+Psychostabilis	MU/KL/KO	5 Akt	8 + 1 je SR	P(f)	C	B	variabel	Anti,Eign	214
+Radau	MU/KL/KO	4 Akt	5 + 1 je KR	P,Z	C	21 Schritt	variabel (A)	Luft,Tele	215
+Reflectimago	KL/CH/FF	10 Akt	3 + 1 je Objekt	OO	B	Sicht	ZfP* SR	Illu	216
+Reptilea	MU/IN/CH	50 Akt	17	Z	D	ZfW x20 Schritt	ZfP* x2 Std	Herb	217
+Respondami	MU/IN/CH	3 Akt	3	P	B	1 Schritt	augenblicklich	Herr	218
+Reversalis	KL/IN/CH	8 Akt	7	Zauber	E	s	augenblicklich	Meta	219
+Ruhe Körper	KL/CH/KO	20 Akt	3 + 1 je Std	P(f)	B	B	augenblicklich	Heil	220
+Salander Mutander	KL/CH/KO	10 Akt	15	P	E	B	ZfP* Std	Form	221
+Sanftmut	MU/CH/CH	4 Akt	min 3	W	B	7 Schritt	1 SR	Einf	222
+Sapefacta	KL/CH/FF	50 Akt	5	O,P(f)	C	s	augenblicklich	Tele,Luft,Wass	223
+Satuarias Herrlichkeit	IN/CH/CH	10 Akt	7	P	B	ZfW Schritt	augenblicklich	Einf	225
+Schabernack	KL/IN/CH	5 Akt	7	P	B	ZfW Schritt	augenblicklich	Einf	225
+Schadenszauberei Bannen	MU/IN/KO	4 Akt	6+	Zauber	C	7 Schritt	augenblichlich	Anti,Scha	226
+Schelmenkleister	IN/GE/FF	5 Akt	3 je Schritt	Z	C	ZfW Schritt	ZfP* x5 KR	Umew	227
+Schelmenlaune	MU/IN/CH	10 Akt	6 + je Opfer	PP	D	ZfW Schritt	augenblicklich	Anti,Scha	228
+Schelmenmaske	IN/CH/GE	6 Akt	9 je SR	P(f)	D	s	variabel (A)	Illu	229
+Schelmenrausch	IN/CH/CH	5 Akt	8	P	C	3 Schritt	ZfP* x10 KR	Einf	230
+Schleier	KL/KL/FF	1 SR	speziell	O,P(f)	D	s,B	ZfP* Std	Eign,Meta	231
+Schwarz und Rot	MU/CH/KO	10 Akt	3 je Std	P	D	B	variabel	Eign,Scha	232
+Schwarzer Schrecken	MMU/IN/CH	3 Akt	10	P	D	B	ZfP* Tage	Einf	233
+Seelentier erkennen	IN/IN/CH	10 Akt	7	P	C	3 Schritt	20 Akt	Hell	234
+Seelenwanderung	MU/CH/KO	1 SR	Speziell	P	F	ZfW Meilen	variabel (A)	Eign,Vers	235
+Seidenweich	IN/FF/FF	10 Akt	8	O	C	B	ZfP* Std	Illu	236
+Seidenzunge	KL/IN/CH	6 Akt	6	P	B	1 Schritt	ZfP* SR (A)	Einf	237
+Sensattacco	MU/IN/GE	7 Akt	11	P(f)	D	s,B	ZfP* x5 KR (A)	Eign,Hell	238
+Sensibar	KL/IN/CH	10 Akt	3 je 10 Akt	P	C	ZfW Schritt	variabel (A)	Hell	239
+Serpentalis	MU/CH/GE	5 Akt	speziell	P(f)	D	s	variabel (A)	Form	240
+Silentium	KL/IN/CH	2 Akt 	1 je 5m und SR	Z	B	ZfW Schritt	variabel (A)	Umwe	241
+Sinesigil	KL/IN/FF	50 Akt	7	P(f)	D	s,B	ZfP* x2 Std (A)	Illu	242
+Skelettarius	MU/MU/CH	30 Akt	speziell	O	C	B	ZfW SR	Thar	243
+Solidirid	IN/KO/KK	11+ Akt	3 + 1 je m	Z	D	ZfW x7 Schritt	ZfW x10 Akt (A)	Umwe,Luft	245
+Somnigravis	KL/CH&CH	7 Akt	7	P	B	ZfW Schritt	ZfP* x0,5 Std	Einf	246
+Spinnenlauf	IN/GE/KK	10 Akt	7 + 2 je SR	P(f)	C	s,B	variabel (A)	Eign	247
+Spurlos	IN/GE/GE	10 Akt	4 + 2 je SR	P(f)	C	s	ZfP* SR (A)	Umwe	248
+Standfest	IN/GE/FF	4 Akt	6+2 je SR	P(f)	C	s	ZfP* x3 KR (A)	Eign	249
+Staub wandle!	MU/KL/CH	ca 7 Std	min 36	O	E	B	Sommersonnenwende	Erz	250
+Stein wandle!	MU/CH/KK	ca 7 Std	min 8W6	W	E	B	permanent	Besw,Dämo	251
+Stillstand	MU/IN/GE	7 Akt	11 je SR	Z	E	ZfW Schritt	ZfP* SR (A)	Eis,Umwe	252
+Sumus Elexiere	IN/CH/FF	1 SR	5	O	C	B	ZfP* Minuten	Humu	253
+Tauschrausch	IN/FF/KO	5 Akt	11	OO	D	ZfW Schritt	augenblicklich	Limb	254
+Tempus Stasis	MU/KL/KK	5 Akt	17	Z	E	7 Schritt	ZfW KR	Temp	255
+Tiere besprechen	MU/IN/CH	50 Akt	variabel	W	C	B	augenblicklich	Heil,Form	256
+Tiergedanken	MU/IN/CH	20 Akt	7 je SR	W	C	ZfW Schritt	variabel (A)	Hell,Vers	257
+Tlalucs Odem	MU/IN/GE	5 Akt	11	Z	C	7 Schritt	ZfP* SR	Besw,Dämo,Scha	258
+Totes handle!	MU/CH/KO	1 SR	speziell	O	D	B	permanent	Besw,Thar	259
+Transformatio	KL/FF/KK	8 Akt	min 5	O	E	B	ZfP* SR	Objk,Form	260
+Transmutare	KL/IN/KO	1 Tag	42	W	D	1 Schritt	ZfP* Wochen	Form	260
+Transversalis	KL/IN/KO	3 Akt	10 +1 je Meile	P(f)	E	s (ZfW Meilen)	augenblicklich	Limb	262
+Traumgestalt	IN/CH/CH	1 SR	min 7	P	D	ZfW x 10 Meilen	variabel (A)	Vers	263
+Unberührt	KL/FF/KO	1 SR	min 3	O	C	B	max ZfW Tage	Objk,Temp	264
+Unitatio	IN/CH/KO	30 Akt	je 1	PP	B	B	variabel	Vers,Krft	265
+Unsichtbarer Jäger	IN/FF/GE	10 Akt	4 je SR	P(f)	E	s	ZfP* SR (A)	Illu	266
+Veränderung aufheben	KL/IN/KO	50 Akt	12+	Z	D	B	augenblicklich	Anti,Umwe	267
+Verschwindibus	IN/CH/GE	2 Akt	6 je SR	O	C	15 Schritt	max ZfW SR	Limb	268
+Verständigung stören	KL/KL/IN	2 Akt	min 5	P	C	ZfW Schritt	ZfP* x0,5 SR	Anti,Vers	269
+Verwandlung beenden	KL/CH/FF	50 Akt	10+	P	D	B	augenblick	Anti,Form	270
+Vipernblick	MU/MU/CH	5 Akt	4	P	B	3 Schritt	speziell	Einf	271
+Visibili	KL/IN/GE	je 3 Akt	4 je SR + Person	(W)W(f)	C	s,B	ZfP* SR (A)	Form	272
+Vocolimbo	KL/CH/FF	5 Akt	3	Z	B	ZfW x3 Schritt	max 10 KR	Illu	273
+Vogelzwitschern	MU/IN/GE	5 Akt	8	P(f)	B	s,1 Schritt	ZfP* Std	Illu	274
+Wand aus [Element]	MU/KL/CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	je Element	275
+Warmes Blut	MU/IN/IN	8 Akt	3 e SR	P(f)	B	s	variabel (A)	Eign,Hell,Feur	276
+Wasseratem	MU/KL/KO	30 Akt	6 + 3 je SR	P (f)	C	s,B	variabel	Form	277
+Weiches erstarre!	MU/KL/KK	5 Akt	17	Z	C	B	ZfP* SR	Erz,Umwe	278
+Weihrauchwolke	IN/CH/FF	5 Akt	6	P (f)	B	s,B	ZfP* Std	Illu	279
+Weisheit der Bäume	MU/IN/KO	6 SR	speziell	P(f)	D	s	ZfW Monate	Form,Humu	280
+Weiße Mähn	KL/IN/CH	10 Akt	12	W	D	speziell	ZfP* Std	Besw	281
+Wellenlauf	MU/GE/GE	6 Akt	7 + 3 je SR	P (f)	D	s	variabel (A)	Eign,Wass	282
+Wettermeisterschaft	MU/CH/GE	1 SR	min 6	Z	E	ZfW x50 Schritt	3 SR	Luft,Umwe	283
+Widerwille	MU/IN/GE	2 SR	min 10	O,Z	D	B	ZfP* Wochen	Einf,Illu	285
+Windhose	MU/IN/KK	15 Akt	1 je Schritt	Z	D	ZfW x20 Schritt	20 KR (A)	Luft,Umwe	286
+Windstille	KL/CH/KK	30 Akt	5 je SR	Z	C	ZfW x3 Schritt	variabel (A)	Luft,Umwe	287
+Wipfellauf	MU/IN/GE	6 Akt	6 + 2 je SR	P(f)	D	s	variabel (A)	Humus,Eign	288
+Xenographos	KL/KL/IN	20 Akt	5 + 1 je 10 KR	O	E	3 Schritt	variabel (A)	Hell	289
+Zagibu	IN/CH/FF	3 Akt	3 je 10 Unzen	OO	C	1 Schritt	augenblicklich	Objk,Erz	290
+Zappenduster	IN/IN/FF	2 Akt	11	Z	C	ZfW Schritt	ZfP* SR	Umwe,Anti	291
+Zauberklinge	KL/FF(KO	1 SR	4 + 1 je TP	O	D	B	ZfP* Tage	Objk,Krft	292
+Zaubernahrung	MU/MU/KO	3 SR	min 2	P(f)	C	s	Sonnenaufgang (A)	Eign,Einf	293
+Zauberwesen	MU/IN/CH	1 SR	11	Z	B	ZfP* x100 Schritt	speziell	Herb,Vers	294
+Zauberzwang	MU/CH/CH	3 SR	27	P	E	B	speziell	Herr,Scha	295
+Zorn der Elemente	MU/CH/KO	5 Akt	TP	P	C	21 Schritt	augenblicklich	Elem,Scha	296
+Zunge lähmen	MU/CH/FF	4 Akt	6	P	B	7 Schritt	ZfP* x0,5 SR	Eign	297
+Zwingtanz	MU/KL/CH	3 Akt	7	P	D	7 Schritt	ZfP* x 0,5 SR	Herr	298
