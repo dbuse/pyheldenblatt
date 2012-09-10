@@ -5,27 +5,38 @@ Created on 04.08.2012
 @author: dom
 '''
 import math
-from libs.pyfpdf import FPDF
-from talente import Talentkategorie
+from talente import Talentgruppe
+from heldenblatt import Heldenblatt, ZeilenFeld
 import config
+from collections import OrderedDict
 
-FONT = 'Times'
-OBENLINKS = {'links':(12,35),'rechts':(106.5,35)}
 
 # Nutzbare Fläche ist 250mm * 92,5mm (Je Spalte)
 # Linke obere Ecke der linken Spalte: 12mm/36,5mm
 # Linke obere Ecke der rechten Spalte: 106,5mm/36,5mm
 
+def sonderfertigkeiten_gruppen(besonderheiten):
+    """Baut die Grundstruktur der Sonderfertigkeiten abhängig von den Besonderheiten des Helden auf"""
+    gruppen = ['Kulturkunde', 'Geländekunde', 'Ortskenntnis']
+    if 'Vollzauberer' in besonderheiten and besonderheiten['Vollzauberer']:
+        gruppen.append('Große Meditation')
+    if 'Geweihter' in besonderheiten and besonderheiten['Geweihter']:
+        gruppen.append('Karmalqueste')
+    gruppen.append('')
+    return gruppen
 
-class Talentblatt(FPDF):
+
+class Talentblatt(Heldenblatt):
+    """Druckklasse für den Talentbogen"""
     
-    def __init__(self, *arg, **kwd):
-        FPDF.__init__(self, *arg, **kwd)
-        
+    hintergrund = ('../inhalt/bilder/talentblatt.png',0,0,210,297)
+    
+    def _set_config(self):
         # Konstante Abstände und Längen
         self.rand_links = 12
         self.zeilen_w = 92
         self.zeilen_seitenabstand = 0.5
+        self.oben_links = {'links':(12,35),'rechts':(106.5,35)}
         
         # Schriftgrößen als Variablen
         self.zeilen_fontsize = 8
@@ -51,181 +62,146 @@ class Talentblatt(FPDF):
         self.zeilentitel_fontsize_neben = self.zeilen_fontsize * 1.25
         self.zeilentitel_h = self.zeilentitel_fontsize_haupt * self.multiplikator_h
         self.zeilentitel_kopfabstand = 2*self.zeilen_h - self.zeilentitel_h 
-        return
-    
-    def cell(self, w, h, txt='',*args, **kwd):
-        """Nur überschrieben um allen Unicode handlich umwandeln zu können"""
-        FPDF.cell(self, w, h, txt.encode('latin-1'), *args, **kwd)
         
-    def get_string_width(self, s):
-        return FPDF.get_string_width(self, s.encode('latin-1'))
-
-    def attribute_leiste(self, attribute):
-        self.set_font(family=FONT, style='B', size=self.attribute_fontsize)
-        self.set_left_margin(self.rand_links)
-        for attr in ['MU','KL','IN','CH','FF','GE','KO','KK']:
-            self.cell(self.attribute_w, self.attribute_h, "%s: %d" % (attr, attribute[attr]), align='C')
-        self.cell(self.attribute_dummy_w, self.attribute_h, '')
-        self.cell(self.attribute_be_w, self.attribute_h, "BE: %d" % attribute['BE'])
+        # Konfiguration für die Zeilenfelder
+        self.zeilentitelfelder = {
+            'at/pa': dict(titel='at/pa', weite=2 * self.zeilen_atpa_w, fontsize=self.zeilentitel_fontsize_neben,
+                          style='B',align='C',linie=True),
+            'be': dict(titel='bep', weite=self.zeilen_be_kom_w, fontsize=self.zeilentitel_fontsize_neben, 
+                            style='B', align='C', linie=True),
+            'kom': dict(titel='kom', weite=self.zeilen_be_kom_w, fontsize=self.zeilentitel_fontsize_neben, 
+                            style='B', align='C', linie=True),
+            'taw': dict(titel='taw', weite=2 * self.zeilen_taw_w - 0.5, fontsize=self.zeilentitel_fontsize_neben,
+                        style='B', align='C'),
+            # Mit dynamischer Breite (Inline-Felder)
+            'name': dict(titel='name', fontsize=self.zeilentitel_fontsize_haupt, style='B', align='L', font=config.FONT),
+            'schwierigkeit': dict(titel='schwierigkeit', fontsize=self.zeilentitel_fontsize_neben, style='I',align='L',
+                                  font=config.FONT),
+        }
+        self.zeilenfelder = {
+            'se': dict(titel='se', weite=self.zeilen_se_w, fontsize=self.zeilen_fontsize, linie=True),
+            'at': dict(titel='at', weite=self.zeilen_atpa_w, fontsize=self.zeilen_fontsize, style='B',align='C', linie=True),
+            'pa': dict(titel='pa', weite=self.zeilen_atpa_w, fontsize=self.zeilen_fontsize, style='B',align='C', linie=True),
+            'be': dict(titel='be', weite=self.zeilen_be_kom_w, fontsize=self.zeilen_fontsize, style='B',align='C', linie=True),
+            'kom': dict(titel='kom', weite=self.zeilen_be_kom_w, fontsize=self.zeilen_fontsize, style='B',align='C', linie=True),
+            'taw': dict(titel='taw', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B',align='C', linie=True),
+            'taw_leer': dict(titel='taw_leer', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B'),
+            # Mit dynamischer Breite (Inline-Felder)
+            'talent': dict(titel='talent', fontsize=self.zeilen_fontsize, style='B', align='L', font=config.FONT),
+            'probe': dict(titel='probe',fontsize=self.zeilen_fontsize, style='I',align='L', font=config.FONT),
+            'schwierigkeit': dict(titel='schwierigkeit', fontsize=self.zeilen_fontsize, style='I',align='L', font=config.FONT),
+        }
         return
     
-    def _sonderfertigkeiten_gruppen(self, besonderheiten):
-        gruppen = ['Kulturkunde', 'Geländekunde', 'Ortskenntnis']
-        if 'Vollzauberer' in besonderheiten and besonderheiten['Vollzauberer']:
-            gruppen.append('Große Meditation')
-        if 'Geweihter' in besonderheiten and besonderheiten['Geweihter']:
-            gruppen.append('Karmalqueste')
-        gruppen.append('')
-        return gruppen
+###
+### Zählmethoden
+###
+
+    def zaehle_platz_pro_seite(self, held, verteilung, leerzeilen={}, sonderfertigkeiten_sind='links'):
+        """Berechnet die Anzahl verbleibender Zeilen je Seite zurück"""
+        platz = {'links':-99,'rechts':-99}
+        for seite, gruppen in verteilung.iteritems():
+            anzahlen = dict([(gruppe,self.zaehle_talentblock_zeilen(held, gruppe) + leerzeilen[gruppe]) for gruppe in gruppen]) 
+            anzahlen['Gruppen']= len(gruppen) * 2
+            if sonderfertigkeiten_sind == seite:
+                anzahlen['Sonderfertigkeiten'] = self.zaehle_sonderfertigkeiten_zeilen(held['Sonderfertigkeiten'],
+                                                                                held['Besonderheiten']) + 2
+#            print "Seite %s: Summe: %d, Anteile %s" % (seite, sum(anzahlen.values()), anzahlen)
+            platz[seite] = math.floor(250.0 / self.zeilen_h) - sum(anzahlen.values())
+        return platz
     
-    def sonderfertigkeiten_zeilen(self,sonderfertigkeiten, besonderheiten):
-        self.set_font(family=FONT, style='', size=self.zeilen_fontsize)
+    def zaehle_talentblock_zeilen(self, held, gruppe):
+        """Zählt die benötigten Zeilen eines Talentgruppenblocks"""
+        anzahl = len(held['Talente'][gruppe])
+        for talent, talentobj in Talentgruppe.alle()[gruppe].talente.iteritems():
+            if talent not in held['Talente'][gruppe] and talentobj.ist_basis:
+                anzahl += 1
+        return anzahl
+
+    def zaehle_sonderfertigkeiten_zeilen(self,sonderfertigkeiten, besonderheiten):
+        """Zählt die benötigte Anzahl Zeilen des Sonderfertigkeitenblocks"""
+        self.pdf.set_font(family=config.FONT, style='', size=self.zeilen_fontsize)
         verfuegbare_weite =self.zeilen_w - 2* self.zeilen_seitenabstand 
-        gruppen = self._sonderfertigkeiten_gruppen(besonderheiten)
+        gruppen = sonderfertigkeiten_gruppen(besonderheiten)
         anzahl = 0
         for gruppe in gruppen:
             titel = "%s: " % gruppe
             zeile = []
             for sf in sonderfertigkeiten:
-                if self.get_string_width(titel + ', '.join(zeile + [str(sf)])) > verfuegbare_weite:
+                if self.pdf.get_string_width(titel + ', '.join(zeile + [str(sf)])) > verfuegbare_weite:
                     anzahl += 1
                     titel = ''
                     zeile = [str(sf)]
             anzahl += 1
         return anzahl + 1 # Leerzeile drunter
-        
+            
+###
+### Druckmethoden
+###
+
+    def drucke_attributleiste(self, attribute):
+        """Druckt die Attribute in die Kopfleiste"""
+        self.pdf.set_font(family=config.FONT, style='B', size=self.attribute_fontsize)
+        self.pdf.set_left_margin(self.rand_links)
+        for attr in ['MU','KL','IN','CH','FF','GE','KO','KK']:
+            self.pdf.cell(self.attribute_w, self.attribute_h, "%s: %d" % (attr, attribute[attr]), align='C')
+        self.pdf.cell(self.attribute_dummy_w, self.attribute_h, '')
+        self.pdf.cell(self.attribute_be_w, self.attribute_h, "BE: %d" % attribute['BE'])
+        return
+
+    def drucke_blatt(self, held):
+        """Druckt die komplette Talentblatt"""
+        seiten = {'links':['Kampf','Körper','Gesellschaft'],
+                  'rechts':['Natur','Wissen','Sprachen','Schriften','Handwerk']}
+        leerzeilen = self.erweitere_leerzeilen(held, seiten)
+        self.drucke_attributleiste(held['Attribute'])
+        self.pdf.set_y(35)
+        self.drucke_sonderfertigkeiten(held['Sonderfertigkeiten'],held['Besonderheiten'])
+        for gruppen in seiten.itervalues():
+            for gruppe in gruppen:
+                self.drucke_talentblock(gruppe, held['Talente'][gruppe], leerzeilen[gruppe])
+            self.pdf.set_y(35)
+            self.pdf.set_left_margin(106.5)
     
-    def sonderfertigkeitenblock(self, sonderfertigkeiten, besonderheiten={}):
-        self.set_font(family=FONT, style='B', size=self.zeilentitel_fontsize_haupt)
-        links = self.get_x() + self.zeilen_seitenabstand
-        rechts = self.get_x() + self.zeilen_w - self.zeilen_seitenabstand
+    def drucke_sonderfertigkeiten(self, sonderfertigkeiten, besonderheiten={}):
+        """Druckt den Block von Sonderfertigkeiten"""
+        self.pdf.set_font(family=config.FONT, style='B', size=self.zeilentitel_fontsize_haupt)
+        links = self.pdf.get_x() + self.zeilen_seitenabstand
+        rechts = self.pdf.get_x() + self.zeilen_w - self.zeilen_seitenabstand
         # Überschrift
-        self.ln(self.zeilentitel_kopfabstand)
-        self.cell(self.zeilen_w, self.zeilentitel_h, 'Sonderfertigkeiten (Allgemein)')
-        self.line(links, self.get_y() + self.zeilentitel_h, rechts, self.get_y() + self.zeilentitel_h)
-        self.ln(self.zeilentitel_h)
+        self.drucke_zeile({'name':'Sonderfertigkeiten (Allgemein)'}, standardzeile=False)
         
         # Zeilen abarbeiten
-        gruppen = self._sonderfertigkeiten_gruppen(besonderheiten)
-        self.set_font(family=FONT, style='', size=self.zeilen_fontsize)
+        gruppen = sonderfertigkeiten_gruppen(besonderheiten)
+        self.pdf.set_font(family=config.FONT, style='', size=self.zeilen_fontsize)
         for gruppe in gruppen:
             sonderfertigkeiten.setdefault(gruppe,{}) # Leere Gruppen voraussetzen
             zeile = []
             titel = gruppe and gruppe + ': ' or '' 
             for sf in sonderfertigkeiten[gruppe]:
                 sf = str(sf)
-                if self.get_string_width(titel + ', '.join(zeile + [sf])) <= self.zeilen_w:
+                if self.pdf.get_string_width(titel + ', '.join(zeile + [sf])) <= self.zeilen_w:
                     zeile.append(sf)
                 else:
                     # Zeile schon zu voll -> Rausschreiben und neue Zeile beginnen. 
-                    self.cell(self.zeilen_w, self.zeilen_h, titel + ', '.join(zeile))
-                    self.line(links, self.get_y() + self.zeilen_h, rechts, self.get_y() + self.zeilen_h)
-                    self.ln(self.zeilen_h)
+                    self.pdf.cell(self.zeilen_w, self.zeilen_h, titel + ', '.join(zeile))
+                    self.pdf.line(links, self.pdf.get_y() + self.zeilen_h, rechts, self.pdf.get_y() + self.zeilen_h)
+                    self.pdf.ln(self.zeilen_h)
                     zeile = [sf]
                     titel = ''
             # Zeile Rausschreiben
-            self.cell(self.zeilen_w, self.zeilen_h, titel + ', '.join(zeile))
-            self.line(links, self.get_y() + self.zeilen_h, rechts, self.get_y() + self.zeilen_h)
-            self.ln(self.zeilen_h)
+            self.pdf.cell(self.zeilen_w, self.zeilen_h, titel + ', '.join(zeile))
+            self.pdf.line(links, self.pdf.get_y() + self.zeilen_h, rechts, self.pdf.get_y() + self.zeilen_h)
+            self.pdf.ln(self.zeilen_h)
         # Leerzeile
-        self.ln(self.zeilen_h)
-        self.image('../inhalt/bilder/line-01.png', self.get_x(), self.get_y(), self.zeilen_w + 0.5, 1)
-        
-    def _konfiguriere_zeile(self, talent, taw, linienfelder, textfelder):
-        # Feldgrößen bestimmen und Texte vorbereiten
-        felder = []
-        felder.append(('se',self.zeilen_se_w, '', '','', True))
-        felder.append(('talent',self.get_string_width(talent),talent, 'B','L', False))
-        # Schwierigkeit und Probe
-        self.set_font(family=FONT, style='I', size=self.zeilen_fontsize)
-        if 'probe' in textfelder and textfelder['probe'] is not None:
-            feldtxt = ' (%s)' % textfelder['probe']
-            felder.append(('probe',self.get_string_width(feldtxt), feldtxt, 'I','L', False))
-        elif 'schwierigkeit' in textfelder:
-            feldtxt = ' (%s)' % textfelder['schwierigkeit']
-            felder.append(('schwierigkeit',self.get_string_width(feldtxt), feldtxt, 'I','L', False))
-        self.set_font(family=FONT, style='B', size=self.zeilen_fontsize)
-        grenze = len(felder)
-        # At/PA, BE, Komplexität und TaW
-        if 'AT' in linienfelder: # wo AT ist, ist auch PA
-            felder.append(('at', self.zeilen_atpa_w, linienfelder['AT'], 'B','C', True))
-            felder.append(('pa', self.zeilen_atpa_w, linienfelder['PA'], 'B','C', True))
-        if 'BE' in linienfelder:
-            felder.append(('be', self.zeilen_be_kom_w, linienfelder['BE'], 'B','C', True))
-        if 'Kom' in linienfelder:
-            felder.append(('kom', self.zeilen_be_kom_w, linienfelder['Kom'], 'B','C', True))
-        felder.append(('taw', self.zeilen_taw_w, taw, 'B','C', True))
-        felder.append(('taw_leer', self.zeilen_taw_w, '', 'B','', False))
-        # Dummy zwischen Text- und Linienfeldern nachtragen
-        verbrauchte_weite = sum((feld[1] for feld in felder)) + self.zeilen_seitenabstand
-        verbleibende_weite = self.zeilen_w - verbrauchte_weite
-        felder.insert(grenze, ('dummy',verbleibende_weite, '', 'B','', True))
-        return felder
-        
-    def zeile(self, talent, taw, linienfelder={}, textfelder={}, leerzeile=False, **kwd):
-        self.set_font(family=FONT, style='B', size=self.zeilen_fontsize)
-        # untere Linie Ziehen
-        self.line(self.get_x() + self.zeilen_seitenabstand,
-                  self.get_y() + self.zeilen_h,
-                  self.get_x() + self.zeilen_w - self.zeilen_seitenabstand,
-                  self.get_y() + self.zeilen_h)
-        felder = self._konfiguriere_zeile(talent, taw, linienfelder, textfelder)
-        # Felder und begrenzungslinien Drucken
-        for feld in felder:
-            self.set_font(family=FONT, style=feld[3], size=self.zeilen_fontsize)
-            if leerzeile:
-                self.cell(feld[1],self.zeilen_h, '')
-            else:
-                self.cell(feld[1],self.zeilen_h, str(feld[2]), align=feld[4])
-            if feld[5]:
-                self.line(self.get_x(), self.get_y(), self.get_x(), self.get_y() + self.zeilen_h)
-        # Zeilenumbruch und fertig!
-        return self.ln(self.zeilen_h)
-    
-        
-    def zeilentitel(self, text, schwierigkeit='B', be_komp=None, at_pa=None):
-        self.ln(self.zeilentitel_kopfabstand)
-        links = self.get_x() + self.zeilen_seitenabstand
-        rechts = self.get_x() + self.zeilen_w - self.zeilen_seitenabstand
-        oben = self.get_y() + self.zeilentitel_offset_oben
-        unten = self.get_y() + self.zeilentitel_h
-        
-        minus = links + 2*self.zeilen_taw_w - 0.5
-        linien = [self.zeilen_taw_w * 2]
-        if be_komp: 
-            minus += self.zeilen_be_kom_w
-            linien.append(self.zeilen_be_kom_w)
-        if at_pa:
-            minus += 2*self.zeilen_atpa_w
-            linien.append(self.zeilen_atpa_w * 2)
-        
-        vonrechts = rechts
-        for linie in linien:
-            vonrechts -= linie
-            self.line(vonrechts, oben, vonrechts, unten)
-        self.line(links, unten, rechts, unten)
-        
-        self.set_font(family=FONT, style='B', size=self.zeilentitel_fontsize_haupt)
-        self.cell(self.get_string_width(text), self.zeilentitel_h, text)
-        minus += self.get_string_width(text)
-        self.set_font(family=FONT, style='B', size=self.zeilentitel_fontsize_neben)
-        if schwierigkeit:
-            schwierigkeit_txt = " (%s)" % schwierigkeit
-            schwierigkeit_w = self.get_string_width(schwierigkeit_txt)
-            minus += schwierigkeit_w 
-            self.cell(schwierigkeit_w, self.zeilentitel_h, schwierigkeit_txt)
-        # Dummy-Zelle zum Auffüllen
-        self.cell(rechts - minus, self.zeilentitel_h)
-        if at_pa:
-            self.cell(self.zeilen_atpa_w*2, self.zeilentitel_h, 'AT/PA', align='C')
-        if be_komp:
-            self.cell(self.zeilen_be_kom_w, self.zeilentitel_h, be_komp, align='C')
-        self.cell(self.zeilen_taw_w*2, self.zeilentitel_h, 'TaW', align='C')
-        return self.ln(self.zeilentitel_h)
-    
-    def talentblock(self, titel, zeilen, leerzeilen=0):
-        alle = Talentkategorie.alle()
-        self.zeilentitel(titel, alle[titel].schwierigkeit, alle[titel].be_komp, alle[titel].at_pa)
+        self.pdf.ln(self.zeilen_h)
+        self.pdf.image('../inhalt/bilder/line-01.png', self.pdf.get_x(), self.pdf.get_y(), self.zeilen_w + 0.5, 1)
+        return
+
+    def drucke_talentblock(self, titel, zeilen, leerzeilen=0):
+        """Druckt den Block einer kompletten Talentgruppe"""
+        alle = Talentgruppe.alle()
+        self.drucke_zeile(alle[titel].get_titelfelder(), standardzeile=False)
         for talent, talentobj in alle[titel].talente.iteritems():
             if talent not in zeilen:
                 if talentobj.ist_basis:
@@ -233,33 +209,52 @@ class Talentblatt(FPDF):
                 else:
                     continue 
             d = alle[titel].talente[talent].get_print_dict(**zeilen[talent])
-            self.zeile(**d)
+            self.drucke_zeile(d)
         for _ in xrange(leerzeilen):
-            self.zeile(leerzeile=True, **d)
-            
-    def anzahl_zeilen(self, held, gruppe):
-        anzahl = len(held['Talente'][gruppe])
-        for talent, talentobj in Talentkategorie.alle()[gruppe].talente.iteritems():
-            if talent not in held['Talente'][gruppe] and talentobj.ist_basis:
-                anzahl += 1
-        return anzahl
-            
-    def platz_pro_seite(self, held, verteilung, leerzeilen={}, sonderfertigkeiten_sind='links'):
-        platz = {'links':-99,'rechts':-99}
-        for seite, gruppen in verteilung.iteritems():
-            anzahlen = dict([(gruppe,self.anzahl_zeilen(held, gruppe) + leerzeilen[gruppe]) for gruppe in gruppen]) 
-            anzahlen['Gruppen']= len(gruppen) * 2
-            if sonderfertigkeiten_sind == seite:
-                anzahlen['Sonderfertigkeiten'] = self.sonderfertigkeiten_zeilen(held['Sonderfertigkeiten'],
-                                                                                held['Besonderheiten']) + 2
-#            print "Seite %s: Summe: %d, Anteile %s" % (seite, sum(anzahlen.values()), anzahlen)
-            platz[seite] = math.floor(250.0 / self.zeilen_h) - sum(anzahlen.values())
-        return platz
-            
+            self.drucke_zeile(d, leerzeile=True)
+
+    def drucke_zeile(self, zeilenfelder={}, leerzeile=False, standardzeile=True, **kwd):
+        """Konfiguriert und druckt dann eine Talentzeile oder deren Titel"""
+        # Höhe der Zeile festlegen und Kopfabstand bei Titelzeilen
+        if standardzeile:
+            hoehe = self.zeilen_h
+        else: 
+            self.pdf.ln(self.zeilentitel_kopfabstand)
+            hoehe = self.zeilentitel_h
+        # Untere Linie ziehen
+        self.pdf.line(self.pdf.get_x() + self.zeilen_seitenabstand,
+                  self.pdf.get_y() + hoehe,
+                  self.pdf.get_x() + self.zeilen_w - self.zeilen_seitenabstand,
+                  self.pdf.get_y() + hoehe)
+        if standardzeile:
+            # Zeilenfelder sortieren - nur bei Standardzeilen nötig
+            zeilenfelder_sortiert = OrderedDict()
+            for name in config.feldreihenfolge:
+                if name in zeilenfelder:
+                    zeilenfelder_sortiert[name] = zeilenfelder[name]
+        else:       # Titelzeile:
+            zeilenfelder_sortiert = zeilenfelder
+        felder = self.konfiguriere_zeile(zeilenfelder_sortiert, standardzeile)
+        # Felder und begrenzungslinien Drucken
+        for feld in felder:
+            self.pdf.set_font(family=feld.font, style=feld.style, size=feld.fontsize)
+            if leerzeile:
+                self.pdf.cell(feld.weite,hoehe, '')
+            else:
+                self.pdf.cell(feld.weite,hoehe, str(feld.text), align=feld.align)
+            if feld.linie:
+                self.pdf.line(self.pdf.get_x(), self.pdf.get_y(), self.pdf.get_x(), self.pdf.get_y() + hoehe)
+        # Zeilenumbruch und fertig!
+        return self.pdf.ln(hoehe)
     
-    def leerzeilen_anheaenge(self, held, seiten):
+###
+### Weitere hilfsmethoden
+###
+
+    def erweitere_leerzeilen(self, held, seiten):
+        """Erweitert die Talentgruppenblöcke schrittweise um Leerzeilen um die Seite auszufüllen"""
         gruppen = config.gruppen
-        alle = Talentkategorie.alle()
+        alle = Talentgruppe.alle()
         leerzeilen = {}
         for gruppe in gruppen:
             leerzeilen[gruppe] = 0
@@ -271,7 +266,7 @@ class Talentblatt(FPDF):
         seite = None
         # Platz mit Leerzeilen auffüllen
         while True:
-            platz = self.platz_pro_seite(held, seiten, leerzeilen)
+            platz = self.zaehle_platz_pro_seite(held, seiten, leerzeilen)
             if platz['links'] <= 0 and platz['rechts'] <= 0:
                 break
             # Gruppe zum Leerzeilen erhöhen suchen
@@ -291,18 +286,38 @@ class Talentblatt(FPDF):
                 else:
                     zeiger += 1
         return leerzeilen
-            
-    def helden_drucken(self, held):
-        seiten = {'links':['Kampf','Körper','Gesellschaft'],
-                  'rechts':['Natur','Wissen','Sprachen','Schriften','Handwerk']}
-        leerzeilen = self.leerzeilen_anheaenge(held, seiten)
-        self.attribute_leiste(held['Attribute'])
-        self.set_y(35)
-        self.sonderfertigkeitenblock(held['Sonderfertigkeiten'],held['Besonderheiten'])
-        for gruppen in seiten.itervalues():
-            for gruppe in gruppen:
-                self.talentblock(gruppe, held['Talente'][gruppe], leerzeilen[gruppe])
-            self.set_y(35)
-            self.set_left_margin(106.5)
-            
-            
+        
+    def konfiguriere_zeile(self, zeilenfelder, standardzeile=True):
+        """Stellt eine Konfiguration für eine Talentzeile abhängig von den aktuellen Feldern zum Drucken zusammen"""
+        # Passendes Templates-Dictionary wählen
+        if standardzeile:
+            templates = self.zeilenfelder
+        else:
+            templates = self.zeilentitelfelder
+        # Bei Standardzeilen das SE-Feld nicht vergessen
+        pos = 0 + standardzeile 
+        # Feldgrößen bestimmen und Texte vorbereiten
+        felder = []
+        for name, zeilenfeld in zeilenfelder.iteritems():
+            if zeilenfeld is None:
+                # Komplett leere Felder überspringen
+                continue
+            if name in templates:
+                if 'weite' in templates[name]:
+                    # Standard-Feld mit fixer Weite
+                    felder.append(ZeilenFeld(text=zeilenfeld, **templates[name]))
+                else:
+                    # Inline-Felder: Größe dynamisch Ausmessen
+                    conf = templates[name]
+                    self.pdf.set_font(family=conf['font'],style=conf['style'],size=conf['fontsize'])
+                    if name in ('probe', 'schwierigkeit'):
+                        zeilenfeld = ' (%s) ' % zeilenfeld
+                    weite = self.pdf.get_string_width(zeilenfeld)
+                    felder.append(ZeilenFeld(text=zeilenfeld, weite=weite, **templates[name]))
+                    pos += 1
+            else:
+                raise KeyError('Zeilenfeld "%s" hat kein Template!' % name)
+        # Talentnamen einfügen - nach den Inline-Feldern (darum pos hochzählen)
+        weite = self.zeilen_w - sum((feld.weite for feld in felder)) + standardzeile * self.zeilen_seitenabstand
+        felder.insert(pos, ZeilenFeld(titel='füller', weite=weite, fontsize=self.zeilen_fontsize, text='', linie=True))
+        return felder

@@ -52,11 +52,6 @@ held = {
             'Lehren':{'taw':3},
             'Menschenkenntnis':{'taw':5},
             'Überreden':{'taw':4},
-            # testweise mal auffüllen
-            'Schauspielerei':{'taw':-1},
-            'Schriftlicher Ausdruck':{'taw':-1},
-            'Sich Verkleiden':{'taw':-1},
-            'Überzeugen':{'taw':-1},
         },
         'Natur':{
             'Fährtensuchen':{'taw':0},

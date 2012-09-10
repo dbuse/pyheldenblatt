@@ -19,7 +19,7 @@ class BE(object):
         return eval(self.regel, None, {'BE':BE})
 
 
-class Talentkategorie(object):
+class Talentgruppe(object):
     
     alle_talente = None
     
@@ -33,6 +33,18 @@ class Talentkategorie(object):
     def setze_talente(self, liste):
         for talent in liste:
             self.talente[talent.name] = talent
+            
+    def get_titelfelder(self):
+        titelfelder = OrderedDict()
+        titelfelder['name'] = self.name
+        titelfelder['schwierigkeit'] = self.schwierigkeit
+        if self.at_pa:
+            titelfelder['at/pa'] = "AT/PA"
+        if self.be_komp:
+            titelfelder['be'] = self.be_komp
+        titelfelder['taw'] = "TaW"
+        return titelfelder
+        
     
     @classmethod
     def Kampf(cls):
@@ -326,43 +338,44 @@ class Talent(object):
 
     def get_print_dict(self, taw, *arg, **kwd):
         return {
+            'se': '',
             'talent': self.name,
-            'textfelder': {'probe':self.probe, 'schwierigkeit':self.schwierigkeit},
-            'linienfelder': {},
+            'probe':self.probe,
             'taw': taw,
+            'taw_leer': ''
         }
         
     @staticmethod
     def ist_talent(gesucht):
-        for gruppe in Talentkategorie.alle().itervalues():
+        for gruppe in Talentgruppe.alle().itervalues():
             if gesucht in gruppe.talente:
                 return True
         return Talent.ist_dialekt(gesucht)
         
     @staticmethod
     def ist_dialekt(gesucht):
-        for sprache in Talentkategorie.alle()['Sprachen'].talente.itervalues():
+        for sprache in Talentgruppe.alle()['Sprachen'].talente.itervalues():
             if gesucht in sprache.dialekte:
                 return True
         return False
     
     @staticmethod
     def sprache_zu_dialekt(dialekt):
-        for sprache in Talentkategorie.alle()['Sprachen'].talente.itervalues():
+        for sprache in Talentgruppe.alle()['Sprachen'].talente.itervalues():
             if dialekt in sprache.dialekte:
                 return sprache
         return None
     
     @staticmethod
     def talent_nach_name(talent):
-        for gruppe in Talentkategorie.alle().itervalues():
+        for gruppe in Talentgruppe.alle().itervalues():
             if talent in gruppe.talente:
                 return gruppe.talente[talent]
         return None
     
     @staticmethod
     def held_pruefen(held):
-        alle = Talentkategorie.alle()
+        alle = Talentgruppe.alle()
         for gruppenname, gruppe in held['Talente'].iteritems():
             if gruppenname not in alle:
                 raise KeyError('Talentgruppe "%s" von Held "%s" ist ungültig!' % (gruppenname, held['Name']))
@@ -383,7 +396,7 @@ class BETalent(Talent):
         
     def get_print_dict(self, taw, *arg, **kwd):
         d = Talent.get_print_dict(self, taw)
-        d['linienfelder']['BE'] = self.be
+        d['be'] = self.be
         return d
 
                 
@@ -400,12 +413,13 @@ class KomplexTalent(Talent):
     
     def get_print_dict(self, taw, Typ=None, Dialekt=None, *arg, **kwd):
         d = Talent.get_print_dict(self, taw)
-        d['linienfelder']['Kom'] = self.komplexitaet
+        d['kom'] = self.komplexitaet
         if Dialekt:
             d['talent'] = Dialekt
         if Typ is None:
             Typ = 'Sprache kennen' if self.kategorie.name == 'Sprachen' else 'Lesen/Schreiben'
         d['talent'] = ' '.join((Typ, d['talent']))
+        d['schwierigkeit'] = self.schwierigkeit
         return d
     
 
@@ -416,8 +430,9 @@ class KampfTalent(BETalent):
         
     def get_print_dict(self, taw, at=' ', pa=' ', *arg, **kwd):
         d = BETalent.get_print_dict(self, taw)
-        d['linienfelder']['AT'] = at
-        d['linienfelder']['PA'] = pa
+        d['at'] = at
+        d['pa'] = pa
+        d['schwierigkeit'] = self.schwierigkeit
         return d
                 
 
@@ -428,21 +443,30 @@ class ATKampfTalent(KampfTalent):
     
 
 class ZauberTalent(Talent):
-    def __init__(self, name, probe, schwierigkeit, zauberdauer, kosten, ziel, reichweite, wirkungsdauer, merkmale,
+    def __init__(self, name, probe, schwierigkeit, zd, kosten, ziel, reichweite, wirkungsdauer, merkmale,
                  seite, lernmods=None, lernen=None):
-        Talent.__init__(self, name, probe, kategorie="Zauber", schwierigkeit, ist_basis=False)
-        self.zauberdauer = zauberdauer
+        Talent.__init__(self, name, probe, schwierigkeit, kategorie="Zauber", ist_basis=False)
+        self.zd = zd
         self.kosten = kosten
         self.ziel = ziel
         self.reichweite = reichweite
         self.wirkungsdauer = wirkungsdauer
         self.merkmale = merkmale
         self.seite = seite
-        # TODO: Die beiden werden erst in einer späteren Version behandelt.
+        # TODO: Die beiden werden erst in einer späteren Version behandelt. Dann auch unten ersetzen
         self.lernmods = lernmods
         self.lernen = lernen
         
-    
-    
-
-    
+    def get_print_dict(self, taw, *arg, **kwd):
+        d = Talent.get_print_dict(self, taw)
+        d['zd'] = self.zd
+        d['kosten'] = self.kosten
+        d['ziel'] = self.ziel
+        d['reichweite'] = self.reichweite
+        d['wirkungsdauer'] = self.wirkungsdauer
+        d['merkmale'] = self.merkmale
+        d['seite'] = self.seite
+        d['lernmods'] = 'XX'
+        d['lernen'] = 'X'
+        return d
+        

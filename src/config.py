@@ -9,3 +9,7 @@ basiswerte=['LE','AU','ASP','KAP','MR','INI','AT','PA','FK']
 kopfwerte=['Name','Rasse','Kultur','Profession']
 aussehen=['Haarfarbe','Augenfarbe','Größe','Gewicht','Aussehen']
 gruppen = ['Kampf','Körper','Gesellschaft','Natur','Wissen','Sprachen','Schriften','Handwerk']
+
+feldreihenfolge = ['se', 'talent', 'probe', 'schwierigkeit', 'at', 'pa', 'be', 'kom', 'taw', 'taw_leer']
+
+FONT = 'Times'
