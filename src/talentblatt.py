@@ -40,7 +40,7 @@ class Talentblatt(Heldenblatt):
         
         # Schriftgrößen als Variablen
         self.zeilen_fontsize = 8
-        self.attribute_fontsize = 16
+        self.kopfleiste_fontsize = 16
         self.multiplikator_h = 0.6
 
         # Kopfzeile mit Attributen (müssen nicht variabel sein)
@@ -141,9 +141,9 @@ class Talentblatt(Heldenblatt):
 
     def drucke_attributleiste(self, attribute):
         """Druckt die Attribute in die Kopfleiste"""
-        self.pdf.set_font(family=config.FONT, style='B', size=self.attribute_fontsize)
+        self.pdf.set_font(family=config.FONT, style='B', size=self.kopfleiste_fontsize)
         self.pdf.set_left_margin(self.rand_links)
-        for attr in ['MU','KL','IN','CH','FF','GE','KO','KK']:
+        for attr in config.attribute[0:8]:
             self.pdf.cell(self.attribute_w, self.attribute_h, "%s: %d" % (attr, attribute[attr]), align='C')
         self.pdf.cell(self.attribute_dummy_w, self.attribute_h, '')
         self.pdf.cell(self.attribute_be_w, self.attribute_h, "BE: %d" % attribute['BE'])

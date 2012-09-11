@@ -6,8 +6,14 @@ Created on 19.07.2012
 '''
 held = {
     'Name': 'Carisolan Calamar',
+    'Rasse': 'Halbelf',
+    'Kultur': 'Horasreich',
+    'Profession': 'Magier (Halle der Geistreisen zu Belhanka)',
     'Attribute': {
         'MU':12,'KL':14,'IN':15,'CH':12,'FF':13,'GE':12,'KO':13,'KK':11,'BE':0
+    },
+    'Basiswerte': {
+        'MR': 7,
     },
     'Besonderheiten':{
         'Vollzauberer':True,
@@ -95,5 +101,33 @@ held = {
             'Malen/Zeichnen':{'taw':4},
             'Schneidern':{'taw':0},
         }
-    }
+    },
+    'Magische Sonderfertigkeiten': {
+        'Merkmale': [
+            'Eigenschaften',
+            'Telekinese',
+        ],
+        'Repräsentationen': [
+            'Magier'
+        ],
+        'Allgemein': [
+            'Astrale Meditation',
+            'Große Meditation',
+            'Regeneration I',
+            'Regeneration II',
+            'Zauberkontrolle',
+        ]
+    },
+    'Magische Vorteile': [
+        'Akademische Ausbildung (Magier)',
+        'Begabung für Zauber (Animatio, Motoricus, Transversalis)',
+        'Vollzauberer',
+        'Wesen der Nacht II',
+    ],
+    'Magische Nachteile': [
+        'Feste Gewohnheit (Barfuß zaubern)',
+        'Körpergebundene Kraft',
+        'Wahrer Name'                           
+    ]
+        
 }
