@@ -431,7 +431,8 @@ class FPDF:
         if 'name' not in globals():
             self.error('Could not include font definition file')
         i=len(self.fonts)+1
-        self.fonts[fontkey]={'i':i,'type':type,'name':name,'desc':desc,'up':up,'ut':ut,'cw':cw,'enc':enc,'file':filename}
+        # changed type to fonttype (dbuse, 16.09.12)
+        self.fonts[fontkey]={'i':i,'type':fonttype,'name':name,'desc':desc,'up':up,'ut':ut,'cw':cw,'enc':enc,'file':filename}
         if(diff):
             #Search existing encodings
             d=0
@@ -445,7 +446,8 @@ class FPDF:
                 self.diffs[d]=diff
             self.fonts[fontkey]['diff']=d
         if(filename):
-            if(type=='TrueType'):
+            # changed type to fonttype (dbuse, 16.09.12)
+            if(fonttype=='TrueType'):
                 self.font_files[filename]={'length1':originalsize}
             else:
                 self.font_files[filename]={'length1':size1,'length2':size2}
@@ -488,6 +490,7 @@ class FPDF:
                 i=len(self.fonts)+1
                 self.fonts[fontkey]={'i':i,'type':'core','name':self.core_fonts[fontkey],'up':-100,'ut':50,'cw':fpdf_charwidths[fontkey]}
             else:
+                print self.fonts
                 self.error('Undefined font: '+family+' '+style)
         #Select it
         self.font_family=family

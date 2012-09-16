@@ -63,7 +63,7 @@ class Zauberblatt(Heldenblatt):
             'KK': dict(weite=self.kopfleiste_attribut_w, heldenfeld='KK', abteil='Attribute'),
             'MR': dict(weite=self.kopfleiste_attribut_w, heldenfeld='MR', abteil='Basiswerte'),
             # Dritte Zeile
-            #'Merkmale': dict(weite=80, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
+            'Merkmale': dict(weite=80, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
         }
     
     def drucke_blatt(self, held):
@@ -77,6 +77,7 @@ class Zauberblatt(Heldenblatt):
         zeilen = (
             ['Name', 'Rasse', 'Profession'],
             config.attribute[0:8] + ['MR'],
+            ['Merkmale'],
         )
         
         for felder in zeilen:

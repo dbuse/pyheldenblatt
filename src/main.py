@@ -27,6 +27,8 @@ if __name__ == '__main__':
     Talent.held_pruefen(held)
         
     fpdf = MyFPDF(orientation='P', unit='mm', format='A4')
+    fpdf.add_font('Mason Regular', '', 'mason.py')
+    fpdf.add_font('Mason Bold', 'B', 'masonbold.py')
 
     talente = Talentblatt(fpdf)
     talente.drucke_blatt(held)

@@ -337,4 +337,4 @@ def MakeFont(fontfile,afmfile,enc='cp1252',patch={},type='TrueType'):
 
 if __name__ == '__main__':
 	MakeFont('font/calligra.ttf','font/calligra.afm')
-	MakeFont('font/a010013l.pfb','font/a010013l.afm')
+	#MakeFont('font/a010013l.pfb','font/a010013l.afm')

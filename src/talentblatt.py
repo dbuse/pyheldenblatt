@@ -74,7 +74,7 @@ class Talentblatt(Heldenblatt):
             'taw': dict(titel='taw', weite=2 * self.zeilen_taw_w - 0.5, fontsize=self.zeilentitel_fontsize_neben,
                         style='B', align='C'),
             # Mit dynamischer Breite (Inline-Felder)
-            'name': dict(titel='name', fontsize=self.zeilentitel_fontsize_haupt, style='B', align='L', font=config.FONT),
+            'name': dict(titel='name', fontsize=self.zeilentitel_fontsize_haupt, style='B', align='L', font=config.TITEL_FONT),
             'schwierigkeit': dict(titel='schwierigkeit', fontsize=self.zeilentitel_fontsize_neben, style='I',align='L',
                                   font=config.FONT),
         }
@@ -141,7 +141,7 @@ class Talentblatt(Heldenblatt):
 
     def drucke_attributleiste(self, attribute):
         """Druckt die Attribute in die Kopfleiste"""
-        self.pdf.set_font(family=config.FONT, style='B', size=self.kopfleiste_fontsize)
+        self.pdf.set_font(family=config.TITEL_FONT, style='B', size=self.kopfleiste_fontsize)
         self.pdf.set_left_margin(self.rand_links)
         for attr in config.attribute[0:8]:
             self.pdf.cell(self.attribute_w, self.attribute_h, "%s: %d" % (attr, attribute[attr]), align='C')

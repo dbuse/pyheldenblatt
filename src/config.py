@@ -13,3 +13,4 @@ gruppen = ['Kampf','Körper','Gesellschaft','Natur','Wissen','Sprachen','Schrift
 feldreihenfolge = ['se', 'talent', 'probe', 'schwierigkeit', 'at', 'pa', 'be', 'kom', 'taw', 'taw_leer']
 
 FONT = 'Times'
+TITEL_FONT = 'Mason Bold'

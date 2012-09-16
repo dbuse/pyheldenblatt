@@ -36,8 +36,8 @@ class Heldenblatt(object):
     orientation = "p"
     """Standardmäßig im Hochformat drucken"""
     
-    def __init__(self, talente):
-        self.pdf = talente
+    def __init__(self, pdf):
+        self.pdf = pdf
         self.pdf.set_auto_page_break(auto=False)
         self.pdf.add_page(orientation=self.orientation)
         self.pdf.image(*self.hintergrund)
