@@ -19,13 +19,13 @@ class Held(object):
         Constructor
         '''
         
-        
         self.kopfwerte={}
         self.aussehen={}
         self.attribute={} 
         self.vorteile={}
         self.nachteile={}
         self.sonderfertigkeiten={}
+        self.magischeSonderfertigkeiten={"Merkmale":[],'Repräsentationen':[], 'Repräsentationen': []}
         self.basiswerte={}
         
         self.kampf={}
@@ -70,8 +70,7 @@ class Held(object):
         self.completArray['Basiswerte']=self.basiswerte
         self.completArray['Kopfwerte']=self.kopfwerte
         self.completArray['Aussehen']=self.aussehen
-        for item in self.completArray.iteritems():
-            print item
+        self.completArray['Magische Sonderfertigkeiten']=self.magischeSonderfertigkeiten
         return self.completArray
         
 

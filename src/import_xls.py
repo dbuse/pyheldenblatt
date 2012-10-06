@@ -19,6 +19,7 @@ def importXLS(path):
     book = xlrd.open_workbook(path, encoding_override="utf-8")
     importCharSite(held, book)
     importTalente(held, book)
+    print held.toArray()
     return held.toArray()
 
 def importTalente(held, book):
@@ -51,7 +52,6 @@ def importCharSite(held, book):
                                 held.aussehen[type]=sh.cell(row, col+1).value.encode('utf8').strip().strip(":")
                             else:
                                 held.aussehen[type]=sh.cell(row,col+1).value
-                        
                         
 #==========================================================
 # veraltete Version des Talent-Importes

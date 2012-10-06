@@ -49,9 +49,9 @@ class Zauberblatt(Heldenblatt):
         # Felder der Kopfleiste
         self.kopfleistenfelder = {
             # Erste Zeile
-            'Name': dict(weite=110, heldenfeld='Name', abteil=None),
-            'Rasse': dict(weite=45, heldenfeld='Rasse', abteil=None),
-            'Profession': dict(weite=110, heldenfeld='Profession', abteil=None),
+            'Name': dict(weite=110, heldenfeld='Name', abteil="Kopfwerte"),
+            'Rasse': dict(weite=45, heldenfeld='Rasse', abteil="Kopfwerte"),
+            'Profession': dict(weite=110, heldenfeld='Profession', abteil="Kopfwerte"),
             # Zweite Zeile
             'MU': dict(weite=self.kopfleiste_attribut_w, heldenfeld='MU', abteil='Attribute'),
             'KL': dict(weite=self.kopfleiste_attribut_w, heldenfeld='KL', abteil='Attribute'),
@@ -71,6 +71,7 @@ class Zauberblatt(Heldenblatt):
         return
         
     def drucke_kopfleiste(self, held):
+        print held
         self.pdf.set_font(family=config.FONT, style='B', size=self.kopfleiste_fontsize)
         self.pdf.set_left_margin(self.rand_links)
         
@@ -83,6 +84,7 @@ class Zauberblatt(Heldenblatt):
         for felder in zeilen:
             self.pdf.ln(self.kopfleiste_h)
             for feld in felder:
+                print feld
                 template = self.kopfleistenfelder[feld]
                 if template['abteil']:
                     text = held[template['abteil']][template['heldenfeld']]
