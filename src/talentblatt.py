@@ -242,7 +242,7 @@ class Talentblatt(Heldenblatt):
                 self.pdf.cell(feld.weite,hoehe, '')
             else:
                 self.pdf.cell(feld.weite,hoehe, str(feld.text), align=feld.align)
-            if feld.linie:
+            if feld.linie and len(zeilenfelder) > 1:
                 self.pdf.line(self.pdf.get_x(), self.pdf.get_y(), self.pdf.get_x(), self.pdf.get_y() + hoehe)
         # Zeilenumbruch und fertig!
         return self.pdf.ln(hoehe)
