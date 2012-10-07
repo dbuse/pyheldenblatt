@@ -33,8 +33,9 @@ if __name__ == '__main__':
     talente = Talentblatt(fpdf)
     talente.drucke_blatt(held)
     
-    zauber = Zauberblatt(fpdf)
-    zauber.drucke_blatt(held)
-    
+    if 'Zauber' in held:
+        zauber = Zauberblatt(fpdf)
+        zauber.drucke_blatt(held)
+        
     fpdf.output('../inhalt/ausgabe/test.pdf','F')
     print "Fertig!"

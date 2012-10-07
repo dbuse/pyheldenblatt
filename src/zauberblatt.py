@@ -27,7 +27,7 @@ class Zauberblatt(Heldenblatt):
         # Konstante Abstände
         self.rand_links = 12
         self.zeilen_w = 273
-        self.zeilen_seitenabstand = 0.5
+        self.zeilen_seitenabstand = 1
         
         # Schriftgrößen als Variablen
         self.zeilen_fontsize = 8
@@ -39,6 +39,11 @@ class Zauberblatt(Heldenblatt):
         self.zeilen_probe_w = self.zeilen_fontsize * 2
         self.zeilen_taw_w = self.zeilen_fontsize * 0.75
         self.zeilen_h = self.zeilen_fontsize * self.multiplikator_h
+        
+        # Überschriftenzeile
+        self.zeilentitel_kopfabstand = 0
+        self.zeilentitel_h = self.zeilen_h * 1.4
+        self.zeilentitel_fontsize = self.zeilen_fontsize * 1.25
         
         # Konstante Größen der Kopfleiste
         self.kopfleiste_attribut_w = 32
@@ -65,23 +70,47 @@ class Zauberblatt(Heldenblatt):
             'Merkmale': dict(weite=120, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
             'Repräsentationen': dict(weite=120, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
         }
-        self.zeilenfelder = {
-            'se': dict(titel='se', weite=self.zeilen_se_w, fontsize=self.zeilen_fontsize, linie=True),
-            'talent': dict(titel='talent', fontsize=self.zeilen_fontsize, style='B', align='L', font=config.FONT),
-            'probe': dict(titel='probe', weite=self.zeilen_probe_w, fontsize=self.zeilen_fontsize, style='I', linie=True),
-            'taw': dict(titel='taw', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B',align='C', linie=True),
-            'taw_leer': dict(titel='taw_leer', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B', linie=True),
-            'zd': dict(titel='zd', weite=self.zeilen_fontsize * 2, fontsize=self.zeilen_fontsize, style='', linie=True),
-            'kosten': dict(titel='kosten', weite=self.zeilen_fontsize * 3, fontsize=self.zeilen_fontsize, style='', linie=True),
-            'reichweite': dict(titel='reichweite', weite=self.zeilen_fontsize * 3, fontsize=self.zeilen_fontsize, style='', linie=True),
-            'ziel': dict(titel='ziel', weite=self.zeilen_fontsize * 2, fontsize=self.zeilen_fontsize, style='', linie=True),
-            'wd': dict(titel='wd', weite=self.zeilen_fontsize * 3, fontsize=self.zeilen_fontsize, style='', linie=True),
-            'schwierigkeit': dict(titel='schwierigkeit', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B', align='C', linie=True),
-            'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4, fontsize=self.zeilen_fontsize, style='I', linie=True),
-            'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B', align='C', linie=True),
-            'lernen': dict(titel='lernen', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B', align='C', linie=True),
-            'seite': dict(titel='seite', weite=self.zeilen_fontsize * 1.5, fontsize=self.zeilen_fontsize, style='I', align='C'),
+        
+        self.zeilentitelfelder = {
+            'name': dict(titel='name', style='B', align='L'),
+            'probe': dict(titel='probe', weite=self.zeilen_probe_w, style='B', align='C', linie=True),
+            'taw': dict(titel='taw', weite=2 * self.zeilen_taw_w, style='B', align='C', linie=True),
+            'zd': dict(titel='zd', weite=self.zeilen_fontsize * 2.5, style='B', align='C', linie=True),
+            'kosten': dict(titel='kosten', weite=self.zeilen_fontsize * 3, style='B', align='C', linie=True),
+            'reichweite': dict(titel='reichweite', weite=self.zeilen_fontsize * 3, style='B', align='C', linie=True),
+            'ziel': dict(titel='ziel', weite=self.zeilen_fontsize * 2, style='B', align='C', linie=True),
+            'wd': dict(titel='wd', weite=self.zeilen_fontsize * 3, style='B', align='C', linie=True),
+            'schwierigkeit': dict(titel='schwierigkeit', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
+            'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4, style='B', align='C', linie=True),
+            'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
+            'lernen': dict(titel='lernen', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
+            # TODO: Die Weiter bei Seite ist nur ein schmutziger Fix, irgendwie läuft hier die berechnung falsch!
+            'seite': dict(titel='seite', weite=self.zeilen_fontsize * 1.37, style='B', align='C'),
+                                         
         }
+        for ztf in self.zeilentitelfelder: 
+            self.zeilentitelfelder[ztf]['fontsize'] = self.zeilentitel_fontsize
+            self.zeilentitelfelder[ztf]['font'] = config.TITEL_FONT
+        
+        self.zeilenfelder = {
+            'se': dict(titel='se', weite=self.zeilen_se_w, linie=True),
+            'talent': dict(titel='talent', style='B', align='L', font=config.FONT),
+            'probe': dict(titel='probe', weite=self.zeilen_probe_w, style='I', linie=True),
+            'taw': dict(titel='taw', weite=self.zeilen_taw_w, style='B',align='C', linie=True),
+            'taw_leer': dict(titel='taw_leer', weite=self.zeilen_taw_w, style='B', linie=True),
+            'zd': dict(titel='zd', weite=self.zeilen_fontsize * 2.5, style='', linie=True),
+            'kosten': dict(titel='kosten', weite=self.zeilen_fontsize * 3, style='', linie=True),
+            'reichweite': dict(titel='reichweite', weite=self.zeilen_fontsize * 3, style='', linie=True),
+            'ziel': dict(titel='ziel', weite=self.zeilen_fontsize * 2, style='', linie=True),
+            'wd': dict(titel='wd', weite=self.zeilen_fontsize * 3, style='', linie=True),
+            'schwierigkeit': dict(titel='schwierigkeit', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
+            'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4, style='I', linie=True),
+            'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
+            'lernen': dict(titel='lernen', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
+            'seite': dict(titel='seite', weite=self.zeilen_fontsize * 1.5, style='I', align='C'),
+        }
+        for zf in self.zeilenfelder: self.zeilenfelder[zf]['fontsize'] = self.zeilen_fontsize
+        
         self.feldreihenfolge = ['se', 'talent', 'probe', 'taw', 'taw_leer', 'zd', 'kosten', 'reichweite', 'ziel', 'wd', 
                                 'schwierigkeit', 'merkmale', 'lernmods', 'lernen', 'seite']
         return
@@ -92,7 +121,6 @@ class Zauberblatt(Heldenblatt):
         return
         
     def drucke_kopfleiste(self, held):
-        print held
         self.pdf.set_font(family=config.FONT, style='B', size=self.kopfleiste_fontsize)
         self.pdf.set_left_margin(self.rand_links)
         
@@ -119,7 +147,21 @@ class Zauberblatt(Heldenblatt):
     
     def drucke_zauberliste(self, held):
         # Erst noch Kopfzeile Drucken
-        
+        titel = OrderedDict()
+        titel['name'] = 'Zaubername'
+        titel['probe'] = 'Probe'
+        titel['taw'] = 'ZfW'
+        titel['zd'] = 'Zauberd.'
+        titel['kosten'] = 'Kosten'
+        titel['reichweite'] = 'Reichweite'
+        titel['ziel'] = 'Ziel'
+        titel['wd'] = 'Wirkungsd.'
+        titel['schwierigkeit'] = 'K'
+        titel['merkmale'] = 'Merkmale'
+        titel['lernmods'] = 'LM'
+        titel['lernen'] = 'L'
+        titel['seite'] = 'Seite'
+        self.drucke_zeile(titel, standardzeile=False)
         # Einzelne Zauber drucken
         alle = ZauberTalent.alle()
         for zauber, zauberobj in alle.iteritems():

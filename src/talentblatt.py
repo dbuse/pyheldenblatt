@@ -66,7 +66,7 @@ class Talentblatt(Heldenblatt):
         self.zeilentitelfelder = {
             'at/pa': dict(titel='at/pa', weite=2 * self.zeilen_atpa_w, fontsize=self.zeilentitel_fontsize_neben,
                           style='B',align='C',linie=True),
-            'be': dict(titel='bep', weite=self.zeilen_be_kom_w, fontsize=self.zeilentitel_fontsize_neben, 
+            'be': dict(titel='be', weite=self.zeilen_be_kom_w, fontsize=self.zeilentitel_fontsize_neben, 
                             style='B', align='C', linie=True),
             'kom': dict(titel='kom', weite=self.zeilen_be_kom_w, fontsize=self.zeilentitel_fontsize_neben, 
                             style='B', align='C', linie=True),
