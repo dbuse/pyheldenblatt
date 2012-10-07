@@ -10,7 +10,7 @@ from talentblatt import Talentblatt
 from heldenblatt import MyFPDF
 from talente import Talent
 from zauberblatt import Zauberblatt
-    
+
     
 # Entweder python oder xls (später vielleicht auch xml)
 mode = 'python'

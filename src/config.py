@@ -10,7 +10,6 @@ kopfwerte=['Name','Rasse','Kultur','Profession']
 aussehen=['Haarfarbe','Augenfarbe','Größe','Gewicht','Aussehen']
 gruppen = ['Kampf','Körper','Gesellschaft','Natur','Wissen','Sprachen','Schriften','Handwerk']
 
-feldreihenfolge = ['se', 'talent', 'probe', 'schwierigkeit', 'at', 'pa', 'be', 'kom', 'taw', 'taw_leer']
 
 FONT = 'Times'
 TITEL_FONT = 'Mason Bold'

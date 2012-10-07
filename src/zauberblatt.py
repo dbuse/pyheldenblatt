@@ -11,19 +11,9 @@ Created on 06.09.2012
 from collections import OrderedDict
 from heldenblatt import Heldenblatt
 import config
+from talente import ZauberTalent
 
-def import_zauber(fname='inhalt/Zauberliste.tsv'):
-    labels = ['name', 'probe', 'zd', 'kosten', 'ziel', 'schwierigkeit', 'reichweite', 'wirkungsdauer', 'merkmale', 'seite']
-    i = -1
-    zauberliste = OrderedDict()
-    for line in open(fname).readlines():
-        i += 1
-        row = line.split('\t')
-        if len(row) != len(labels):
-            print "Feldanzahlfehler bei nr %d. '%s' len: %d" % (i,row[0],len(row))
-            continue
-        zauberliste[row[0]] = dict([(labels[x],row[x].replace("\n","")) for x in range(len(labels))])
-    return zauberliste
+
 
 class Zauberblatt(Heldenblatt):
     """Druckklasse für den Zauberbogen"""
@@ -36,10 +26,19 @@ class Zauberblatt(Heldenblatt):
     def _set_config(self):
         # Konstante Abstände
         self.rand_links = 12
+        self.zeilen_w = 273
+        self.zeilen_seitenabstand = 0.5
         
         # Schriftgrößen als Variablen
         self.zeilen_fontsize = 8
         self.kopfleiste_fontsize = 14
+        self.multiplikator_h = 0.6
+        
+        # Eigenschaften der Talentzeilen
+        self.zeilen_se_w = self.zeilen_fontsize * 0.5
+        self.zeilen_probe_w = self.zeilen_fontsize * 2
+        self.zeilen_taw_w = self.zeilen_fontsize * 0.75
+        self.zeilen_h = self.zeilen_fontsize * self.multiplikator_h
         
         # Konstante Größen der Kopfleiste
         self.kopfleiste_attribut_w = 32
@@ -66,9 +65,30 @@ class Zauberblatt(Heldenblatt):
             'Merkmale': dict(weite=120, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
             'Repräsentationen': dict(weite=120, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
         }
+        self.zeilenfelder = {
+            'se': dict(titel='se', weite=self.zeilen_se_w, fontsize=self.zeilen_fontsize, linie=True),
+            'talent': dict(titel='talent', fontsize=self.zeilen_fontsize, style='B', align='L', font=config.FONT),
+            'probe': dict(titel='probe', weite=self.zeilen_probe_w, fontsize=self.zeilen_fontsize, style='I', linie=True),
+            'taw': dict(titel='taw', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B',align='C', linie=True),
+            'taw_leer': dict(titel='taw_leer', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B', linie=True),
+            'zd': dict(titel='zd', weite=self.zeilen_fontsize * 2, fontsize=self.zeilen_fontsize, style='', linie=True),
+            'kosten': dict(titel='kosten', weite=self.zeilen_fontsize * 3, fontsize=self.zeilen_fontsize, style='', linie=True),
+            'reichweite': dict(titel='reichweite', weite=self.zeilen_fontsize * 3, fontsize=self.zeilen_fontsize, style='', linie=True),
+            'ziel': dict(titel='ziel', weite=self.zeilen_fontsize * 2, fontsize=self.zeilen_fontsize, style='', linie=True),
+            'wd': dict(titel='wd', weite=self.zeilen_fontsize * 3, fontsize=self.zeilen_fontsize, style='', linie=True),
+            'schwierigkeit': dict(titel='schwierigkeit', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B', align='C', linie=True),
+            'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4, fontsize=self.zeilen_fontsize, style='I', linie=True),
+            'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B', align='C', linie=True),
+            'lernen': dict(titel='lernen', weite=self.zeilen_taw_w, fontsize=self.zeilen_fontsize, style='B', align='C', linie=True),
+            'seite': dict(titel='seite', weite=self.zeilen_fontsize * 1.5, fontsize=self.zeilen_fontsize, style='I', align='C'),
+        }
+        self.feldreihenfolge = ['se', 'talent', 'probe', 'taw', 'taw_leer', 'zd', 'kosten', 'reichweite', 'ziel', 'wd', 
+                                'schwierigkeit', 'merkmale', 'lernmods', 'lernen', 'seite']
+        return
     
     def drucke_blatt(self, held):
         self.drucke_kopfleiste(held)
+        self.drucke_zauberliste(held)
         return
         
     def drucke_kopfleiste(self, held):
@@ -85,7 +105,7 @@ class Zauberblatt(Heldenblatt):
         for felder in zeilen:
             self.pdf.ln(self.kopfleiste_h)
             for feld in felder:
-                print feld
+                #print feld
                 template = self.kopfleistenfelder[feld]
                 if template['abteil']:
                     text = held[template['abteil']][template['heldenfeld']]
@@ -94,7 +114,16 @@ class Zauberblatt(Heldenblatt):
                 if isinstance(text, (list, tuple)):
                     text = ', '.join(text)
                 self.pdf.cell(template['weite'], self.kopfleiste_h, "%s: %s" % (feld, text))
-
+        self.pdf.ln(15)
+        return
+    
+    def drucke_zauberliste(self, held):
+        # Erst noch Kopfzeile Drucken
         
-             
+        # Einzelne Zauber drucken
+        alle = ZauberTalent.alle()
+        for zauber, zauberobj in alle.iteritems():
+            if zauber in held['Zauber']:
+                d = zauberobj.get_print_dict(**held['Zauber'][zauber])
+                self.drucke_zeile(d)
         return

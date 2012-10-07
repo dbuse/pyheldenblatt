@@ -376,12 +376,19 @@ class Talent(object):
     @staticmethod
     def held_pruefen(held):
         alle = Talentgruppe.alle()
+        # Talente
         for gruppenname, gruppe in held['Talente'].iteritems():
             if gruppenname not in alle:
                 raise KeyError('Talentgruppe "%s" von Held "%s" ist ungültig!' % (gruppenname, held['Name']))
             for talent in gruppe:
                 if not Talent.ist_talent(talent):
                     raise KeyError('Talent "%s" von Held "%s" ist ungültig' % (talent, held['Name']))
+        # Zaubertalente, so vorhanden
+        if 'Zauber' in held and held['Zauber']:
+            allezauber = ZauberTalent.alle()
+            for zauber in held['Zauber']:
+                if zauber not in allezauber:
+                    raise KeyError('Zauber "%s" von Held "%s" ist ungültig' % (zauber, held['Name']))
         return True
                 
 class StandardTalent(Talent):
@@ -443,19 +450,46 @@ class ATKampfTalent(KampfTalent):
     
 
 class ZauberTalent(Talent):
-    def __init__(self, name, probe, schwierigkeit, zd, kosten, ziel, reichweite, wirkungsdauer, merkmale,
+    
+    zauberliste = None
+    
+    def __init__(self, name, probe, schwierigkeit, zd, kosten, ziel, reichweite, wd, merkmale,
                  seite, lernmods=None, lernen=None):
-        Talent.__init__(self, name, probe, schwierigkeit, kategorie="Zauber", ist_basis=False)
+        Talent.__init__(self, name, probe, schwierigkeit=schwierigkeit, kategorie="Zauber", ist_basis=False)
         self.zd = zd
         self.kosten = kosten
         self.ziel = ziel
         self.reichweite = reichweite
-        self.wirkungsdauer = wirkungsdauer
+        self.wd = wd
         self.merkmale = merkmale
         self.seite = seite
-        # TODO: Die beiden werden erst in einer späteren Version behandelt. Dann auch unten ersetzen
         self.lernmods = lernmods
+        # TODO: Die beiden werden erst in einer späteren Version behandelt. Dann auch unten ersetzen
         self.lernen = lernen
+        
+    @staticmethod
+    def import_zauber(fname='../inhalt/Zauberliste.tsv'):
+        labels = ['name', 'probe', 'zd', 'kosten', 'ziel', 'schwierigkeit', 'reichweite', 'wd', 'merkmale', 'seite']
+        i = -1
+        zauberliste = OrderedDict()
+        for line in open(fname).readlines():
+            i += 1
+            row = line.split('\t')
+            if len(row) != len(labels):
+                print "Feldanzahlfehler bei nr %d. '%s' len: %d" % (i,row[0],len(row))
+                continue
+            zauberliste[row[0]] = dict([(labels[x],row[x].replace("\n","")) for x in range(len(labels))])
+        return zauberliste
+    
+    @classmethod
+    def alle(cls, fname='../inhalt/Zauberliste.tsv'):
+        if not cls.zauberliste:
+            roh_liste = cls.import_zauber(fname)
+            liste = OrderedDict()
+            for zauber, daten in roh_liste.iteritems():
+                liste[zauber] = cls(**daten)
+            cls.zauberliste = liste
+        return cls.zauberliste
         
     def get_print_dict(self, taw, *arg, **kwd):
         d = Talent.get_print_dict(self, taw)
@@ -463,10 +497,17 @@ class ZauberTalent(Talent):
         d['kosten'] = self.kosten
         d['ziel'] = self.ziel
         d['reichweite'] = self.reichweite
-        d['wirkungsdauer'] = self.wirkungsdauer
+        d['wd'] = self.wd
+        d['schwierigkeit'] = self.schwierigkeit
         d['merkmale'] = self.merkmale
         d['seite'] = self.seite
-        d['lernmods'] = 'XX'
+        d['lernmods'] = ''
+        if 'hauszauber' in kwd and kwd['hauszauber']:
+            d['lernmods'] += 'H'
+        if 'begabt' in kwd and kwd['begabt']:
+            d['lernmods'] += 'B'
+        elif 'unfähig' in kwd and kwd['unfähig']:
+            d['lernmods'] += 'U'
         d['lernen'] = 'X'
         return d
         

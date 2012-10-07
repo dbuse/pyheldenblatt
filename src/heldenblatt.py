@@ -4,9 +4,10 @@ Created on 06.09.2012
 
 @author: dbuse
 '''
-
+from collections import OrderedDict
 from libs.pyfpdf import FPDF
 import config
+
 
 class MyFPDF(FPDF):
     """Überschriebene Zwischenklasse zur Anpassung des Encoding"""
@@ -43,3 +44,73 @@ class Heldenblatt(object):
         self.pdf.image(*self.hintergrund)
         # Spezifische Konfiguration setzen
         self._set_config()
+        return
+        
+    def drucke_zeile(self, zeilenfelder={}, leerzeile=False, standardzeile=True, **kwd):
+        """Konfiguriert und druckt dann eine Talentzeile oder deren Titel"""
+        # Höhe der Zeile festlegen und Kopfabstand bei Titelzeilen setzen
+        if standardzeile:
+            hoehe = self.zeilen_h
+        else: 
+            self.pdf.ln(self.zeilentitel_kopfabstand)
+            hoehe = self.zeilentitel_h
+        # Untere Linie ziehen
+        self.pdf.line(self.pdf.get_x() + self.zeilen_seitenabstand,
+                  self.pdf.get_y() + hoehe,
+                  self.pdf.get_x() + self.zeilen_w - self.zeilen_seitenabstand,
+                  self.pdf.get_y() + hoehe)
+        if standardzeile:
+            # Zeilenfelder sortieren - nur bei Standardzeilen nötig
+            zeilenfelder_sortiert = OrderedDict()
+            for name in self.feldreihenfolge:
+                if name in zeilenfelder:
+                    zeilenfelder_sortiert[name] = zeilenfelder[name]
+        else:       # Titelzeile:
+            zeilenfelder_sortiert = zeilenfelder
+        felder = self.konfiguriere_zeile(zeilenfelder_sortiert, standardzeile)
+        # Felder und begrenzungslinien Drucken
+        for feld in felder:
+            self.pdf.set_font(family=feld.font, style=feld.style, size=feld.fontsize)
+            if leerzeile:
+                self.pdf.cell(feld.weite,hoehe, '')
+            else:
+                self.pdf.cell(feld.weite,hoehe, str(feld.text), align=feld.align)
+            if feld.linie and len(zeilenfelder) > 1:
+                self.pdf.line(self.pdf.get_x(), self.pdf.get_y(), self.pdf.get_x(), self.pdf.get_y() + hoehe)
+        # Zeilenumbruch und fertig!
+        return self.pdf.ln(hoehe)
+    
+    def konfiguriere_zeile(self, zeilenfelder, standardzeile=True):
+        """Stellt eine Konfiguration für eine Talentzeile abhängig von den aktuellen Feldern zum Drucken zusammen"""
+        # Passendes Templates-Dictionary wählen
+        if standardzeile:
+            templates = self.zeilenfelder
+        else:
+            templates = self.zeilentitelfelder
+        # Bei Standardzeilen das SE-Feld nicht vergessen
+        pos = 0 + standardzeile 
+        # Feldgrößen bestimmen und Texte vorbereiten
+        felder = []
+        for name, zeilenfeld in zeilenfelder.iteritems():
+            if zeilenfeld is None:
+                # Komplett leere Felder überspringen
+                continue
+            if name in templates:
+                if 'weite' in templates[name]:
+                    # Standard-Feld mit fixer Weite
+                    felder.append(ZeilenFeld(text=zeilenfeld, **templates[name]))
+                else:
+                    # Inline-Felder: Größe dynamisch Ausmessen
+                    conf = templates[name]
+                    self.pdf.set_font(family=conf['font'],style=conf['style'],size=conf['fontsize'])
+                    if name in ('probe', 'schwierigkeit'):
+                        zeilenfeld = ' (%s) ' % zeilenfeld
+                    weite = self.pdf.get_string_width(zeilenfeld)
+                    felder.append(ZeilenFeld(text=zeilenfeld, weite=weite, **templates[name]))
+                    pos += 1
+            else:
+                raise KeyError('Zeilenfeld "%s" hat kein Template!' % name)
+        # Talentnamen einfügen - nach den Inline-Feldern (darum pos hochzählen)
+        weite = self.zeilen_w - sum((feld.weite for feld in felder)) + standardzeile * self.zeilen_seitenabstand
+        felder.insert(pos, ZeilenFeld(titel='füller', weite=weite, fontsize=self.zeilen_fontsize, text='', linie=True))
+        return felder
