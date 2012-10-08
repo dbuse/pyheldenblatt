@@ -12,6 +12,7 @@ from collections import OrderedDict
 from heldenblatt import Heldenblatt
 import config
 from talente import ZauberTalent
+import math
 
 
 
@@ -24,10 +25,13 @@ class Zauberblatt(Heldenblatt):
     hintergrund = ('../inhalt/bilder/zauberblatt.png',0,0,297,210)
     
     def _set_config(self):
+        
+        
         # Konstante Abstände
         self.rand_links = 12
         self.zeilen_w = 273
-        self.zeilen_seitenabstand = 1
+        # Für andere Werte als 0 Verschiebt sich hier noch die Titelzeile!
+        self.zeilen_seitenabstand = 0
         
         # Schriftgrößen als Variablen
         self.zeilen_fontsize = 8
@@ -39,6 +43,7 @@ class Zauberblatt(Heldenblatt):
         self.zeilen_probe_w = self.zeilen_fontsize * 2
         self.zeilen_taw_w = self.zeilen_fontsize * 0.75
         self.zeilen_h = self.zeilen_fontsize * self.multiplikator_h
+        self.zauber_pro_seite = int(144 / self.zeilen_h) 
         
         # Überschriftenzeile
         self.zeilentitel_kopfabstand = 0
@@ -84,8 +89,7 @@ class Zauberblatt(Heldenblatt):
             'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4, style='B', align='C', linie=True),
             'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
             'lernen': dict(titel='lernen', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
-            # TODO: Die Weiter bei Seite ist nur ein schmutziger Fix, irgendwie läuft hier die berechnung falsch!
-            'seite': dict(titel='seite', weite=self.zeilen_fontsize * 1.37, style='B', align='C'),
+            'seite': dict(titel='seite', weite=self.zeilen_fontsize * 1.5, style='B', align='C'),
                                          
         }
         for ztf in self.zeilentitelfelder: 
@@ -116,8 +120,24 @@ class Zauberblatt(Heldenblatt):
         return
     
     def drucke_blatt(self, held):
-        self.drucke_kopfleiste(held)
-        self.drucke_zauberliste(held)
+        anzahl_seiten = int(math.ceil(len(held['Zauber']) / float(self.zauber_pro_seite)))
+        zauber_sortiert = sorted(held['Zauber'].keys(), reverse=True)
+        for i in xrange(anzahl_seiten):
+            if i > 0:
+                # FÜr folgende Seiten neue Page mit Hintergrund anlegen
+                self.pdf.add_page(orientation=self.orientation)
+                self.pdf.image(*self.hintergrund)
+            self.drucke_kopfleiste(held)
+            
+            # Zauber des Helden sortiert in kleinere Listen zerteilen
+            zauberliste = {}
+            for _ in xrange(self.zauber_pro_seite):
+                try:
+                    name = zauber_sortiert.pop()
+                except IndexError:
+                    break
+                zauberliste[name] = held['Zauber'][name]
+            self.drucke_zauberliste(zauberliste)
         return
         
     def drucke_kopfleiste(self, held):
@@ -145,8 +165,8 @@ class Zauberblatt(Heldenblatt):
         self.pdf.ln(15)
         return
     
-    def drucke_zauberliste(self, held):
-        # Erst noch Kopfzeile Drucken
+    def drucke_zeilentitel(self):
+        """Drucke eine Titelzeile in etwas größerer Schrift. Soll auf jeder Seite erneut aufgerufen werden"""
         titel = OrderedDict()
         titel['name'] = 'Zaubername'
         titel['probe'] = 'Probe'
@@ -161,11 +181,16 @@ class Zauberblatt(Heldenblatt):
         titel['lernmods'] = 'LM'
         titel['lernen'] = 'L'
         titel['seite'] = 'Seite'
-        self.drucke_zeile(titel, standardzeile=False)
+        return self.drucke_zeile(titel, standardzeile=False)
+        
+    def drucke_zauberliste(self, zauberliste):
+        """Drucke eine Liste an Zaubern in Tabellenform. Berechnung der Zauber pro Blatt findet *nicht* hier statt!"""
+        # Erst noch Kopfzeile Drucken
+        self.drucke_zeilentitel()
         # Einzelne Zauber drucken
         alle = ZauberTalent.alle()
         for zauber, zauberobj in alle.iteritems():
-            if zauber in held['Zauber']:
-                d = zauberobj.get_print_dict(**held['Zauber'][zauber])
+            if zauber in zauberliste:
+                d = zauberobj.get_print_dict(**zauberliste[zauber])
                 self.drucke_zeile(d)
         return

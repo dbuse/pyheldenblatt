@@ -30,6 +30,12 @@ class ZeilenFeld(object):
         self.linie = linie
         self.font = font
         self.fontsize = fontsize
+        
+    def __str__(self):
+        lst = []
+        for attr in ['titel', 'weite', 'text', 'style', 'align', 'linie', 'font', 'fontsize']:
+            lst.append("%s: '%s'" % (attr, getattr(self, attr)))
+        return ', '.join(lst)
     
 class Heldenblatt(object):
     """Grundklasse für alle Einzelblätter des Heldendokumentes"""
@@ -113,4 +119,5 @@ class Heldenblatt(object):
         # Talentnamen einfügen - nach den Inline-Feldern (darum pos hochzählen)
         weite = self.zeilen_w - sum((feld.weite for feld in felder)) + standardzeile * self.zeilen_seitenabstand
         felder.insert(pos, ZeilenFeld(titel='füller', weite=weite, fontsize=self.zeilen_fontsize, text='', linie=True))
+        #print '\n'.join([str(feld) for feld in felder]), '\n'
         return felder
