@@ -5,6 +5,7 @@ Created on 18.07.2012
 @author: dom
 '''
 from collections import OrderedDict
+from util import chr_dec, chr_inc
 
 
 
@@ -451,6 +452,7 @@ class ATKampfTalent(KampfTalent):
 
 class ZauberTalent(Talent):
     
+    """Ablage für die Liste aller Zauber"""
     zauberliste = None
     
     def __init__(self, name, probe, schwierigkeit, zd, kosten, ziel, reichweite, wd, merkmale,
@@ -490,8 +492,22 @@ class ZauberTalent(Talent):
                 liste[zauber] = cls(**daten)
             cls.zauberliste = liste
         return cls.zauberliste
+    
+    def berechner_lernparameter(self, merkmale, **kwd):
+        spalte = self.schwierigkeit
+        lernmods = ""     
+        if 'hauszauber' in kwd and kwd['hauszauber']:
+            lernmods += 'H'
+            spalte = chr_dec(spalte)
+        if 'begabt' in kwd and kwd['begabt']:
+            lernmods += 'B'
+            spalte = chr_dec(spalte)
+        elif 'unfähig' in kwd and kwd['unfähig']:
+            lernmods += 'U'
+            spalte = chr_inc(spalte)
+        return spalte, lernmods
         
-    def get_print_dict(self, taw, *arg, **kwd):
+    def get_print_dict(self, taw, merkmale, *arg, **kwd):
         d = Talent.get_print_dict(self, taw)
         d['zd'] = self.zd
         d['kosten'] = self.kosten
@@ -501,13 +517,7 @@ class ZauberTalent(Talent):
         d['schwierigkeit'] = self.schwierigkeit
         d['merkmale'] = self.merkmale
         d['seite'] = self.seite
-        d['lernmods'] = ''
-        if 'hauszauber' in kwd and kwd['hauszauber']:
-            d['lernmods'] += 'H'
-        if 'begabt' in kwd and kwd['begabt']:
-            d['lernmods'] += 'B'
-        elif 'unfähig' in kwd and kwd['unfähig']:
-            d['lernmods'] += 'U'
-        d['lernen'] = 'X'
+        # TODO: Berechnung noch nicht vollständig! Merkmale und Hexalogien fehlen noch!
+        d['lernen'], d['lernmods'] = self.berechner_lernparameter(merkmale) 
         return d
         

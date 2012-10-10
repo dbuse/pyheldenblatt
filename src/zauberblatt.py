@@ -43,7 +43,8 @@ class Zauberblatt(Heldenblatt):
         self.zeilen_probe_w = self.zeilen_fontsize * 2
         self.zeilen_taw_w = self.zeilen_fontsize * 0.75
         self.zeilen_h = self.zeilen_fontsize * self.multiplikator_h
-        self.zauber_pro_seite = int(144 / self.zeilen_h) 
+        #self.zauber_pro_seite = int(144 / self.zeilen_h)
+        self.zauber_pro_seite = int(130 / self.zeilen_h) 
         
         # Überschriftenzeile
         self.zeilentitel_kopfabstand = 0
@@ -137,7 +138,7 @@ class Zauberblatt(Heldenblatt):
                 except IndexError:
                     break
                 zauberliste[name] = held['Zauber'][name]
-            self.drucke_zauberliste(zauberliste)
+            self.drucke_zauberliste(zauberliste, held)
         return
         
     def drucke_kopfleiste(self, held):
@@ -183,7 +184,7 @@ class Zauberblatt(Heldenblatt):
         titel['seite'] = 'Seite'
         return self.drucke_zeile(titel, standardzeile=False)
         
-    def drucke_zauberliste(self, zauberliste):
+    def drucke_zauberliste(self, zauberliste, held):
         """Drucke eine Liste an Zaubern in Tabellenform. Berechnung der Zauber pro Blatt findet *nicht* hier statt!"""
         # Erst noch Kopfzeile Drucken
         self.drucke_zeilentitel()
@@ -191,6 +192,6 @@ class Zauberblatt(Heldenblatt):
         alle = ZauberTalent.alle()
         for zauber, zauberobj in alle.iteritems():
             if zauber in zauberliste:
-                d = zauberobj.get_print_dict(**zauberliste[zauber])
+                d = zauberobj.get_print_dict(merkmale=held['Magische Sonderfertigkeiten']['Merkmale'], **zauberliste[zauber])
                 self.drucke_zeile(d)
         return
