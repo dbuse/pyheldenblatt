@@ -5,7 +5,7 @@ Adlerauge	KL·IN·FF	5 Akt	4	P(f)	B	s	1 SR (A)	Hell,Eign	15
 Adlerschwinge	MU·IN·GE	20 Akt	speziell	P(f)	D	s	variabel	Form	16
 Aeolitus	KL·CH·KP	3 Akt	4	2	B	ZfP* x2 Schritt	augenblicklich	Umwe, Luft	18
 Aerofugo	MU·KO·KK	10 Akt	10 + 1 je 5m³	Z	D	ZfW Schritt	ZfP* KR	Umwe, Luft	19
-Aerogelo	MU·IN·KO	10 Akt	5 + 1 je 20m³	Z	D	ZfW x3 Schritt	ZfP* SR	Umew, Luft	20
+Aerogelo	MU·IN·KO	10 Akt	5 + 1 je 20m³	Z	D	ZfW x3 Schritt	ZfP* SR	Umwe, Luft	20
 Alpgestalt	MU·CH·GE	20 Akt	MR, min 6	P	C	ZfW Schritt	ZfP* x5 KR	Einf, Herr	21
 Analys	KL·KL·IN	1+ SR	6 + 3 je 6SR	O,W	D	1 Schritt	Zauberdauer	Hell,Meta	22
 Ängste Lindern	MU·IN·CH	20 Akt	5	P(f)	C	B	augenblicklich	Einf	23
@@ -34,9 +34,9 @@ Blick durch fremde Augen	MU·IN·CH	2 SR	min 8	W	E	ZfW x10 Meilen	variabel (A)	H
 Blick in die Gedanken	KL·KL·CH	10 Akt	6 je 5 KR	P	D	3 Schritt	variabel (A)	Hell	47
 Blick in die Vergangenheit	KL(KL/IN	min 1 SR	21 + 3 je Std	O,Z	D	B,Sichtweite	variabel (A)	Hell,Temp	48
 Blitz	KL·IN·GE	1 Akt	4	W	B	ZfW Schritt	ZfW /2 Akt	Einf	49
-Böser Blick	MU·CH·CH	4 Akt	7 / 2W6	P	C	1 Schritt	ZfP* Minuten	Enf	50
+Böser Blick	MU·CH·CH	4 Akt	7 / 2W6	P	C	1 Schritt	ZfP* Minuten	Einf	50
 Brenne	MU·KL·KO	3 Akt	11	O	C	B	ZfP* KR	Objk,Feur	51
-Caldofrigo	IN·CH·KO	40 Akt	speziell	O	E	B	ZfP* SR	Obj,Umwe,Feur,Eis	52
+Caldofrigo	IN·CH·KO	40 Akt	speziell	O	E	B	ZfP* SR	Objk,Umwe,Feur,Eis	52
 Chamaelioni	IN·CH·GE	2 Akt	4	P(f)	C	s	ZfP* x10 KR (A)	Illu	54
 Chimaeroform	KL·IN·KO	1 Tag	min 40	WW	F	1 Schritt	p	Asfa,Form	55
 Chronoklassis	KL·IN·KO	Stunden	speziell	O,W	F	speziell	variabel	Herb,Temp	56
@@ -59,7 +59,7 @@ Eigenschaft wiederherstellen	KL·IN·CH	40 Akt	7+	W	C	s,B	augenblicklich	Anti,Ei
 Eigne Ängste	MU·IN·CH	3 Akt	11	P	C	B	ZfP* Str	Einf,Eign	74
 Einfluss bannen	IN·CH·CH	40 Akt	5+	W	B	B	augenblicklich	Anti,Einf	75
 Eins mit der Natur	IN/GEK/KO	3 SR	6	P(f)	C	s	Sonnenaufgang	Eign,Elem	76
-Eisenrost	KL·CH·GE	2 Akt	2 + 2 je Stein	O	C	B	augenblicklich	Obj,Temp	77
+Eisenrost	KL·CH·GE	2 Akt	2 + 2 je Stein	O	C	B	augenblicklich	Objk,Temp	77
 Eiseskälte	MU·IN·KO	2 Akt	5 + 1 je KR	P(f)	C	s	ZfW x2 KR (A)	Eign	78
 Elementarbann	IN·CH·KO	40 Akt	9+	Zauber	C	ZfW Schritt	augenblicklich	Anti,Elem	79
 Elementarer Diener	MU·KL·CH	1 SR	12	W	D	3 Schritt	Sonnenaufgang	Elem,Herb	80
@@ -103,7 +103,7 @@ Höllenpein	KL·CH·KO	2 AKt	11	P	C	B	ZfP* x3 KR	Einf	119
 Holterdiepolter	IN·IN·FF	4 Akt	17	Z	C	7 Schritt Radius	ZfW Minuten	Umwe	120
 Horriphobus	MU·IN·CH	3 Akt	7	P	C	7 Schritt	ZfP* /2 SR	Einf	121
 Ignifaxius	KL·FF·KO	4 Akt	TP	W	C	21 Schritt	augenblicklich	Feur,Scha	122
-Ignisphaero	MU·IN·KO	4 Akt	TP	Z	D	49 Schritt	augenblicklich	Feur,Scha,tele	124
+Ignisphaero	MU·IN·KO	4 Akt	TP	Z	D	49 Schritt	augenblicklich	Feur,Scha,Tele	124
 Ignoratia	IN·CH·GE	10 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Einf,Illu	125
 Illusion auflösen	KL·IN·CH	2 Akt	6+	Zauber	B	3 Schritt	augenblicklich	Anti,Illu	126
 Immortalis	MU·CH·KO	speziell	speziell	P	F	s	augenblicklich	Form,Temp	127
@@ -113,7 +113,7 @@ Infinitum	KL·CH·KO	speziell	speziell	Zauber	F	B	permanent	Meta,Temp	130
 Invercano	MU·IN·FF	7 Akt	13	P(f)	F	s	ZfP* x2 KR	Anti,Krft,Meta	131
 Invocatio maior	MU·MU·CH	40 Akt	19+	Dämon	E	speziell	variabel	Besw,Dämo	132
 Invocatio minor	MU·MU·CH	5 Akt	11+	Dämon	D	speziell	variabel	Besw,Dämo	133
-Iribaars Hand	MU·MU·IN	4 Akt	W20	P	D	B	ZfP* KR	Ama,Einf,Dämo	134
+Iribaars Hand	MU·MU·IN	4 Akt	W20	P	D	B	ZfP* KR	Amaz,Einf,Dämo	134
 Juckreiz	MU·IN·CH	4 Akt	7	Z,P	B	ZfW Schritt	ZfP* /2 SR	Einf	135
 Karnifilo	MU·IN·CH	3 Akt	11	P	C	B	ZfP* x5 KR	Einf,Eign	136
 Katzenaugen	KL·FF·KO	10 Akt	1 je 3 SR	P(f)	C	s	variabel (A)	Eign	137
@@ -177,7 +177,12 @@ Pectetondo	KL·CH·FF	6 Akt	4	P(f)	B	s	max ZfP* Tage	Form	203
 Penetritzzel	KL·KL·KO	min 6 Akt	3 + 1 je Spann	P(f)	C	s	ZfP* x2 KR (A)	Hell	204
 Pentagramma	MU·MU·CH	20 Akt	min 7	W	D	7 Schritt	augenblicklich	Anti,Besw,Dämo,Geis	205
 Pestilenz erspüren	KL·IN·CH	3 SR	6	W	C	s,B	ca. 3 SR	Hell	207
-Pfeil des [Elements]	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	je Element	208
+Pfeil des Eises	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Eis	208
+Pfeil des Erzes	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Erz	208
+Pfeil des Feuers	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Feur	208
+Pfeil des Humus	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Humu	208
+Pfeil der Luft	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Luft	208
+Pfeil des Wassers	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Wass	208
 Planastrale	MU·MU·KO	50 Akt	min 13	Z	F	3 Schritt	ZfP* x0,5 SR	Limb	210
 Plumbumbarum	CH·GE·KK	3 Akt	4 + 2 je Gegner	WW	B	7 Schritt	5 KR	Einf	211
 Projektimago	MU·IN·CH	10 Akt	speziell	P,Z	D	ZfW Meilen	variabel (A)	Illu,Vers	212
@@ -195,7 +200,7 @@ Sapefacta	KL·CH·FF	50 Akt	5	O,P(f)	C	s	augenblicklich	Tele,Luft,Wass	223
 Satuarias Herrlichkeit	IN·CH·CH	10 Akt	7	P	B	ZfW Schritt	augenblicklich	Einf	225
 Schabernack	KL·IN·CH	5 Akt	7	P	B	ZfW Schritt	augenblicklich	Einf	225
 Schadenszauberei Bannen	MU·IN·KO	4 Akt	6+	Zauber	C	7 Schritt	augenblichlich	Anti,Scha	226
-Schelmenkleister	IN·GE·FF	5 Akt	3 je Schritt	Z	C	ZfW Schritt	ZfP* x5 KR	Umew	227
+Schelmenkleister	IN·GE·FF	5 Akt	3 je Schritt	Z	C	ZfW Schritt	ZfP* x5 KR	Umwe	227
 Schelmenlaune	MU·IN·CH	10 Akt	6 + je Opfer	PP	D	ZfW Schritt	augenblicklich	Anti,Scha	228
 Schelmenmaske	IN·CH·GE	6 Akt	9 je SR	P(f)	D	s	variabel (A)	Illu	229
 Schelmenrausch	IN·CH·CH	5 Akt	8	P	C	3 Schritt	ZfP* x10 KR	Einf	230
@@ -242,7 +247,12 @@ Vipernblick	MU·MU·CH	5 Akt	4	P	B	3 Schritt	speziell	Einf	271
 Visibili	KL·IN·GE	je 3 Akt	4 je SR + Person	[W]W(f)	C	s,B	ZfP* SR (A)	Form	272
 Vocolimbo	KL·CH·FF	5 Akt	3	Z	B	ZfW x3 Schritt	max 10 KR	Illu	273
 Vogelzwitschern	MU·IN·GE	5 Akt	8	P(f)	B	s,1 Schritt	ZfP* Std	Illu	274
-Wand aus [Element]	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	je Element	275
+Gletscherwand	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Eis	275
+Orkanwand 	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Luft	275
+Wand aus Erz	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Erz	275
+Wand aus Flammen	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Feur	275
+Wand aus Dornen	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Humu	275
+Wasserwand 	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Wass	275
 Warmes Blut	MU·IN·IN	8 Akt	3 e SR	P(f)	B	s	variabel (A)	Eign,Hell,Feur	276
 Wasseratem	MU·KL·KO	30 Akt	6 + 3 je SR	P (f)	C	s,B	variabel	Form	277
 Weiches erstarre!	MU·KL·KK	5 Akt	17	Z	C	B	ZfP* SR	Erz,Umwe	278
@@ -254,7 +264,7 @@ Wettermeisterschaft	MU·CH·GE	1 SR	min 6	Z	E	ZfW x50 Schritt	3 SR	Luft,Umwe	283
 Widerwille	MU·IN·GE	2 SR	min 10	O,Z	D	B	ZfP* Wochen	Einf,Illu	285
 Windhose	MU·IN·KK	15 Akt	1 je Schritt	Z	D	ZfW x20 Schritt	20 KR (A)	Luft,Umwe	286
 Windstille	KL·CH·KK	30 Akt	5 je SR	Z	C	ZfW x3 Schritt	variabel (A)	Luft,Umwe	287
-Wipfellauf	MU·IN·GE	6 Akt	6 + 2 je SR	P(f)	D	s	variabel (A)	Humus,Eign	288
+Wipfellauf	MU·IN·GE	6 Akt	6 + 2 je SR	P(f)	D	s	variabel (A)	Humu,Eign	288
 Xenographus	KL·KL·IN	20 Akt	5 + 1 je 10 KR	O	E	3 Schritt	variabel (A)	Hell	289
 Zagibu	IN·CH·FF	3 Akt	3 je 10 Unzen	OO	C	1 Schritt	augenblicklich	Objk,Erz	290
 Zappenduster	IN·IN·FF	2 Akt	11	Z	C	ZfW Schritt	ZfP* SR	Umwe,Anti	291

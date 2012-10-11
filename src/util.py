@@ -11,4 +11,4 @@ def chr_inc(c, inc=1):
 
 def chr_dec(c, dec=1):
     """Gebe den den dec-ten Vorgänger des Buchstabens c zurück"""
-    return chr(ord(c) + dec)
+    return chr(ord(c) - dec)

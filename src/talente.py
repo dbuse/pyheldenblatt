@@ -6,6 +6,7 @@ Created on 18.07.2012
 '''
 from collections import OrderedDict
 from util import chr_dec, chr_inc
+import config
 
 
 
@@ -456,7 +457,7 @@ class ZauberTalent(Talent):
     zauberliste = None
     
     def __init__(self, name, probe, schwierigkeit, zd, kosten, ziel, reichweite, wd, merkmale,
-                 seite, lernmods=None, lernen=None):
+                 seite, lernmods=None, lernen=None, sonderform=None):
         Talent.__init__(self, name, probe, schwierigkeit=schwierigkeit, kategorie="Zauber", ist_basis=False)
         self.zd = zd
         self.kosten = kosten
@@ -464,10 +465,11 @@ class ZauberTalent(Talent):
         self.reichweite = reichweite
         self.wd = wd
         self.merkmale = merkmale
+        self.merkmal_liste = [config.merkmale[kurz.replace(' ','')] for kurz in merkmale.split(',')]
         self.seite = seite
         self.lernmods = lernmods
-        # TODO: Die beiden werden erst in einer späteren Version behandelt. Dann auch unten ersetzen
         self.lernen = lernen
+        self.sonderform = sonderform
         
     @staticmethod
     def import_zauber(fname='../inhalt/Zauberliste.tsv'):
@@ -505,6 +507,11 @@ class ZauberTalent(Talent):
         elif 'unfähig' in kwd and kwd['unfähig']:
             lernmods += 'U'
             spalte = chr_inc(spalte)
+        for merkmal in self.merkmal_liste:
+            if merkmal in merkmale:
+                spalte = chr_dec(spalte)
+            if merkmal in config.gegenelemente and config.gegenelemente[merkmal] in merkmale:
+                spalte = chr_inc(spalte)
         return spalte, lernmods
         
     def get_print_dict(self, taw, merkmale, *arg, **kwd):
@@ -517,7 +524,7 @@ class ZauberTalent(Talent):
         d['schwierigkeit'] = self.schwierigkeit
         d['merkmale'] = self.merkmale
         d['seite'] = self.seite
-        # TODO: Berechnung noch nicht vollständig! Merkmale und Hexalogien fehlen noch!
-        d['lernen'], d['lernmods'] = self.berechner_lernparameter(merkmale) 
+        # TODO: Berechnung noch nicht vollständig! Hexalogien und mehrfache Zauber fehlen noch!
+        d['lernen'], d['lernmods'] = self.berechner_lernparameter(merkmale, **kwd) 
         return d
         

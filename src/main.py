@@ -34,7 +34,7 @@ if __name__ == '__main__':
     talente.drucke_blatt(held)
     
     if 'Zauber' in held:
-        print "### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig! Merkmale und Hexalogien werden noch NICHT berücksichtigt! ###"
+        print "### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig! Mehrfache Zauber (z.B. Adlerschwinge, Arcarnovi) und Hexalogien werden noch NICHT berücksichtigt! ###"
         zauber = Zauberblatt(fpdf)
         zauber.drucke_blatt(held)
         
