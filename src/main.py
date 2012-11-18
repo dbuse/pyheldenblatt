@@ -21,7 +21,7 @@ if __name__ == '__main__':
     held = None
     if mode == 'python':
         # setzt die variable "held" selbst: 
-        execfile('../inhalt/helden/carisolan.py')
+        execfile('../inhalt/helden/jarlak.py')
     elif mode == 'xls':
         held = importXLS("../inhalt/helden/Fedesco_Salingor.xls")
     Talent.held_pruefen(held)
@@ -38,5 +38,5 @@ if __name__ == '__main__':
         zauber = Zauberblatt(fpdf)
         zauber.drucke_blatt(held)
         
-    fpdf.output('../inhalt/ausgabe/test.pdf','F')
+    fpdf.output('../inhalt/ausgabe/Jarlak.pdf','F')
     print "Fertig!"
