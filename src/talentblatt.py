@@ -16,7 +16,7 @@ import config
 
 def sonderfertigkeiten_gruppen(besonderheiten):
     """Baut die Grundstruktur der Sonderfertigkeiten abhängig von den Besonderheiten des Helden auf"""
-    gruppen = ['Kulturkunde', 'Geländekunde', 'Ortskenntnis']
+    gruppen = ['Kulturkunde', 'Geländekunde', 'Ortskenntnis', 'Spezialisierungen']
     if 'Vollzauberer' in besonderheiten and besonderheiten['Vollzauberer']:
         gruppen.append('Große Meditation')
     if 'Geweihter' in besonderheiten and besonderheiten['Geweihter']:

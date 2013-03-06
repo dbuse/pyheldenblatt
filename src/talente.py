@@ -130,7 +130,7 @@ class Talentgruppe(object):
         natur.setze_talente([
             StandardTalent('Fährtensuchen','KL·IN·IN/KO',natur, ist_basis=True),
             StandardTalent('Fallenstellen','KL·KL·FF',natur),
-            StandardTalent('Fesseln/Entfesseln','FS·GE·KK',natur),
+            StandardTalent('Fesseln/Entfesseln','FF·GE·KK',natur),
             StandardTalent('Fischen/Angeln','IN·FF·KK',natur),
             StandardTalent('Orientierung','KL·IN·IN',natur, ist_basis=True),
             StandardTalent('Wettervorhersage','KL·IN·IN',natur),
