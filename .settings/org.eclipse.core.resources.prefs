@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//inhalt/helden/jarlak.py=utf-8
 encoding//libs/pyfpdf/examples/form.py=iso-8859-1
 encoding//libs/pyfpdf/fpdf.py=latin1
 encoding//libs/pyfpdf/html.py=latin1
@@ -7,6 +8,7 @@ encoding//src/config.py=utf-8
 encoding//src/held.py=utf-8
 encoding//src/heldenblatt.py=utf-8
 encoding//src/import_xls.py=utf-8
+encoding//src/import_xml.py=utf-8
 encoding//src/main.py=utf-8
 encoding//src/talentblatt.py=utf-8
 encoding//src/talente.py=utf-8

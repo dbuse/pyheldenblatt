@@ -30,17 +30,12 @@ class Talentblatt(Heldenblatt):
     
     hintergrund = ('../inhalt/bilder/talentblatt.png',0,0,210,297)
     
-    def _set_config(self):
+    def _set_config(self, **kwd):
         # Konstante Abstände und Längen
         self.rand_links = 12
         self.zeilen_w = 92
         self.zeilen_seitenabstand = 0.5
         self.oben_links = {'links':(12,35),'rechts':(106.5,35)}
-        
-        # Schriftgrößen als Variablen
-        self.zeilen_fontsize = 8
-        self.kopfleiste_fontsize = 16
-        self.multiplikator_h = 0.6
 
         # Kopfzeile mit Attributen (müssen nicht variabel sein)
         self.attribute_h = 10
@@ -161,7 +156,7 @@ class Talentblatt(Heldenblatt):
             for gruppe in gruppen:
                 self.drucke_talentblock(gruppe, held['Talente'][gruppe], leerzeilen[gruppe])
             self.pdf.set_y(35)
-            self.pdf.set_left_margin(106.5)
+            self.pdf.set_left_margin(106)
     
     def drucke_sonderfertigkeiten(self, sonderfertigkeiten, besonderheiten={}):
         """Druckt den Block von Sonderfertigkeiten"""

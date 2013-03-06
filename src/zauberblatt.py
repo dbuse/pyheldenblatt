@@ -24,7 +24,7 @@ class Zauberblatt(Heldenblatt):
     
     hintergrund = ('../inhalt/bilder/zauberblatt.png',0,0,297,210)
     
-    def _set_config(self):
+    def _set_config(self, **kwd):
         
         
         # Konstante Abstände

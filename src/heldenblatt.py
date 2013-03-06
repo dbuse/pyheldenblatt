@@ -43,13 +43,18 @@ class Heldenblatt(object):
     orientation = "p"
     """Standardmäßig im Hochformat drucken"""
     
-    def __init__(self, pdf):
+    def __init__(self, pdf, zeilen_fontsize=8, kopfleisten_fonsize=16, multiplikator_h=0.6,**kwd):
         self.pdf = pdf
         self.pdf.set_auto_page_break(auto=False)
         self.pdf.add_page(orientation=self.orientation)
         self.pdf.image(*self.hintergrund)
         # Spezifische Konfiguration setzen
-        self._set_config()
+        
+        # Schriftgrößen als Variablen
+        self.zeilen_fontsize = zeilen_fontsize
+        self.kopfleiste_fontsize = kopfleisten_fonsize
+        self.multiplikator_h = multiplikator_h
+        self._set_config(**kwd)
         return
         
     def drucke_zeile(self, zeilenfelder={}, leerzeile=False, standardzeile=True, **kwd):
