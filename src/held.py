@@ -4,6 +4,7 @@ Created on 05.08.2012
 
 @author: joti
 '''
+from __future__ import unicode_literals
 
 from talente import Talent
 import config

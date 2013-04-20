@@ -4,6 +4,7 @@ Created on 06.09.2012
 
 @author: dbuse
 '''
+from __future__ import unicode_literals
 
 # Nutzbarer Bereich:
 # Kopf: 265 * 22,5

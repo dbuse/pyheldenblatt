@@ -4,6 +4,9 @@ Created on 04.08.2012
 
 @author: dom
 '''
+from __future__ import unicode_literals
+
+
 import math
 from talente import Talentgruppe
 from heldenblatt import Heldenblatt, ZeilenFeld
@@ -123,10 +126,10 @@ class Talentblatt(Heldenblatt):
             titel = "%s: " % gruppe
             zeile = []
             for sf in sonderfertigkeiten:
-                if self.pdf.get_string_width(titel + ', '.join(zeile + [str(sf)])) > verfuegbare_weite:
+                if self.pdf.get_string_width(titel + ', '.join(zeile + [unicode(sf)])) > verfuegbare_weite:
                     anzahl += 1
                     titel = ''
-                    zeile = [str(sf)]
+                    zeile = [unicode(sf)]
             anzahl += 1
         return anzahl + 1 # Leerzeile drunter
             
@@ -174,7 +177,7 @@ class Talentblatt(Heldenblatt):
             zeile = []
             titel = gruppe and gruppe + ': ' or '' 
             for sf in sonderfertigkeiten[gruppe]:
-                sf = str(sf)
+                sf = unicode(sf)
                 if self.pdf.get_string_width(titel + ', '.join(zeile + [sf])) <= self.zeilen_w:
                     zeile.append(sf)
                 else:

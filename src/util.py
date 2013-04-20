@@ -4,6 +4,7 @@ Created on 09.10.2012
 
 @author: dbuse
 '''
+from __future__ import unicode_literals
 
 def chr_inc(c, inc=1):
     """Gebe den den inc-ten Nachfolger des Buchstabens c zurück"""

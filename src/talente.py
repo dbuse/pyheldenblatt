@@ -4,10 +4,12 @@ Created on 18.07.2012
 
 @author: dom
 '''
+from __future__ import unicode_literals
+
+import codecs
 from collections import OrderedDict
 from util import chr_dec, chr_inc
 import config
-
 
 
 class BE(object):
@@ -476,7 +478,7 @@ class ZauberTalent(Talent):
         labels = ['name', 'probe', 'zd', 'kosten', 'ziel', 'schwierigkeit', 'reichweite', 'wd', 'merkmale', 'seite']
         i = -1
         zauberliste = OrderedDict()
-        for line in open(fname).readlines():
+        for line in codecs.open(fname, encoding='utf-8').readlines():
             i += 1
             row = line.split('\t')
             if len(row) != len(labels):

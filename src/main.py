@@ -4,6 +4,7 @@ Created on 16.07.2012
 
 @author: dom
 '''
+from __future__ import unicode_literals
 
 from import_xls import importXLS
 from import_xml import import_xml
@@ -22,7 +23,7 @@ if __name__ == '__main__':
     held = None
     if mode == 'python':
         # setzt die variable "held" selbst: 
-        execfile('../inhalt/helden/jarlak.py')
+        execfile('../inhalt/helden/carisolan.py')
     elif mode == 'xls':
         held = importXLS("../inhalt/helden/Fedesco_Salingor.xls")
     elif mode == 'xml':
@@ -41,5 +42,5 @@ if __name__ == '__main__':
         zauber = Zauberblatt(fpdf)
         zauber.drucke_blatt(held)
         
-    fpdf.output('../inhalt/ausgabe/Jarlak.pdf','F')
+    fpdf.output('../inhalt/ausgabe/Carisolan.pdf','F')
     print "Fertig!"
