@@ -14,7 +14,7 @@ from zauberblatt import Zauberblatt
 
     
 # Entweder python oder xls (später vielleicht auch xml)
-mode = 'xml'
+mode = 'python'
 
 if __name__ == '__main__':
     print "Start!"
