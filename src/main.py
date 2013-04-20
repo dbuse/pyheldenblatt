@@ -15,7 +15,7 @@ from zauberblatt import Zauberblatt
 
     
 # Entweder python oder xls (später vielleicht auch xml)
-mode = 'python'
+mode = 'xml'
 
 if __name__ == '__main__':
     print "Start!"
@@ -42,5 +42,5 @@ if __name__ == '__main__':
         zauber = Zauberblatt(fpdf)
         zauber.drucke_blatt(held)
         
-    fpdf.output('../inhalt/ausgabe/Carisolan.pdf','F')
+    fpdf.output('../inhalt/ausgabe/Reo.pdf','F')
     print "Fertig!"

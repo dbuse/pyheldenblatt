@@ -4,6 +4,8 @@ Created on 06.03.2013
 
 @author: dom
 '''
+from __future__ import unicode_literals
+
 import xml.etree.ElementTree as ET
 
 from talente import Talent, Talentgruppe, KampfTalent
@@ -82,7 +84,7 @@ def import_xml(dateiname):
     
     # Talente bereinigen/mappen und verarbeiten
     for item in held.findall('talentliste/'):
-        tn = str(item.attrib['name'])
+        tn = unicode(item.attrib['name'])
         val = int(item.attrib['value'])
         if tn.startswith("Sprachen kennen"):
             tn = tn.replace("Sprachen kennen ","")
@@ -100,6 +102,7 @@ def import_xml(dateiname):
             if tn in mappings['talente']:
                 tn = mappings['talente'][tn]
             t = Talent.talent_nach_name(tn)
+        
         data["Talente"][t.kategorie.name][t.name] = {'taw':val}
         if t.__class__ == KampfTalent:
             # Bei Kampftalenten noch AT und PA angeben
@@ -117,7 +120,4 @@ def import_xml(dateiname):
 if __name__ == '__main__':
     data = import_xml('../inhalt/helden/walsjef.xml')
     for key, val in data.iteritems():
-        print key, ":", val
-        
-    
-    
+        print key, ":", val 
