@@ -11,8 +11,8 @@ import codecs
 sys.path.append(os.path.abspath('../'))
 
 import config
-from import_xls import importXLS
-from import_xml import import_xml
+from importer.import_xls import importXLS
+from importer.import_xml import import_xml
 from heldenblatt import MyFPDF
 from talentblatt import Talentblatt
 from zauberblatt import Zauberblatt
