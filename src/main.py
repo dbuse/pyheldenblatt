@@ -5,6 +5,7 @@ Created on 16.07.2012
 @author: dom
 '''
 from __future__ import unicode_literals
+import codecs
 
 from import_xls import importXLS
 from import_xml import import_xml
@@ -15,15 +16,15 @@ from zauberblatt import Zauberblatt
 
     
 # Entweder python oder xls (später vielleicht auch xml)
-mode = 'xml'
+mode = 'python'
 
 if __name__ == '__main__':
     print "Start!"
     
     held = None
     if mode == 'python':
-        # setzt die variable "held" selbst: 
-        execfile('../inhalt/helden/carisolan.py')
+        with codecs.open('../inhalt/helden/jarlak.py', encoding='utf-8') as datei:
+            held = eval(datei.read())
     elif mode == 'xls':
         held = importXLS("../inhalt/helden/Fedesco_Salingor.xls")
     elif mode == 'xml':
@@ -42,5 +43,5 @@ if __name__ == '__main__':
         zauber = Zauberblatt(fpdf)
         zauber.drucke_blatt(held)
         
-    fpdf.output('../inhalt/ausgabe/Reo.pdf','F')
+    fpdf.output('../inhalt/ausgabe/Jarlak.pdf','F')
     print "Fertig!"
