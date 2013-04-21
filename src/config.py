@@ -13,6 +13,8 @@ ausgabe_pfad = os.path.join(inhalt_pfad, 'ausgabe')
 eingabe_pfad = os.path.join(inhalt_pfad, 'helden')
 cli_description = """
 Erzeugt ein PDF aus Helden-Informationen.
+"""
+cli_epilog = """
 Hinweis zur Angabe von Pfaden:
 Wird nur der reine Dateiname angegeben (z.B. "held.py"), 
 so wird im vorkonfigurierten Ein- bzw. Ausgabeverzeichnis nach der Datei gesucht.

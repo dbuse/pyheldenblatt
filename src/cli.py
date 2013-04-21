@@ -13,15 +13,20 @@ sys.path.append(os.path.abspath('../'))
 import config
 from import_xls import importXLS
 from import_xml import import_xml
+from heldenblatt import MyFPDF
+from talentblatt import Talentblatt
+from zauberblatt import Zauberblatt
+
 
 def lese_parameter():
     # Parser konfigurieren
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("datei", help="Datei in dem die Helden-Informationen angegeben sind.")
     parser.add_argument("-f","--format", choices=['ext','xml','xls','py'], default='ext',
                         help="Datei-Format von held-datei.Standard: Auswahl nach Dateiendung ('ext'-Modus)")
     parser.add_argument("-o","--output", help="Ausgabe-Datei")
     parser.description = config.cli_description
+    parser.epilog = config.cli_epilog
     args = parser.parse_args()
     
     # Quelldatei bestimmen und prüfen
@@ -52,7 +57,6 @@ def lese_parameter():
     return quell_datei, ausgabe_datei, import_modus
 
 def lade_held(quelle, import_modus):
-    #held = None
     if import_modus == 'py':
         with codecs.open(quelle, encoding='utf-8') as datei:
             held = eval(datei.read())
@@ -61,13 +65,29 @@ def lade_held(quelle, import_modus):
     elif import_modus == 'xml':
         held = import_xml(quelle)
     return held
+
+def erzeuge_pdf(held):
+    fpdf = MyFPDF(orientation='P', unit='mm', format='A4')
+    fpdf.add_font('Mason Regular', '', 'mason.py')
+    fpdf.add_font('Mason Bold', 'B', 'masonbold.py')
+
+    talente = Talentblatt(fpdf, zeilen_fontsize=8)
+    talente.drucke_blatt(held)
+        
+    if 'Zauber' in held:
+        print "### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig!"
+        print "Mehrfache Zauber (z.B. Adlerschwinge, Arcarnovi) und Hexalogien werden noch NICHT berücksichtigt! ###"
+        zauber = Zauberblatt(fpdf)
+        zauber.drucke_blatt(held)
+    return fpdf
     
 def main():
     quelle, ziel, import_modus = lese_parameter()
     print "Lade:", quelle, "Modus", import_modus
     held = lade_held(quelle, import_modus)
     print "Name", held['Name'], ziel
-    
+    fpdf = erzeuge_pdf(held)
+    fpdf.output(ziel,'F')
 
 if __name__ == "__main__":
     main()
