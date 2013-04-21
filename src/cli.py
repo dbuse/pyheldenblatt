@@ -68,8 +68,8 @@ def lade_held(quelle, import_modus):
 
 def erzeuge_pdf(held):
     fpdf = MyFPDF(orientation='P', unit='mm', format='A4')
-    fpdf.add_font('Mason Regular', '', 'mason.py')
-    fpdf.add_font('Mason Bold', 'B', 'masonbold.py')
+    fpdf.add_font('Mason Regular', '', 'mason.ttf', uni=True)
+    fpdf.add_font('Mason Bold', 'B', 'masonbold.ttf', uni=True)
 
     talente = Talentblatt(fpdf, zeilen_fontsize=8)
     talente.drucke_blatt(held)

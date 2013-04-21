@@ -2,3 +2,7 @@ syntax: glob
 inhalt/helden/*.py
 inhalt/helden/*.xml
 inhalt/helden/*.xls
+syntax: regexp
+\.pkl$
+syntax: glob
+inhalt/ausgabe/*.pdf

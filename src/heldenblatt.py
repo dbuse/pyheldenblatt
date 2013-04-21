@@ -13,9 +13,9 @@ import config
 
 class MyFPDF(FPDF):
     """Überschriebene Zwischenklasse zur Anpassung des Encoding"""
-    def cell(self, w, h, txt='',*args, **kwd):
-        """Nur überschrieben um allen Unicode handlich umwandeln zu können"""
-        FPDF.cell(self, w, h, txt.encode('latin-1'), *args, **kwd)
+#    def cell(self, w, h, txt='',*args, **kwd):
+#        """Nur überschrieben um allen Unicode handlich umwandeln zu können"""
+#        FPDF.cell(self, w, h, txt.encode('latin-1'), *args, **kwd)
         
     def get_string_width(self, s):
         """Nur überschrieben um allen Unicode handlich umwandeln zu können"""
