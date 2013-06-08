@@ -31,7 +31,7 @@ def sonderfertigkeiten_gruppen(besonderheiten):
 class Talentblatt(Heldenblatt):
     """Druckklasse für den Talentbogen"""
     
-    hintergrund = ('../inhalt/bilder/talentblatt.png',0,0,210,297)
+    hintergrund = ('../inhalt/bilder/talentblatt.jpg',0,0,210,297)
     
     def _set_config(self, **kwd):
         # Konstante Abstände und Längen

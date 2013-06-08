@@ -23,7 +23,7 @@ class Zauberblatt(Heldenblatt):
     orientation = "l"
     """Zauberblatt im Querformat drucken"""
     
-    hintergrund = ('../inhalt/bilder/zauberblatt.png',0,0,297,210)
+    hintergrund = ('../inhalt/bilder/zauberblatt.jpg',0,0,297,210)
     
     def _set_config(self, **kwd):
         
