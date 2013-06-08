@@ -49,7 +49,7 @@ mappings['talente'] = {
 def import_xml(dateiname):
     tree = ET.parse(dateiname)
     root = tree.getroot()
-    held = held = root.getchildren()[0]
+    held = root.getchildren()[0]
     
     data = {}
     data['Name'] = held.attrib['name']

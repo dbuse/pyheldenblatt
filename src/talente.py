@@ -498,6 +498,8 @@ class ZauberTalent(Talent):
         return cls.zauberliste
     
     def berechner_lernparameter(self, merkmale, **kwd):
+        print "KWD:", kwd
+        
         spalte = self.schwierigkeit
         lernmods = ""     
         if 'hauszauber' in kwd and kwd['hauszauber']:
