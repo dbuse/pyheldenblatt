@@ -74,9 +74,9 @@ class Zauberblatt(Heldenblatt):
             'KK': dict(weite=self.kopfleiste_attribut_w, heldenfeld='KK', abteil='Attribute'),
             'MR': dict(weite=self.kopfleiste_attribut_w, heldenfeld='MR', abteil='Basiswerte'),
             # Dritte Zeile
-            'Repräsentationen': dict(weite=80, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
-            'Merkmale': dict(weite=80, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
+            'Repräsentationen': dict(weite=60, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
             'Begabungen': dict(weite=80, heldenfeld='Begabungen', abteil='Magische Sonderfertigkeiten'),
+            'Merkmale': dict(weite=100, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
         }
         
         self.zeilentitelfelder = {
@@ -150,7 +150,7 @@ class Zauberblatt(Heldenblatt):
         zeilen = (
             ['Name', 'Rasse', 'Profession'],
             config.attribute[0:8] + ['MR'],
-            ['Repräsentationen', 'Merkmale', 'Begabungen'],
+            ['Repräsentationen', 'Begabungen', 'Merkmale'],
         )
         
         for felder in zeilen:
@@ -164,7 +164,8 @@ class Zauberblatt(Heldenblatt):
                     text = held[template['heldenfeld']]
                 if isinstance(text, (list, tuple)):
                     text = ', '.join(text)
-                self.pdf.cell(template['weite'], self.kopfleiste_h, "%s: %s" % (feld, text))
+                if text:
+                    self.pdf.cell(template['weite'], self.kopfleiste_h, "%s: %s" % (feld, text))
         self.pdf.ln(15)
         return
     
