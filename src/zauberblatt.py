@@ -198,4 +198,6 @@ class Zauberblatt(Heldenblatt):
                                              begabungen=held['Magische Sonderfertigkeiten'].get('Begabungen',[]),
                                              **zauberliste[zauber])
                 self.drucke_zeile(d)
+        for _ in xrange(self.zauber_pro_seite - len(zauberliste)):
+            self.drucke_zeile(zeilenfelder=d, leerzeile=True)
         return
