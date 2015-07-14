@@ -4,7 +4,7 @@ Created on 06.09.2012
 
 @author: dbuse
 '''
-from __future__ import unicode_literals
+from __future__ import unicode_literals, print_function
 
 # Nutzbarer Bereich:
 # Kopf: 265 * 22,5
@@ -199,6 +199,9 @@ class Zauberblatt(Heldenblatt):
                                              begabungen=held['Magische Sonderfertigkeiten'].get('Begabungen',[]),
                                              **zauberliste[zauber])
                 self.drucke_zeile(d)
+        for zauber in zauberliste:
+            if zauber not in alle:
+                print("Warnung: Unbekannter Zauber:", zauber)
         for _ in xrange(self.zauber_pro_seite - len(zauberliste)):
             self.drucke_zeile(zeilenfelder=d, leerzeile=True)
         return
