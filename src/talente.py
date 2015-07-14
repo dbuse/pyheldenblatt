@@ -497,14 +497,17 @@ class ZauberTalent(Talent):
             cls.zauberliste = liste
         return cls.zauberliste
     
-    def berechner_lernparameter(self, merkmale, **kwd):
-        print "KWD:", kwd
+    def berechner_lernparameter(self, merkmale=None, begabungen=None, **kwd):
+        merkmale = merkmale if merkmale is not None else []
+        begabungen = begabungen if begabungen is not None else []
+        # print "KWD:", kwd
         
         spalte = self.schwierigkeit
-        lernmods = ""     
+        lernmods = ""
         if 'hauszauber' in kwd and kwd['hauszauber']:
             lernmods += 'H'
             spalte = chr_dec(spalte)
+        # Einzelne Begabungen/Unfähigkeiten
         if 'begabt' in kwd and kwd['begabt']:
             lernmods += 'B'
             spalte = chr_dec(spalte)
@@ -512,13 +515,26 @@ class ZauberTalent(Talent):
             lernmods += 'U'
             spalte = chr_inc(spalte)
         for merkmal in self.merkmal_liste:
+            # Merkmalskenntnisse
             if merkmal in merkmale:
                 spalte = chr_dec(spalte)
+                lernmods += 'M'
+            if merkmal in config.gegenelemente and 'Elementar' in merkmale:
+                spalte = chr_dec(spalte)
+                lernmods += 'M'
             if merkmal in config.gegenelemente and config.gegenelemente[merkmal] in merkmale:
                 spalte = chr_inc(spalte)
+                lernmods += 'M'
+            # Merkmalsbegabungen
+            if merkmal in begabungen:
+                spalte = chr_dec(spalte)
+                lernmods += 'b'
+            if merkmal in config.gegenelemente and 'Elementar' in begabungen:
+                spalte = chr_dec(spalte)
+                lernmods += 'b'
         return spalte, lernmods
         
-    def get_print_dict(self, taw, merkmale, *arg, **kwd):
+    def get_print_dict(self, taw, merkmale=None, begabungen=None, *arg, **kwd):
         d = Talent.get_print_dict(self, taw)
         d['zd'] = self.zd
         d['kosten'] = self.kosten
@@ -529,6 +545,6 @@ class ZauberTalent(Talent):
         d['merkmale'] = self.merkmale
         d['seite'] = self.seite
         # TODO: Berechnung noch nicht vollständig! Hexalogien und mehrfache Zauber fehlen noch!
-        d['lernen'], d['lernmods'] = self.berechner_lernparameter(merkmale, **kwd) 
+        d['lernen'], d['lernmods'] = self.berechner_lernparameter(merkmale, begabungen,**kwd) 
         return d
         

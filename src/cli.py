@@ -76,7 +76,7 @@ def erzeuge_pdf(held):
         
     if 'Zauber' in held:
         print "### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig!"
-        print "Mehrfache Zauber (z.B. Adlerschwinge, Arcarnovi) und Hexalogien werden noch NICHT berücksichtigt! ###"
+        print "Mehrfache Zauber Merkmals-Unfähigkeiten und Hexalogien werden noch NICHT berücksichtigt! ###"
         zauber = Zauberblatt(fpdf)
         zauber.drucke_blatt(held)
     return fpdf

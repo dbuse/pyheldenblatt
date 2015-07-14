@@ -74,8 +74,9 @@ class Zauberblatt(Heldenblatt):
             'KK': dict(weite=self.kopfleiste_attribut_w, heldenfeld='KK', abteil='Attribute'),
             'MR': dict(weite=self.kopfleiste_attribut_w, heldenfeld='MR', abteil='Basiswerte'),
             # Dritte Zeile
-            'Merkmale': dict(weite=120, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
-            'Repräsentationen': dict(weite=120, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
+            'Repräsentationen': dict(weite=80, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
+            'Merkmale': dict(weite=80, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
+            'Begabungen': dict(weite=80, heldenfeld='Begabungen', abteil='Magische Sonderfertigkeiten'),
         }
         
         self.zeilentitelfelder = {
@@ -88,8 +89,8 @@ class Zauberblatt(Heldenblatt):
             'ziel': dict(titel='ziel', weite=self.zeilen_fontsize * 2, style='B', align='C', linie=True),
             'wd': dict(titel='wd', weite=self.zeilen_fontsize * 3, style='B', align='C', linie=True),
             'schwierigkeit': dict(titel='schwierigkeit', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
-            'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4, style='B', align='C', linie=True),
-            'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
+            'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4 - self.zeilen_taw_w, style='B', align='C', linie=True),
+            'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w * 2, style='B', align='C', linie=True),
             'lernen': dict(titel='lernen', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
             'seite': dict(titel='seite', weite=self.zeilen_fontsize * 1.5, style='B', align='C'),
                                          
@@ -110,8 +111,8 @@ class Zauberblatt(Heldenblatt):
             'ziel': dict(titel='ziel', weite=self.zeilen_fontsize * 2, style='', linie=True),
             'wd': dict(titel='wd', weite=self.zeilen_fontsize * 3, style='', linie=True),
             'schwierigkeit': dict(titel='schwierigkeit', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
-            'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4, style='I', linie=True),
-            'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
+            'merkmale': dict(titel='merkmale', weite=self.zeilen_fontsize * 4 - self.zeilen_taw_w, style='I', linie=True),
+            'lernmods': dict(titel='lernmods', weite=self.zeilen_taw_w * 2, style='B', align='C', linie=True),
             'lernen': dict(titel='lernen', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
             'seite': dict(titel='seite', weite=self.zeilen_fontsize * 1.5, style='I', align='C'),
         }
@@ -149,7 +150,7 @@ class Zauberblatt(Heldenblatt):
         zeilen = (
             ['Name', 'Rasse', 'Profession'],
             config.attribute[0:8] + ['MR'],
-            ['Merkmale', 'Repräsentationen'],
+            ['Repräsentationen', 'Merkmale', 'Begabungen'],
         )
         
         for felder in zeilen:
@@ -158,7 +159,7 @@ class Zauberblatt(Heldenblatt):
                 #print feld
                 template = self.kopfleistenfelder[feld]
                 if template['abteil']:
-                    text = held[template['abteil']][template['heldenfeld']]
+                    text = held[template['abteil']].get(template['heldenfeld'], '')
                 else: 
                     text = held[template['heldenfeld']]
                 if isinstance(text, (list, tuple)):
@@ -193,6 +194,8 @@ class Zauberblatt(Heldenblatt):
         alle = ZauberTalent.alle()
         for zauber, zauberobj in alle.iteritems():
             if zauber in zauberliste:
-                d = zauberobj.get_print_dict(merkmale=held['Magische Sonderfertigkeiten']['Merkmale'], **zauberliste[zauber])
+                d = zauberobj.get_print_dict(merkmale=held['Magische Sonderfertigkeiten'].get('Merkmale',[]),
+                                             begabungen=held['Magische Sonderfertigkeiten'].get('Begabungen',[]),
+                                             **zauberliste[zauber])
                 self.drucke_zeile(d)
         return
