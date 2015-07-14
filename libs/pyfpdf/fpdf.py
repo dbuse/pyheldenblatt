@@ -25,7 +25,7 @@ except ImportError:
 
 try:
     # Check if PIL is available, necessary for JPEG support.
-    import Image
+    import PIL.Image as Image
 except ImportError:
     Image = None
 
