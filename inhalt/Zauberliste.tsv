@@ -95,7 +95,7 @@ Herzschlag ruhe!	MU·CH·KK	20 Akt	W20 je 10 KR	P	D	B	variabel (A)	Blak	111
 Hexenblick	IN·IN·CH	4 Akt	je 1	P	B	3 Schritt	4 Akt	Vers	112
 Hexengalle	MU·IN·CH	2 Akt	speziell	P(f)	C	s	augenblicklich	Scha	113
 Hexenholz	KL·FF·KK	1 SR	5 je SR	O	B	7 Schritt	variabel (A)	Tele	114
-Hexenknoten	KL·IN·CH	10 Akt	4 	Z	C	speziell	ZfP* /2 SR	Einf,Illu	115
+Hexenknoten	KL·IN·CH	10 Akt	4	Z	C	speziell	ZfP* /2 SR	Einf,Illu	115
 Hexenkrallen	MU·IN·KO	3 Akt	3 + 1 je SR	P(f)	C	s	max ZfP* /2 SR	Eign,Form	116
 Hexenspeichel	IN·CH·FF	20 Akt	speziell	P(f)	C	B	augenblicklich	Heil	117
 Hilfreiche Tatze	MU·IN·CH	20 Akt	3 + GW	Z	D	ZfP* x100 Schritt	ZfP* SR	Einf,Vers	118
@@ -117,9 +117,9 @@ Iribaars Hand	MU·MU·IN	4 Akt	W20	P	D	B	ZfP* KR	Amaz,Einf,Dämo	134
 Juckreiz	MU·IN·CH	4 Akt	7	Z,P	B	ZfW Schritt	ZfP* /2 SR	Einf	135
 Karnifilo	MU·IN·CH	3 Akt	11	P	C	B	ZfP* x5 KR	Einf,Eign	136
 Katzenaugen	KL·FF·KO	10 Akt	1 je 3 SR	P(f)	C	s	variabel (A)	Eign	137
-Klarum Purub	KL·KL·CH	7 Akt	speziell	W(f)	D	s,B	augenblicklich	Form,Heil	138
+Klarum Purum	KL·KL·CH	7 Akt	speziell	W(f)	D	s,B	augenblicklich	Form,Heil	138
 Klickeradomms	KL·FF·KK	1 Akt	3	O	A	ZfW Schritt	augenblicklich	Tele	139
-Kobolsvision	MU·CH·CH	10 	10	P(f)	D	s	ZfP* /2 SR	Herr	140
+Kobolsvision	MU·CH·CH	10	10	P(f)	D	s	ZfP* /2 SR	Herr	140
 Komm Kobold	IN·CH·CH	7 Akt	11	W	C	1 Meile	variabel	Herb	142
 Körperlose Reise	MU·KL·IN	6 SR	5 je SR	P(f)	E	s	variabel (A)	Limb,Vers	143
 Krabbelnder Schreckern	MU·MU·CH	20 Akt	15	W	C	7 Schritt	ZfP* KR	Herb,Mish	144
