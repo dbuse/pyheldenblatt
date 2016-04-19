@@ -33,12 +33,7 @@ class Zauberblatt(Heldenblatt):
         self.zeilen_w = 273
         # Für andere Werte als 0 Verschiebt sich hier noch die Titelzeile!
         self.zeilen_seitenabstand = 0
-        
-        # Schriftgrößen als Variablen
-        self.zeilen_fontsize = 8
-        self.kopfleiste_fontsize = 14
-        self.multiplikator_h = 0.6
-        
+
         # Eigenschaften der Talentzeilen
         self.zeilen_se_w = self.zeilen_fontsize * 0.5
         self.zeilen_probe_w = self.zeilen_fontsize * 2
@@ -74,9 +69,10 @@ class Zauberblatt(Heldenblatt):
             'KK': dict(weite=self.kopfleiste_attribut_w, heldenfeld='KK', abteil='Attribute'),
             'MR': dict(weite=self.kopfleiste_attribut_w, heldenfeld='MR', abteil='Basiswerte'),
             # Dritte Zeile
-            'Repräsentationen': dict(weite=60, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
-            'Begabungen': dict(weite=80, heldenfeld='Begabungen', abteil='Magische Sonderfertigkeiten'),
-            'Merkmale': dict(weite=100, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
+            'Repräsentationen': dict(weite=50, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
+            'Begabungen': dict(weite=95, heldenfeld='Begabungen', abteil='Magische Sonderfertigkeiten'),
+            'Merkmale': dict(weite=80, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
+            'Unfähigkeiten': dict(weite=60, heldenfeld='Unfähigkeiten', abteil='Magische Sonderfertigkeiten'),
         }
         
         self.zeilentitelfelder = {
@@ -150,7 +146,7 @@ class Zauberblatt(Heldenblatt):
         zeilen = (
             ['Name', 'Rasse', 'Profession'],
             config.attribute[0:8] + ['MR'],
-            ['Repräsentationen', 'Begabungen', 'Merkmale'],
+            ['Repräsentationen', 'Begabungen', 'Merkmale', 'Unfähigkeiten'],
         )
         
         for felder in zeilen:
