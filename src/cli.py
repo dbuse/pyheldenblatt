@@ -14,6 +14,7 @@ import config
 from importer.import_xls import importXLS
 from importer.import_xml import import_xml
 from heldenblatt import MyFPDF
+from hauptblatt import Hauptblatt
 from talentblatt import Talentblatt
 from zauberblatt import Zauberblatt
 
@@ -71,13 +72,16 @@ def erzeuge_pdf(held):
     fpdf.add_font('Mason Regular', '', 'mason.ttf', uni=True)
     fpdf.add_font('Mason Bold', 'B', 'masonbold.ttf', uni=True)
 
-    talente = Talentblatt(fpdf, zeilen_fontsize=8)
+    uebersicht = Hauptblatt(fpdf)
+    uebersicht.drucke_blatt(held)
+
+    talente = Talentblatt(fpdf, zeilen_fontsize=8, kopfleisten_fonsize=14)
     talente.drucke_blatt(held)
         
     if 'Zauber' in held:
         print "### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig!"
         print "Mehrfache Zauber Merkmals-Unfähigkeiten und Hexalogien werden noch NICHT berücksichtigt! ###"
-        zauber = Zauberblatt(fpdf)
+        zauber = Zauberblatt(fpdf, zeilen_fontsize=6.5, kopfleisten_fonsize=12)
         zauber.drucke_blatt(held)
     return fpdf
     
