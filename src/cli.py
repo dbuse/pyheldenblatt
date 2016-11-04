@@ -23,13 +23,13 @@ def lese_parameter():
     # Parser konfigurieren
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("datei", help="Datei in dem die Helden-Informationen angegeben sind.")
-    parser.add_argument("-f","--format", choices=['ext','xml','xls','py'], default='ext',
+    parser.add_argument("-f", "--format", choices=['ext', 'xml', 'xls', 'py'], default='ext',
                         help="Datei-Format von held-datei.Standard: Auswahl nach Dateiendung ('ext'-Modus)")
-    parser.add_argument("-o","--output", help="Ausgabe-Datei")
+    parser.add_argument("-o", "--output", help="Ausgabe-Datei")
     parser.description = config.cli_description
     parser.epilog = config.cli_epilog
     args = parser.parse_args()
-    
+
     # Quelldatei bestimmen und prüfen
     if args.datei == os.path.basename(args.datei):
         # Es befindet sich kein Verzeichnis oder ./ am Anfang -> in Inhalt-Verzeichnis verschieben
@@ -51,11 +51,12 @@ def lese_parameter():
     # Import-Modus bestimmen
     if args.format == 'ext':
         import_modus = os.path.splitext(quell_datei)[1][1:]
-        if import_modus not in ['ext','xml','xls','py']:
+        if import_modus not in ['ext', 'xml', 'xls', 'py']:
             sys.exit("Kein Import-Modus für Dateityp '%s' erkannt. Versuch es mal mit -f/--format" % import_modus)
     else:
         import_modus = args.format
     return quell_datei, ausgabe_datei, import_modus
+
 
 def lade_held(quelle, import_modus):
     if import_modus == 'py':
@@ -67,6 +68,7 @@ def lade_held(quelle, import_modus):
         held = import_xml(quelle)
     return held
 
+
 def erzeuge_pdf(held):
     fpdf = MyFPDF(orientation='P', unit='mm', format='A4')
     fpdf.add_font('Mason Regular', '', 'mason.ttf', uni=True)
@@ -77,21 +79,22 @@ def erzeuge_pdf(held):
 
     talente = Talentblatt(fpdf, zeilen_fontsize=8, kopfleisten_fonsize=14)
     talente.drucke_blatt(held)
-        
+
     if 'Zauber' in held:
         print "### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig!"
         print "Mehrfache Zauber Merkmals-Unfähigkeiten und Hexalogien werden noch NICHT berücksichtigt! ###"
         zauber = Zauberblatt(fpdf, zeilen_fontsize=6.5, kopfleisten_fonsize=12)
         zauber.drucke_blatt(held)
     return fpdf
-    
+
+
 def main():
     quelle, ziel, import_modus = lese_parameter()
     print "Lade:", quelle, "Modus", import_modus
     held = lade_held(quelle, import_modus)
     print "Name", held['Name'], ziel
     fpdf = erzeuge_pdf(held)
-    fpdf.output(ziel,'F')
+    fpdf.output(ziel, 'F')
 
 if __name__ == "__main__":
     main()
