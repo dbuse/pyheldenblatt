@@ -1,5 +1,14 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
+"""
+TODOs:
+- Schriftgröße via Parameter angeben
+- Mehrere Talentblatt-Seiten bei zu vielen Talenten
+- Berechnung der Leerzeilen berichtigen
+    -> manchmal fehlt am Ende eine
+    -> Bei sehr kleinen Schriftarten kommt es zu Aufhängern
+"""
+
 
 from __future__ import unicode_literals, print_function
 
