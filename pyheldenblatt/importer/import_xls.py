@@ -6,10 +6,10 @@ Created on 03.08.2012
 @author: joti
 '''
 
-import config
+from pyheldenblatt import config
 import libs.xlrd as xlrd
-from talente import Talent
-from held import Held
+from pyheldenblatt.talente import Talent
+from pyheldenblatt.held import Held
 
 
 def importXLS(path):

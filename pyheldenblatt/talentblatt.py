@@ -31,7 +31,7 @@ def sonderfertigkeiten_gruppen(besonderheiten):
 class Talentblatt(Heldenblatt):
     """Druckklasse für den Talentbogen"""
 
-    hintergrund = ('../inhalt/bilder/talentblatt.jpg', 0, 0, 210, 297)
+    hintergrund = ('data/img/talentblatt.jpg', 0, 0, 210, 297)
 
     def _set_config(self, **kwd):
         # Konstante Abstände und Längen
@@ -73,7 +73,7 @@ class Talentblatt(Heldenblatt):
             # Mit dynamischer Breite (Inline-Felder)
             'name': dict(titel='name', fontsize=self.zeilentitel_fontsize_haupt, style='B', align='L',
                          font=config.TITEL_FONT),
-            'schwierigkeit': dict(titel='schwierigkeit', fontsize=self.zeilentitel_fontsize_neben, style='I'
+            'schwierigkeit': dict(titel='schwierigkeit', fontsize=self.zeilentitel_fontsize_neben, style='I',
                                   align='L', font=config.FONT),
         }
         self.zeilenfelder = {
@@ -201,7 +201,7 @@ class Talentblatt(Heldenblatt):
             self.pdf.ln(self.zeilen_h)
         # Leerzeile
         self.pdf.ln(self.zeilen_h)
-        self.pdf.image('../inhalt/bilder/line-01.png', self.pdf.get_x(), self.pdf.get_y(), self.zeilen_w + 0.5, 1)
+        self.pdf.image('data/img/line-01.png', self.pdf.get_x(), self.pdf.get_y(), self.zeilen_w + 0.5, 1)
         return
 
     def drucke_talentblock(self, titel, zeilen, leerzeilen=0):

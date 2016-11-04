@@ -8,15 +8,13 @@ import os
 import sys
 import codecs
 
-sys.path.append(os.path.abspath('../'))
-
-import config
-from importer.import_xls import importXLS
-from importer.import_xml import import_xml
-from heldenblatt import MyFPDF
-from hauptblatt import Hauptblatt
-from talentblatt import Talentblatt
-from zauberblatt import Zauberblatt
+from pyheldenblatt import config
+from pyheldenblatt.importer.import_xls import importXLS
+from pyheldenblatt.importer.import_xml import import_xml
+from pyheldenblatt.heldenblatt import MyFPDF
+from pyheldenblatt.hauptblatt import Hauptblatt
+from pyheldenblatt.talentblatt import Talentblatt
+from pyheldenblatt.zauberblatt import Zauberblatt
 
 
 def lese_parameter():
@@ -31,22 +29,15 @@ def lese_parameter():
     args = parser.parse_args()
 
     # Quelldatei bestimmen und prüfen
-    if args.datei == os.path.basename(args.datei):
-        # Es befindet sich kein Verzeichnis oder ./ am Anfang -> in Inhalt-Verzeichnis verschieben
-        quell_datei = os.path.join(config.eingabe_pfad, args.datei)
-    else:
-        quell_datei = args.datei
+    quell_datei = args.datei
     if not os.path.isfile(quell_datei):
         sys.exit("Quell-Datei '%s' nicht gefunden, Abbruch!" % quell_datei)
 
     # Ausgabe-Datei bestimmen
     if not args.output:
-        ausgabe_datei = os.path.splitext(args.datei)[0] + ".pdf"
+        ausgabe_datei = os.path.splitext(quell_datei)[0] + ".pdf"
     else:
         ausgabe_datei = args.output
-    if ausgabe_datei == os.path.basename(ausgabe_datei):
-        # Es befindet sich kein Verzeichnis oder ./ am Anfang -> in Inhalt-Verzeichnis verschieben
-        ausgabe_datei = os.path.join(config.ausgabe_pfad, ausgabe_datei)
 
     # Import-Modus bestimmen
     if args.format == 'ext':

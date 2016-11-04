@@ -8,18 +8,12 @@ from __future__ import unicode_literals
 import os.path
 
 # Programm-Spezifisch
-inhalt_pfad = '../inhalt'
-ausgabe_pfad = os.path.join(inhalt_pfad, 'ausgabe')
-eingabe_pfad = os.path.join(inhalt_pfad, 'helden')
+ausgabe_pfad = 'ausgabe'
 cli_description = """
 Erzeugt ein PDF aus Helden-Informationen.
 """
 cli_epilog = """
-Hinweis zur Angabe von Pfaden:
-Wird nur der reine Dateiname angegeben (z.B. "held.py"),
-so wird im vorkonfigurierten Ein- bzw. Ausgabeverzeichnis nach der Datei gesucht.
-Wenn tatsächlich der aktuelle Pfad durchsucht werden soll,
-muss ein ./ vorangestellt werden (z.B. "./held.py").
+Ist der Schalter -o nicht gesetzt, wird das pdf neben der Eingabedatei abgelegt
 """
 
 # DSA-Spezifisch

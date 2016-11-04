@@ -475,7 +475,7 @@ class ZauberTalent(Talent):
         self.sonderform = sonderform
 
     @staticmethod
-    def import_zauber(fname='../inhalt/Zauberliste.tsv'):
+    def import_zauber(fname='data/Zauberliste.tsv'):
         labels = ['name', 'probe', 'zd', 'kosten', 'ziel', 'schwierigkeit', 'reichweite', 'wd', 'merkmale', 'seite']
         i = -1
         zauberliste = OrderedDict()
@@ -489,7 +489,7 @@ class ZauberTalent(Talent):
         return zauberliste
 
     @classmethod
-    def alle(cls, fname='../inhalt/Zauberliste.tsv'):
+    def alle(cls, fname='data/Zauberliste.tsv'):
         if not cls.zauberliste:
             roh_liste = cls.import_zauber(fname)
             liste = OrderedDict()

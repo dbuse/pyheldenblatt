@@ -13,7 +13,7 @@ import config
 
 class Hauptblatt(Heldenblatt):
 
-    hintergrund = ('../inhalt/bilder/hauptblatt.jpg', 0, 0, 210, 297)
+    hintergrund = ('data/img/hauptblatt.jpg', 0, 0, 210, 297)
 
     def _set_config(self, **kwd):
         return

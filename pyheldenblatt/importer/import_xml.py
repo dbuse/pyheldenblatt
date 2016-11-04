@@ -8,7 +8,7 @@ from __future__ import unicode_literals
 
 import xml.etree.ElementTree as ET
 
-from talente import Talent, Talentgruppe, KampfTalent
+from pyheldenblatt.talente import Talent, Talentgruppe, KampfTalent
 
 mappings = {}
 mappings['eigenschaften'] = {
@@ -122,8 +122,3 @@ def import_xml(dateiname):
 
     # Fertig
     return data
-
-if __name__ == '__main__':
-    data = import_xml('../inhalt/helden/walsjef.xml')
-    for key, val in data.iteritems():
-        print key, ":", val
