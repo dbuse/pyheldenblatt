@@ -1,7 +1,7 @@
 #!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals
+from __future__ import unicode_literals, print_function
 
 import argparse
 import os
@@ -72,8 +72,8 @@ def erzeuge_pdf(held):
     talente.drucke_blatt(held)
 
     if 'Zauber' in held:
-        print "### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig!"
-        print "Mehrfache Zauber Merkmals-Unfähigkeiten und Hexalogien werden noch NICHT berücksichtigt! ###"
+        print("### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig!")
+        print("Mehrfache Zauber Merkmals-Unfähigkeiten und Hexalogien werden noch NICHT berücksichtigt! ###")
         zauber = Zauberblatt(fpdf, zeilen_fontsize=6.5, kopfleisten_fonsize=12)
         zauber.drucke_blatt(held)
     return fpdf
@@ -81,9 +81,9 @@ def erzeuge_pdf(held):
 
 def main():
     quelle, ziel, import_modus = lese_parameter()
-    print "Lade:", quelle, "Modus", import_modus
+    print("Lade:", quelle, "Modus", import_modus)
     held = lade_held(quelle, import_modus)
-    print "Name", held['Name'], ziel
+    print("Name", held['Name'], ziel)
     fpdf = erzeuge_pdf(held)
     fpdf.output(ziel, 'F')
 

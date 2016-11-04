@@ -5,7 +5,6 @@ Created on 06.08.2012
 @author: joti
 '''
 from __future__ import unicode_literals
-import os.path
 
 # Programm-Spezifisch
 ausgabe_pfad = 'ausgabe'

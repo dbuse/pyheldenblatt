@@ -72,7 +72,8 @@ def import_xml(dateiname):
     data['Sonderfertigkeiten']['Kulturkunde'] = [kultur.attrib['name']
                                                  for kultur in held.findall('sf/*[@name="Kulturkunde"]/kultur')]
     data['Sonderfertigkeiten']['Geländekunde'] = [sf.attrib['name'].replace('kundig', '')
-                                                   for sf in held.findall('sf/') if sf.attrib['name'].endswith('kundig')]
+                                                   for sf in held.findall('sf/')
+                                                   if sf.attrib['name'].endswith('kundig')]
     data['Sonderfertigkeiten']['Ortskenntnis'] = [sf.attrib['name']
                                                   for sf in held.findall('sf/*[@name="Ortskenntnis"]/')]
     data['Sonderfertigkeiten']['Spezialisierungen'] = [sf.attrib['name'].replace("Talentspezialisierung ", "")
