@@ -5,10 +5,10 @@ Created on 15.04.2016
 @author: dbuse
 '''
 
-from __future__ import unicode_literals, print_function
+from __future__ import unicode_literals, print_function, absolute_import
 
-from heldenblatt import Heldenblatt
-import config
+from .heldenblatt import Heldenblatt
+from . import config
 
 
 class Hauptblatt(Heldenblatt):

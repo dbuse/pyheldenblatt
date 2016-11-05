@@ -4,7 +4,7 @@ Created on 09.10.2012
 
 @author: dbuse
 '''
-from __future__ import unicode_literals
+from __future__ import unicode_literals, print_function, absolute_import
 
 
 def chr_inc(c, inc=1):

@@ -4,12 +4,13 @@ Created on 18.07.2012
 
 @author: dom
 '''
-from __future__ import unicode_literals
+from __future__ import unicode_literals, print_function, absolute_import
 
 import codecs
 from collections import OrderedDict
-from util import chr_dec, chr_inc
-import config
+
+from .util import chr_dec, chr_inc
+from . import config
 
 
 class BE(object):
@@ -483,7 +484,7 @@ class ZauberTalent(Talent):
             i += 1
             row = line.split('\t')
             if len(row) != len(labels):
-                print "Feldanzahlfehler bei nr %d. '%s' len: %d" % (i, row[0], len(row))
+                print("Feldanzahlfehler bei nr %d. '%s' len: %d" % (i, row[0], len(row)))
                 continue
             zauberliste[row[0]] = dict([(labels[x], row[x].replace("\n", "")) for x in range(len(labels))])
         return zauberliste

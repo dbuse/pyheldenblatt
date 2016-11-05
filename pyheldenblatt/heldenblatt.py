@@ -4,11 +4,12 @@ Created on 06.09.2012
 
 @author: dbuse
 '''
-from __future__ import unicode_literals
+from __future__ import unicode_literals, print_function, absolute_import
 
 from collections import OrderedDict
 from libs.pyfpdf import FPDF
-import config
+
+from . import config
 
 
 class MyFPDF(FPDF):

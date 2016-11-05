@@ -4,7 +4,8 @@ Created on 06.08.2012
 
 @author: joti
 '''
-from __future__ import unicode_literals
+from __future__ import unicode_literals, print_function, absolute_import
+
 
 # Programm-Spezifisch
 ausgabe_pfad = 'ausgabe'

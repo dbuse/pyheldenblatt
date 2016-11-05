@@ -4,13 +4,14 @@ Created on 04.08.2012
 
 @author: dom
 '''
-from __future__ import unicode_literals
+from __future__ import unicode_literals, print_function, absolute_import
 
 
 import math
-from talente import Talentgruppe
-from heldenblatt import Heldenblatt, ZeilenFeld
-import config
+
+from .talente import Talentgruppe
+from .heldenblatt import Heldenblatt, ZeilenFeld
+from . import config
 
 
 # Nutzbare Fläche ist 250mm * 92,5mm (Je Spalte)

@@ -4,16 +4,17 @@ Created on 06.09.2012
 
 @author: dbuse
 '''
-from __future__ import unicode_literals, print_function
+from __future__ import unicode_literals, print_function, absolute_import
 
 # Nutzbarer Bereich:
 # Kopf: 265 * 22,5
 
-from collections import OrderedDict
-from heldenblatt import Heldenblatt
-import config
-from talente import ZauberTalent
 import math
+from collections import OrderedDict
+
+from .heldenblatt import Heldenblatt
+from .talente import ZauberTalent
+from . import config
 
 
 class Zauberblatt(Heldenblatt):
