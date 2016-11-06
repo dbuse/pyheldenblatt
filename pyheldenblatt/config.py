@@ -44,3 +44,5 @@ gegenelemente = {
 # PDF-Spezifisch
 FONT = 'Times'
 TITEL_FONT = 'Mason Bold'
+LEERER_TEXT = 'Unbekannt'
+LEERE_ZAHL = 'XX'

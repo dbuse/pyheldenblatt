@@ -59,6 +59,7 @@ def import_xml(dateiname):
     data['Profession'] = held.find("./basis/ausbildungen/ausbildung/[@art='Hauptprofession']").attrib['string']
     data['Attribute'] = dict([(tgt, int(held.find("./eigenschaften/eigenschaft[@name='%s']" % key).attrib['value']))
                               for key, tgt in mappings['eigenschaften'].iteritems()])
+    # TODO: Aussehen importieren (Geschlecht, Alter, etc.)
     # Wird im XML nicht gesetzt!
     data['Attribute']['BE'] = 0
 
