@@ -17,7 +17,7 @@ def chr_inc(c, inc=1):
 
 def chr_dec(c, dec=1):
     """Gebe den den dec-ten Vorgänger des Buchstabens c zurück"""
-    if ord(c) - dec < 65:
+    if (c == 'A+' and dec > 0) or ord(c) - dec < 65:
         return "A+"
     else:
         return chr(ord(c) - dec)
