@@ -7,20 +7,8 @@ Created on 06.09.2012
 from __future__ import unicode_literals, print_function, absolute_import
 
 from collections import OrderedDict
-from libs.pyfpdf import FPDF
 
 from . import config
-
-
-class MyFPDF(FPDF):
-    """Überschriebene Zwischenklasse zur Anpassung des Encoding"""
-#    def cell(self, w, h, txt='',*args, **kwd):
-#        """Nur überschrieben um allen Unicode handlich umwandeln zu können"""
-#        FPDF.cell(self, w, h, txt.encode('latin-1'), *args, **kwd)
-
-    def get_string_width(self, s):
-        """Nur überschrieben um allen Unicode handlich umwandeln zu können"""
-        return FPDF.get_string_width(self, s.encode('latin-1'))
 
 
 class ZeilenFeld(object):
