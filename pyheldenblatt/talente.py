@@ -9,7 +9,6 @@ from __future__ import unicode_literals, print_function, absolute_import
 import codecs
 from collections import OrderedDict
 
-from .util import chr_dec, chr_inc
 from . import config
 
 
@@ -504,40 +503,47 @@ class ZauberTalent(Talent):
         begabungen = begabungen if begabungen is not None else []
         unfaehigkeiten = unfaehigkeiten if unfaehigkeiten is not None else []
 
-        spalte = self.schwierigkeit
-        lernmods = ""
+        spalten_wert = config.lernspalten.index(self.schwierigkeit)
+        lernmods = []
+
         if 'hauszauber' in kwd and kwd['hauszauber']:
-            lernmods += 'H'
-            spalte = chr_dec(spalte)
+            lernmods.append('H')
+            spalten_wert -= 1
         # Einzelne Begabungen/Unfähigkeiten
         if 'begabt' in kwd and kwd['begabt']:
-            lernmods += 'B'
-            spalte = chr_dec(spalte)
+            lernmods.append('B')
+            spalten_wert -= 1
         elif 'unfähig' in kwd and kwd['unfähig']:
-            lernmods += 'U'
-            spalte = chr_inc(spalte)
+            lernmods.append('U')
+            spalten_wert += 1
         for merkmal in self.merkmal_liste:
             # Merkmalskenntnisse
             if merkmal in merkmale:
-                spalte = chr_dec(spalte)
-                lernmods += 'M'
+                lernmods.append('m')
+                spalten_wert -= 1
             if merkmal in config.gegenelemente and 'Elementar' in merkmale:
-                spalte = chr_dec(spalte)
-                lernmods += 'M'
+                lernmods.append('m')
+                spalten_wert -= 1
+            # Merkmalskenntnis im Gegenelement => Schlechter lernbar
+            # TODO: Elementarharmonisierte Aura nicht implementiert
             if merkmal in config.gegenelemente and config.gegenelemente[merkmal] in merkmale:
-                spalte = chr_inc(spalte)
-                lernmods += 'M'
+                lernmods.append('g')
+                spalten_wert += 1
             # Merkmalsbegabungen
             if merkmal in begabungen:
-                spalte = chr_dec(spalte)
-                lernmods += 'b'
+                lernmods.append('b')
+                spalten_wert -= 1
             if merkmal in config.gegenelemente and 'Elementar' in begabungen:
-                spalte = chr_dec(spalte)
-                lernmods += 'b'
+                lernmods.append('b')
+                spalten_wert -= 1
+            # Merkmalsunfähigkeiten
             if merkmal in unfaehigkeiten:
-                spalte = chr_inc(spalte)
-                lernmods += 'u'
-        return spalte, lernmods
+                lernmods.append('u')
+                spalten_wert += 1
+        # wert der Lernspalte auf exitente Spalten (A+ (=0) bis 'H' (=8)) begrenzen
+        begrenzter_spalten_wert = min(len(config.lernspalten) - 1, max(0, spalten_wert))
+        spalte = config.lernspalten[begrenzter_spalten_wert]
+        return spalte, ''.join(sorted(lernmods))
 
     def get_print_dict(self, taw, merkmale=None, begabungen=None, *arg, **kwd):
         d = Talent.get_print_dict(self, taw)

@@ -41,6 +41,8 @@ gegenelemente = {
     'Wasser': 'Feuer',
 }
 
+lernspalten = ['A+', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+
 # PDF-Spezifisch
 FONT = 'Times'
 TITEL_FONT = 'Mason Bold'
