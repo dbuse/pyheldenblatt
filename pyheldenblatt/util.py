@@ -9,6 +9,9 @@ from __future__ import unicode_literals, print_function, absolute_import
 
 def chr_inc(c, inc=1):
     """Gebe den den inc-ten Nachfolger des Buchstabens c zurück"""
+    if c == 'A+':
+        c = 'A'
+        inc -= 1
     if ord(c) + inc > 72:
         return 'H'
     else:

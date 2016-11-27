@@ -499,10 +499,10 @@ class ZauberTalent(Talent):
             cls.zauberliste = liste
         return cls.zauberliste
 
-    def berechner_lernparameter(self, merkmale=None, begabungen=None, **kwd):
+    def berechner_lernparameter(self, merkmale=None, begabungen=None, unfaehigkeiten=None, **kwd):
         merkmale = merkmale if merkmale is not None else []
         begabungen = begabungen if begabungen is not None else []
-        # print "KWD:", kwd
+        unfaehigkeiten = unfaehigkeiten if unfaehigkeiten is not None else []
 
         spalte = self.schwierigkeit
         lernmods = ""
@@ -534,6 +534,9 @@ class ZauberTalent(Talent):
             if merkmal in config.gegenelemente and 'Elementar' in begabungen:
                 spalte = chr_dec(spalte)
                 lernmods += 'b'
+            if merkmal in unfaehigkeiten:
+                spalte = chr_inc(spalte)
+                lernmods += 'u'
         return spalte, lernmods
 
     def get_print_dict(self, taw, merkmale=None, begabungen=None, *arg, **kwd):

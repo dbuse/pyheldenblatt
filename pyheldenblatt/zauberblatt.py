@@ -194,6 +194,8 @@ class Zauberblatt(Heldenblatt):
             if zauber in zauberliste:
                 d = zauberobj.get_print_dict(merkmale=held['Magische Sonderfertigkeiten'].get('Merkmale', []),
                                              begabungen=held['Magische Sonderfertigkeiten'].get('Begabungen', []),
+                                             unfaehigkeiten=held['Magische Sonderfertigkeiten'].get('Unfähigkeiten',
+                                                                                                    []),
                                              **zauberliste[zauber])
                 self.drucke_zeile(d)
         for zauber in zauberliste:
