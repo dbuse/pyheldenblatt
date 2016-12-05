@@ -97,6 +97,7 @@ class Zauberblatt(Heldenblatt):
         self.zeilenfelder = {
             'se': dict(titel='se', weite=self.zeilen_se_w, linie=True),
             'talent': dict(titel='talent', style='B', align='L', font=config.FONT),
+            'hinweis': dict(titel='hinweis', style='I', align='L', font=config.FONT),
             'probe': dict(titel='probe', weite=self.zeilen_probe_w, style='I', linie=True),
             'taw': dict(titel='taw', weite=self.zeilen_taw_w, style='B', align='C', linie=True),
             'taw_leer': dict(titel='taw_leer', weite=self.zeilen_taw_w, style='B', linie=True),
@@ -115,8 +116,9 @@ class Zauberblatt(Heldenblatt):
         for zf in self.zeilenfelder:
             self.zeilenfelder[zf]['fontsize'] = self.zeilen_fontsize
 
-        self.feldreihenfolge = ['se', 'talent', 'probe', 'taw', 'taw_leer', 'zd', 'kosten', 'reichweite', 'ziel', 'wd',
-                                'schwierigkeit', 'merkmale', 'lernmods', 'lernen', 'seite']
+        self.feldreihenfolge = [
+            'se', 'talent', 'hinweis', 'probe', 'taw', 'taw_leer', 'zd', 'kosten', 'reichweite', 'ziel', 'wd',
+            'schwierigkeit', 'merkmale', 'lernmods', 'lernen', 'seite']
         return
 
     def drucke_blatt(self, held):

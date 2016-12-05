@@ -555,7 +555,7 @@ class ZauberTalent(Talent):
         return spalte, ''.join(sorted(lernmods))
 
     def get_print_dict(self, taw, merkmale=None, begabungen=None, *arg, **kwd):
-        d = Talent.get_print_dict(self, taw)
+        d = Talent.get_print_dict(self, taw, *arg, **kwd)
         d['zd'] = self.zd
         d['kosten'] = self.kosten
         d['ziel'] = self.ziel
