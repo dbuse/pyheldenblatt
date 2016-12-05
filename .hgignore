@@ -1,9 +1,6 @@
 syntax: glob
 *.pyc
 *.pyo
-helden/*.py
-helden/*.xml
-helden/*.xls
-helden/*.pdf
+helden
 syntax: regexp
 \.pkl$
