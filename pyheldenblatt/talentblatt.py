@@ -235,10 +235,6 @@ class Talentblatt(Heldenblatt):
         leerzeilen = {}
         for gruppe in gruppen:
             leerzeilen[gruppe] = 0
-        gruppen = config.gruppen
-        leerzeilen = {}
-        for gruppe in gruppen:
-            leerzeilen[gruppe] = 0
         zeiger = 0
         seite = None
         # Platz mit Leerzeilen auffüllen
