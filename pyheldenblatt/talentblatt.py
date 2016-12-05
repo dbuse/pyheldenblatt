@@ -95,8 +95,11 @@ class Talentblatt(Heldenblatt):
             'probe': dict(titel='probe', fontsize=self.zeilen_fontsize, style='I', align='L', font=config.FONT),
             'schwierigkeit': dict(titel='schwierigkeit', fontsize=self.zeilen_fontsize, style='I', align='L',
                                   font=config.FONT),
+            'hinweis': dict(titel='hinweis', fontsize=self.zeilen_fontsize, style='I', align='L', font=config.FONT),
         }
-        self.feldreihenfolge = ['se', 'talent', 'probe', 'schwierigkeit', 'at', 'pa', 'be', 'kom', 'taw', 'taw_leer']
+        self.feldreihenfolge = [
+            'se', 'talent', 'probe', 'schwierigkeit', 'hinweis', 'at', 'pa', 'be', 'kom', 'taw', 'taw_leer'
+        ]
         return
 
 ###

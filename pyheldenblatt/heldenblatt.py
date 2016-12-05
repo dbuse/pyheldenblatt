@@ -109,6 +109,8 @@ class Heldenblatt(object):
                     self.pdf.set_font(family=conf['font'], style=conf['style'], size=conf['fontsize'])
                     if name in ('probe', 'schwierigkeit'):
                         zeilenfeld = ' (%s) ' % zeilenfeld
+                    if name in ('hinweis', ):
+                        zeilenfeld = ' [%s] ' % zeilenfeld if zeilenfeld else ' '
                     weite = self.pdf.get_string_width(zeilenfeld)
                     felder.append(ZeilenFeld(text=zeilenfeld, weite=weite, **templates[name]))
                     pos += 1

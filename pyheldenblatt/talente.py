@@ -345,6 +345,15 @@ class Talent(object):
             'se': '',
             'talent': self.name,
             'probe': self.probe,
+            'hinweis': '; '.join(
+                hinweis
+                for hinweis in [
+                    'Begabt' if kwd.get('begabt', False) else None,
+                    'Unfähig' if kwd.get('unfaehig', False) else None,
+                    'Spez: %s' % ','.join(kwd['spezialisierungen']) if kwd.get('spezialisierungen', False) else None,
+                ]
+                if hinweis is not None
+            ),
             'taw': taw,
             'taw_leer': ''
         }
