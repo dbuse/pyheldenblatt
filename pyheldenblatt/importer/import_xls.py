@@ -17,7 +17,7 @@ def importXLS(path):
     book = xlrd.open_workbook(path, encoding_override="utf-8")
     importCharSite(held, book)
     importTalente(held, book)
-    print held.toArray()
+    print(held.toArray())
     return held.toArray()
 
 
@@ -135,5 +135,5 @@ def importXlsOld(path):
     held["Talente"][zeile2] = zeile2_dict
     held["Talente"][zeile3] = zeile3_dict
 
-#    print completArray
+#    print(completArray)
     return held

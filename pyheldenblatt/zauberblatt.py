@@ -153,7 +153,6 @@ class Zauberblatt(Heldenblatt):
         for felder in zeilen:
             self.pdf.ln(self.kopfleiste_h)
             for feld in felder:
-                # print feld
                 template = self.kopfleistenfelder[feld]
                 if template['abteil']:
                     text = held[template['abteil']].get(template['heldenfeld'], '')

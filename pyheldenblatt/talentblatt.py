@@ -113,7 +113,7 @@ class Talentblatt(Heldenblatt):
             if sonderfertigkeiten_sind == seite:
                 anzahlen['Sonderfertigkeiten'] = self.zaehle_sonderfertigkeiten_zeilen(held['Sonderfertigkeiten'],
                                                                                        held['Besonderheiten']) + 2
-#            print "Seite %s: Summe: %d, Anteile %s" % (seite, sum(anzahlen.values()), anzahlen)
+#            print("Seite %s: Summe: %d, Anteile %s" % (seite, sum(anzahlen.values()), anzahlen))
             platz[seite] = math.floor(250.0 / self.zeilen_h) - sum(anzahlen.values())
         return platz
 

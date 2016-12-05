@@ -117,5 +117,5 @@ class Heldenblatt(object):
         # Talentnamen einfügen - nach den Inline-Feldern (darum pos hochzählen)
         weite = self.zeilen_w - sum((feld.weite for feld in felder)) + standardzeile * self.zeilen_seitenabstand
         felder.insert(pos, ZeilenFeld(titel='füller', weite=weite, fontsize=self.zeilen_fontsize, text='', linie=True))
-        # print '\n'.join([unicode(feld) for feld in felder]), '\n'
+        # print('\n'.join([unicode(feld) for feld in felder]), '\n')
         return felder
