@@ -161,8 +161,7 @@ class Talentblatt(Heldenblatt):
 
     def drucke_blatt(self, held):
         """Druckt die komplette Talentblatt"""
-        seiten = {'links': ['Kampf', 'Körper', 'Gesellschaft'],
-                  'rechts': ['Natur', 'Wissen', 'Sprachen', 'Schriften', 'Handwerk']}
+        seiten = dict(config.seiten2gruppen)
         leerzeilen = self.erweitere_leerzeilen(held, seiten)
         self.drucke_attributleiste(held['Attribute'])
         self.pdf.set_y(35)

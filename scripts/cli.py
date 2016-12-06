@@ -33,6 +33,9 @@ def lese_parameter():
     parser.add_argument("-f", "--format", choices=['ext', 'xml', 'xls', 'py'], default='ext',
                         help="Datei-Format von held-datei.Standard: Auswahl nach Dateiendung ('ext'-Modus)")
     parser.add_argument("-o", "--output", help="Ausgabe-Datei")
+    talent = parser.add_argument_group('Talente')
+    talent.add_argument('-R', '--rechte-spalte', default=None,
+                        help="Zuteilung der Talengruppen auf die Spalten des Talentblatts, als python-liste")
     parser.description = config.cli_description
     parser.epilog = config.cli_epilog
     args = parser.parse_args()
@@ -55,6 +58,15 @@ def lese_parameter():
             sys.exit("Kein Import-Modus für Dateityp '%s' erkannt. Versuch es mal mit -f/--format" % import_modus)
     else:
         import_modus = args.format
+
+    if args.rechte_spalte:
+        rechte_spalte = eval(args.rechte_spalte)
+        linke_spalte = [gruppe
+                        for gruppe in config.seiten2gruppen['links'] + config.seiten2gruppen['rechts']
+                        if gruppe not in rechte_spalte]
+        config.seiten2gruppen = {'links': linke_spalte, 'rechts': rechte_spalte}
+
+
     return quell_datei, ausgabe_datei, import_modus
 
 

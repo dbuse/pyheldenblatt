@@ -43,6 +43,12 @@ gegenelemente = {
 
 lernspalten = ['A+', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
+# Talentblatt-Spezifisch
+seiten2gruppen = {
+    'links': ['Kampf', 'Körper', 'Gesellschaft'],
+    'rechts': ['Natur', 'Wissen', 'Sprachen', 'Schriften', 'Handwerk']
+}
+
 # PDF-Spezifisch
 FONT = 'Times'
 TITEL_FONT = 'Mason Bold'
