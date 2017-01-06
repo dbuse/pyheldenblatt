@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-'''
-Created on 04.08.2012
-
-@author: dom
-'''
 from __future__ import unicode_literals, print_function, absolute_import
 
 import math

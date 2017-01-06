@@ -1,14 +1,8 @@
 # -*- coding: utf-8 -*-
-'''
-Created on 06.08.2012
-
-@author: joti
-'''
 from __future__ import unicode_literals, print_function, absolute_import
 
 
 # Programm-Spezifisch
-ausgabe_pfad = 'ausgabe'
 cli_description = """
 Erzeugt ein PDF aus Helden-Informationen.
 """

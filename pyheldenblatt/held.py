@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-'''
-Created on 05.08.2012
-
-@author: joti
-'''
 from __future__ import unicode_literals, print_function, absolute_import
 
 from .talente import Talent

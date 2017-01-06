@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-'''
-Created on 06.03.2013
-
-@author: dom
-'''
 from __future__ import unicode_literals
 
 import xml.etree.ElementTree as ET

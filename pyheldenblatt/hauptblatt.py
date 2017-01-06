@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-'''
-Created on 15.04.2016
-
-@author: dbuse
-'''
-
 from __future__ import unicode_literals, print_function, absolute_import
 
 from pkg_resources import resource_filename

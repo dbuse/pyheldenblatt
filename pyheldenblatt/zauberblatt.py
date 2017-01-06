@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-'''
-Created on 06.09.2012
-
-@author: dbuse
-'''
 from __future__ import unicode_literals, print_function, absolute_import
 
 # Nutzbarer Bereich:
