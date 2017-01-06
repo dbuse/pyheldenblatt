@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from codecs import open
 from os import path
 
 here = path.abspath(path.dirname(__file__))
@@ -10,7 +11,7 @@ setup(
     name='pyheldenblatt',
 
     # TODO: enhance versioning
-    version='0.1.0rc4',
+    version='0.1.0rc5',
 
     description='character sheet generator for the p&p rpg "Das Schwarze Auge"',
     long_description=long_description,
@@ -42,6 +43,7 @@ setup(
     # TODO: filter out really required (background) images files
     package_data={'pyheldenblatt': ['data/*.tsv', 'data/font/*.ttf', 'data/img/*.jpg', 'data/img/*.png']},
 
-    # TODO: convert cli script into entry point
-    entry_points={},
+    entry_points={
+        'console_scripts': ['heldenblattcli=pyheldenblatt.heldenblattcli:main'],
+    },
 )
