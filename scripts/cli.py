@@ -18,7 +18,6 @@ import sys
 import codecs
 
 from pyheldenblatt import config
-from pyheldenblatt.importer.import_xls import importXLS
 from pyheldenblatt.importer.import_xml import import_xml
 from fpdf import FPDF
 from pyheldenblatt.hauptblatt import Hauptblatt
@@ -30,7 +29,7 @@ def lese_parameter():
     # Parser konfigurieren
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("datei", help="Datei in dem die Helden-Informationen angegeben sind.")
-    parser.add_argument("-f", "--format", choices=['ext', 'xml', 'xls', 'py'], default='ext',
+    parser.add_argument("-f", "--format", choices=['ext', 'xml', 'py'], default='ext',
                         help="Datei-Format von held-datei.Standard: Auswahl nach Dateiendung ('ext'-Modus)")
     parser.add_argument("-o", "--output", help="Ausgabe-Datei")
     talent = parser.add_argument_group('Talente')
@@ -54,7 +53,7 @@ def lese_parameter():
     # Import-Modus bestimmen
     if args.format == 'ext':
         import_modus = os.path.splitext(quell_datei)[1][1:]
-        if import_modus not in ['ext', 'xml', 'xls', 'py']:
+        if import_modus not in ['ext', 'xml', 'py']:
             sys.exit("Kein Import-Modus für Dateityp '%s' erkannt. Versuch es mal mit -f/--format" % import_modus)
     else:
         import_modus = args.format
@@ -74,8 +73,6 @@ def lade_held(quelle, import_modus):
     if import_modus == 'py':
         with codecs.open(quelle, encoding='utf-8') as datei:
             held = eval(datei.read())
-    elif import_modus == 'xls':
-        held = importXLS(quelle)
     elif import_modus == 'xml':
         held = import_xml(quelle)
     return held
