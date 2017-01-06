@@ -18,12 +18,15 @@ import sys
 import codecs
 from pkg_resources import resource_filename
 
+import fpdf
 from pyheldenblatt import config
 from pyheldenblatt.importer.import_xml import import_xml
-from fpdf import FPDF
 from pyheldenblatt.hauptblatt import Hauptblatt
 from pyheldenblatt.talentblatt import Talentblatt
 from pyheldenblatt.zauberblatt import Zauberblatt
+
+
+fpdf.FPDF_CACHE_MODE = 1  # disable font caching
 
 
 def lese_parameter():
@@ -66,7 +69,6 @@ def lese_parameter():
                         if gruppe not in rechte_spalte]
         config.seiten2gruppen = {'links': linke_spalte, 'rechts': rechte_spalte}
 
-
     return quell_datei, ausgabe_datei, import_modus
 
 
@@ -80,22 +82,22 @@ def lade_held(quelle, import_modus):
 
 
 def erzeuge_pdf(held):
-    fpdf = FPDF(orientation='P', unit='mm', format='A4')
-    fpdf.add_font('Mason Regular', '', resource_filename('pyheldenblatt', './data/font/mason.ttf'), uni=True)
-    fpdf.add_font('Mason Bold', 'B', resource_filename('pyheldenblatt', './data/font/masonbold.ttf'), uni=True)
+    pdf = fpdf.FPDF(orientation='P', unit='mm', format='A4')
+    pdf.add_font('Mason Regular', '', resource_filename('pyheldenblatt', './data/font/mason.ttf'), uni=True)
+    pdf.add_font('Mason Bold', 'B', resource_filename('pyheldenblatt', './data/font/masonbold.ttf'), uni=True)
 
-    uebersicht = Hauptblatt(fpdf)
+    uebersicht = Hauptblatt(pdf)
     uebersicht.drucke_blatt(held)
 
-    talente = Talentblatt(fpdf, zeilen_fontsize=8, kopfleisten_fonsize=14)
+    talente = Talentblatt(pdf, zeilen_fontsize=8, kopfleisten_fonsize=14)
     talente.drucke_blatt(held)
 
     if 'Zauber' in held:
         print("### Achtung: Die Berechnung der Lernspalte ist noch nicht vollständig!")
         print("Mehrfache Zauber Merkmals-Unfähigkeiten und Hexalogien werden noch NICHT berücksichtigt! ###")
-        zauber = Zauberblatt(fpdf, zeilen_fontsize=6.5, kopfleisten_fonsize=12)
+        zauber = Zauberblatt(pdf, zeilen_fontsize=6.5, kopfleisten_fonsize=12)
         zauber.drucke_blatt(held)
-    return fpdf
+    return pdf
 
 
 def main():
@@ -105,6 +107,7 @@ def main():
     print("Name", held['Name'], ziel)
     fpdf = erzeuge_pdf(held)
     fpdf.output(ziel, 'F')
+
 
 if __name__ == "__main__":
     main()
