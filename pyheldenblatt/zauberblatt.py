@@ -11,6 +11,7 @@ from __future__ import unicode_literals, print_function, absolute_import
 
 import math
 from collections import OrderedDict
+from pkg_resources import resource_filename
 
 from .heldenblatt import Heldenblatt
 from .talente import ZauberTalent
@@ -23,7 +24,7 @@ class Zauberblatt(Heldenblatt):
     orientation = "l"
     """Zauberblatt im Querformat drucken"""
 
-    hintergrund = ('data/img/zauberblatt.jpg', 0, 0, 297, 210)
+    hintergrund = (resource_filename(__name__, 'data/img/zauberblatt.jpg'), 0, 0, 297, 210)
 
     def _set_config(self, **kwd):
 

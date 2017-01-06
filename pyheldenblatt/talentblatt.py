@@ -6,8 +6,8 @@ Created on 04.08.2012
 '''
 from __future__ import unicode_literals, print_function, absolute_import
 
-
 import math
+from pkg_resources import resource_filename
 
 from .talente import Talentgruppe
 from .heldenblatt import Heldenblatt, ZeilenFeld
@@ -32,7 +32,7 @@ def sonderfertigkeiten_gruppen(besonderheiten):
 class Talentblatt(Heldenblatt):
     """Druckklasse für den Talentbogen"""
 
-    hintergrund = ('data/img/talentblatt.jpg', 0, 0, 210, 297)
+    hintergrund = (resource_filename(__name__, 'data/img/talentblatt.jpg'), 0, 0, 210, 297)
 
     def _set_config(self, **kwd):
         # Konstante Abstände und Längen
@@ -204,7 +204,8 @@ class Talentblatt(Heldenblatt):
             self.pdf.ln(self.zeilen_h)
         # Leerzeile
         self.pdf.ln(self.zeilen_h)
-        self.pdf.image('data/img/line-01.png', self.pdf.get_x(), self.pdf.get_y(), self.zeilen_w + 0.5, 1)
+        self.pdf.image(resource_filename(__name__, 'data/img/line-01.png'), self.pdf.get_x(), self.pdf.get_y(),
+                       self.zeilen_w + 0.5, 1)
         return
 
     def drucke_talentblock(self, titel, zeilen, leerzeilen=0):

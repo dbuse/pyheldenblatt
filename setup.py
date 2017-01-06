@@ -10,7 +10,7 @@ setup(
     name='pyheldenblatt',
 
     # TODO: enhance versioning
-    version='0.1.0rc1',
+    version='0.1.0rc4',
 
     description='character sheet generator for the p&p rpg "Das Schwarze Auge"',
     long_description=long_description,
@@ -32,7 +32,6 @@ setup(
 
     keywords='DSA character sheet generator heldenblatt heldenbogen',
 
-    # FIXME: add all import packages or use find_packages
     packages=find_packages(exclude=['data', 'helden']),
 
     install_requires=['fpdf>=1.7.2'],
@@ -40,8 +39,8 @@ setup(
     # TODO: add dep groups for developement/testing
     extras_require={},
 
-    # FIXME: add data files here
-    package_data={},
+    # TODO: filter out really required (background) images files
+    package_data={'pyheldenblatt': ['data/*.tsv', 'data/font/*.ttf', 'data/img/*.jpg', 'data/img/*.png']},
 
     # TODO: convert cli script into entry point
     entry_points={},

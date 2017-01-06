@@ -16,6 +16,7 @@ import argparse
 import os
 import sys
 import codecs
+from pkg_resources import resource_filename
 
 from pyheldenblatt import config
 from pyheldenblatt.importer.import_xml import import_xml
@@ -80,8 +81,8 @@ def lade_held(quelle, import_modus):
 
 def erzeuge_pdf(held):
     fpdf = FPDF(orientation='P', unit='mm', format='A4')
-    fpdf.add_font('Mason Regular', '', './data/font/mason.ttf', uni=True)
-    fpdf.add_font('Mason Bold', 'B', './data/font/masonbold.ttf', uni=True)
+    fpdf.add_font('Mason Regular', '', resource_filename('pyheldenblatt', './data/font/mason.ttf'), uni=True)
+    fpdf.add_font('Mason Bold', 'B', resource_filename('pyheldenblatt', './data/font/masonbold.ttf'), uni=True)
 
     uebersicht = Hauptblatt(fpdf)
     uebersicht.drucke_blatt(held)

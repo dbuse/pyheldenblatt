@@ -8,6 +8,7 @@ from __future__ import unicode_literals, print_function, absolute_import
 
 import codecs
 from collections import OrderedDict
+from pkg_resources import resource_filename
 
 from . import config
 
@@ -488,7 +489,7 @@ class ZauberTalent(Talent):
         labels = ['name', 'probe', 'zd', 'kosten', 'ziel', 'schwierigkeit', 'reichweite', 'wd', 'merkmale', 'seite']
         i = -1
         zauberliste = OrderedDict()
-        for line in codecs.open(fname, encoding='utf-8').readlines():
+        for line in codecs.open(resource_filename(__name__, fname), encoding='utf-8').readlines():
             i += 1
             row = line.split('\t')
             if len(row) != len(labels):

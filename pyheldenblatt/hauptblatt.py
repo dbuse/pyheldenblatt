@@ -7,13 +7,15 @@ Created on 15.04.2016
 
 from __future__ import unicode_literals, print_function, absolute_import
 
+from pkg_resources import resource_filename
+
 from .heldenblatt import Heldenblatt
 from . import config
 
 
 class Hauptblatt(Heldenblatt):
 
-    hintergrund = ('data/img/hauptblatt.jpg', 0, 0, 210, 297)
+    hintergrund = (resource_filename(__name__, 'data/img/hauptblatt.jpg'), 0, 0, 210, 297)
 
     def _set_config(self, **kwd):
         return
