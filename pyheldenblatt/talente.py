@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function, absolute_import
 
+from builtins import object
+
 import codecs
 from collections import OrderedDict
 from pkg_resources import resource_filename
@@ -356,28 +358,28 @@ class Talent(object):
 
     @staticmethod
     def ist_talent(gesucht):
-        for gruppe in Talentgruppe.alle().itervalues():
+        for gruppe in Talentgruppe.alle().values():
             if gesucht in gruppe.talente:
                 return True
         return Talent.ist_dialekt(gesucht)
 
     @staticmethod
     def ist_dialekt(gesucht):
-        for sprache in Talentgruppe.alle()['Sprachen'].talente.itervalues():
+        for sprache in Talentgruppe.alle()['Sprachen'].talente.values():
             if gesucht in sprache.dialekte:
                 return True
         return False
 
     @staticmethod
     def sprache_zu_dialekt(dialekt):
-        for sprache in Talentgruppe.alle()['Sprachen'].talente.itervalues():
+        for sprache in Talentgruppe.alle()['Sprachen'].talente.values():
             if dialekt in sprache.dialekte:
                 return sprache
         return None
 
     @staticmethod
     def talent_nach_name(talent):
-        for gruppe in Talentgruppe.alle().itervalues():
+        for gruppe in Talentgruppe.alle().values():
             if talent in gruppe.talente:
                 return gruppe.talente[talent]
         return None
@@ -386,7 +388,7 @@ class Talent(object):
     def held_pruefen(held):
         alle = Talentgruppe.alle()
         # Talente
-        for gruppenname, gruppe in held['Talente'].iteritems():
+        for gruppenname, gruppe in held['Talente'].items():
             if gruppenname not in alle:
                 raise KeyError('Talentgruppe "%s" von Held "%s" ist ungültig!' % (gruppenname, held['Name']))
             for talent in gruppe:
@@ -498,7 +500,7 @@ class ZauberTalent(Talent):
         if not cls.zauberliste:
             roh_liste = cls.import_zauber(fname)
             liste = OrderedDict()
-            for zauber, daten in roh_liste.iteritems():
+            for zauber, daten in roh_liste.items():
                 liste[zauber] = cls(**daten)
             cls.zauberliste = liste
         return cls.zauberliste

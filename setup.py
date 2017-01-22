@@ -35,7 +35,7 @@ setup(
 
     packages=find_packages(exclude=['data', 'helden']),
 
-    install_requires=['fpdf>=1.7.2'],
+    install_requires=['fpdf>=1.7.2', 'future'],
 
     # TODO: add dep groups for developement/testing
     extras_require={},

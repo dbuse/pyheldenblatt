@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function, absolute_import
 
+from builtins import range
+
 # Nutzbarer Bereich:
 # Kopf: 265 * 22,5
 
@@ -120,7 +122,7 @@ class Zauberblatt(Heldenblatt):
     def drucke_blatt(self, held):
         anzahl_seiten = int(math.ceil(len(held['Zauber']) / float(self.zauber_pro_seite)))
         zauber_sortiert = sorted(held['Zauber'].keys(), reverse=True)
-        for i in xrange(anzahl_seiten):
+        for i in range(anzahl_seiten):
             if i > 0:
                 # FÜr folgende Seiten neue Page mit Hintergrund anlegen
                 self.pdf.add_page(orientation=self.orientation)
@@ -129,7 +131,7 @@ class Zauberblatt(Heldenblatt):
 
             # Zauber des Helden sortiert in kleinere Listen zerteilen
             zauberliste = {}
-            for _ in xrange(self.zauber_pro_seite):
+            for _ in range(self.zauber_pro_seite):
                 try:
                     name = zauber_sortiert.pop()
                 except IndexError:
@@ -187,7 +189,7 @@ class Zauberblatt(Heldenblatt):
         self.drucke_zeilentitel()
         # Einzelne Zauber drucken
         alle = ZauberTalent.alle()
-        for zauber, zauberobj in alle.iteritems():
+        for zauber, zauberobj in alle.items():
             if zauber in zauberliste:
                 d = zauberobj.get_print_dict(merkmale=held['Magische Sonderfertigkeiten'].get('Merkmale', []),
                                              begabungen=held['Magische Sonderfertigkeiten'].get('Begabungen', []),
@@ -198,6 +200,6 @@ class Zauberblatt(Heldenblatt):
         for zauber in zauberliste:
             if zauber not in alle:
                 print("Warnung: Unbekannter Zauber:", zauber)
-        for _ in xrange(self.zauber_pro_seite - len(zauberliste)):
+        for _ in range(self.zauber_pro_seite - len(zauberliste)):
             self.drucke_zeile(zeilenfelder=d, leerzeile=True)
         return

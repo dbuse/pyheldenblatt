@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from builtins import str
 import xml.etree.ElementTree as ET
 
 from pyheldenblatt.talente import Talent, Talentgruppe, KampfTalent
@@ -53,7 +54,7 @@ def import_xml(dateiname):
     data['Kultur'] = held.find('basis/kultur').attrib['string']
     data['Profession'] = held.find("./basis/ausbildungen/ausbildung/[@art='Hauptprofession']").attrib['string']
     data['Attribute'] = dict([(tgt, int(held.find("./eigenschaften/eigenschaft[@name='%s']" % key).attrib['value']))
-                              for key, tgt in mappings['eigenschaften'].iteritems()])
+                              for key, tgt in mappings['eigenschaften'].items()])
     # TODO: Aussehen importieren (Geschlecht, Alter, etc.)
     # Wird im XML nicht gesetzt!
     data['Attribute']['BE'] = 0
@@ -87,7 +88,7 @@ def import_xml(dateiname):
 
     # Talente bereinigen/mappen und verarbeiten
     for item in held.findall('talentliste/'):
-        tn = unicode(item.attrib['name'])
+        tn = str(item.attrib['name'])
         val = int(item.attrib['value'])
         if tn.startswith("Sprachen kennen"):
             tn = tn.replace("Sprachen kennen ", "")

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function, absolute_import
 
+from builtins import range, str
+
 import math
 from pkg_resources import resource_filename
 
@@ -104,7 +106,7 @@ class Talentblatt(Heldenblatt):
     def zaehle_platz_pro_seite(self, held, verteilung, leerzeilen={}, sonderfertigkeiten_sind='links'):
         """Berechnet die Anzahl verbleibender Zeilen je Seite zurück"""
         platz = {'links': -99, 'rechts': -99}
-        for seite, gruppen in verteilung.iteritems():
+        for seite, gruppen in verteilung.items():
             anzahlen = dict([(gruppe, self.zaehle_talentblock_zeilen(held, gruppe) + leerzeilen[gruppe])
                              for gruppe in gruppen])
             anzahlen['Gruppen'] = len(gruppen) * 2
@@ -118,7 +120,7 @@ class Talentblatt(Heldenblatt):
     def zaehle_talentblock_zeilen(self, held, gruppe):
         """Zählt die benötigten Zeilen eines Talentgruppenblocks"""
         anzahl = len(held['Talente'][gruppe])
-        for talent, talentobj in Talentgruppe.alle()[gruppe].talente.iteritems():
+        for talent, talentobj in Talentgruppe.alle()[gruppe].talente.items():
             if talent not in held['Talente'][gruppe] and talentobj.ist_basis:
                 anzahl += 1
         return anzahl
@@ -133,10 +135,10 @@ class Talentblatt(Heldenblatt):
             titel = "%s: " % gruppe
             zeile = []
             for sf in sonderfertigkeiten:
-                if self.pdf.get_string_width(titel + ', '.join(zeile + [unicode(sf)])) > verfuegbare_weite:
+                if self.pdf.get_string_width(titel + ', '.join(zeile + [str(sf)])) > verfuegbare_weite:
                     anzahl += 1
                     titel = ''
-                    zeile = [unicode(sf)]
+                    zeile = [str(sf)]
             anzahl += 1
         return anzahl + 1  # Leerzeile drunter
 
@@ -161,7 +163,7 @@ class Talentblatt(Heldenblatt):
         self.drucke_attributleiste(held['Attribute'])
         self.pdf.set_y(35)
         self.drucke_sonderfertigkeiten(held['Sonderfertigkeiten'], held['Besonderheiten'])
-        for gruppen in seiten.itervalues():
+        for gruppen in seiten.values():
             for gruppe in gruppen:
                 self.drucke_talentblock(gruppe, held['Talente'][gruppe], leerzeilen[gruppe])
             self.pdf.set_y(35)
@@ -183,7 +185,7 @@ class Talentblatt(Heldenblatt):
             zeile = []
             titel = gruppe and gruppe + ': ' or ''
             for sf in sonderfertigkeiten[gruppe]:
-                sf = unicode(sf)
+                sf = str(sf)
                 if self.pdf.get_string_width(titel + ', '.join(zeile + [sf])) <= self.zeilen_w:
                     zeile.append(sf)
                 else:
@@ -207,7 +209,7 @@ class Talentblatt(Heldenblatt):
         """Druckt den Block einer kompletten Talentgruppe"""
         alle = Talentgruppe.alle()
         self.drucke_zeile(alle[titel].get_titelfelder(), standardzeile=False)
-        for talent, talentobj in alle[titel].talente.iteritems():
+        for talent, talentobj in alle[titel].talente.items():
             if talent not in zeilen:
                 if talentobj.ist_basis:
                     zeilen[talent] = {'taw': 0}
@@ -215,7 +217,7 @@ class Talentblatt(Heldenblatt):
                     continue
             d = alle[titel].talente[talent].get_print_dict(**zeilen[talent])
             self.drucke_zeile(d)
-        for _ in xrange(leerzeilen):
+        for _ in range(leerzeilen):
             self.drucke_zeile(d, leerzeile=True)
 
 
