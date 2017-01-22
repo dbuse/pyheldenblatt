@@ -2,5 +2,6 @@ syntax: glob
 *.pyc
 *.pyo
 helden
+.venv*
 syntax: regexp
 \.pkl$
