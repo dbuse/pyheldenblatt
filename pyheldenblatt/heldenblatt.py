@@ -52,6 +52,10 @@ class Heldenblatt(object):
         # Höhe der Zeile festlegen und Kopfabstand bei Titelzeilen setzen
         if standardzeile:
             hoehe = self.zeilen_h
+            # Zeilenfelder sortieren - nur bei Standardzeilen nötig
+            zeilenfelder = OrderedDict((name, zeilenfelder[name])
+                                       for name in self.feldreihenfolge
+                                       if name in zeilenfelder)
         else:
             self.pdf.ln(self.zeilentitel_kopfabstand)
             hoehe = self.zeilentitel_h
@@ -60,15 +64,7 @@ class Heldenblatt(object):
                       self.pdf.get_y() + hoehe,
                       self.pdf.get_x() + self.zeilen_w - self.zeilen_seitenabstand,
                       self.pdf.get_y() + hoehe)
-        if standardzeile:
-            # Zeilenfelder sortieren - nur bei Standardzeilen nötig
-            zeilenfelder_sortiert = OrderedDict()
-            for name in self.feldreihenfolge:
-                if name in zeilenfelder:
-                    zeilenfelder_sortiert[name] = zeilenfelder[name]
-        else:       # Titelzeile:
-            zeilenfelder_sortiert = zeilenfelder
-        felder = self.konfiguriere_zeile(zeilenfelder_sortiert, standardzeile)
+        felder = self.konfiguriere_zeile(zeilenfelder, standardzeile)
         # Felder und begrenzungslinien Drucken
         for feld in felder:
             self.pdf.set_font(family=feld.font, style=feld.style, size=feld.fontsize)
