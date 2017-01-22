@@ -7,7 +7,7 @@ import math
 from pkg_resources import resource_filename
 
 from .talente import Talentgruppe
-from .heldenblatt import Heldenblatt, ZeilenFeld
+from .heldenblatt import Heldenblatt
 from . import config
 
 
