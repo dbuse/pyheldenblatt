@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals, print_function
+
 from builtins import object, str
+
 from collections import OrderedDict
 
 from . import config
@@ -72,7 +75,9 @@ class Heldenblatt(object):
             if leerzeile:
                 self.pdf.cell(feld.weite, hoehe, '')
             else:
-                self.pdf.cell(feld.weite, hoehe, str(feld.text), align=feld.align)
+                # NOTE: format is necessary to be p2/py3 compatible with unicodes
+                # NOTE: builtins.str does not work for some reason!
+                self.pdf.cell(feld.weite, hoehe, "{}".format(feld.text), align=feld.align)
             if feld.linie and len(zeilenfelder) > 1:
                 self.pdf.line(self.pdf.get_x(), self.pdf.get_y(), self.pdf.get_x(), self.pdf.get_y() + hoehe)
         # Zeilenumbruch und fertig!
@@ -113,5 +118,4 @@ class Heldenblatt(object):
         # Talentnamen einfügen - nach den Inline-Feldern (darum pos hochzählen)
         weite = self.zeilen_w - sum((feld.weite for feld in felder)) + standardzeile * self.zeilen_seitenabstand
         felder.insert(pos, ZeilenFeld(titel='füller', weite=weite, fontsize=self.zeilen_fontsize, text='', linie=True))
-        # print('\n'.join([str(feld) for feld in felder]), '\n')
         return felder
