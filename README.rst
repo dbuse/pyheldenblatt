@@ -13,4 +13,5 @@ Heldenblatt-Generator für "Das Schwarze Auge"-Helden.
 Mit diesem Werkzeug können angepasste Heldenbogen-PDFs erzeugt werden, die im
 Stil den Original-Bögen entsprechen, allerdings im Inhalt und Layout angepasst
 werden können.
-Weiterhin füllt das Werkzeug Standard
+Weiterhin füllt das Werkzeug Standardwerte wie Proben und Lernschwierigkeiten
+(teilweise) automatisch aus.
