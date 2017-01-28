@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function
 
-from builtins import object, str
+from builtins import object
 
 from collections import OrderedDict
 
@@ -62,23 +62,29 @@ class Heldenblatt(object):
             headspace = self.zeilentitel_kopfabstand
 
         # line below the text of the line
-        bottomline = (x() + self.zeilen_seitenabstand, y() + height,
-                      x() + self.zeilen_w - self.zeilen_seitenabstand, y() + height)
+        bottomline = (x() + self.zeilen_seitenabstand, y() + height + headspace,
+                      x() + self.zeilen_w - self.zeilen_seitenabstand, y() + height + headspace)
 
         # configure fields (build ZeilenFelder objects and detemine width of in-line fields)
         fields = list(configure_fields(zeilenfelder, template, height, self.pdf))
+        # insert filller
         fields_width = sum(field.weite for field in fields)
-        inline_fields_count = sum(1 for field in fields if field.linie)
-        fields.insert(
-            inline_fields_count + standardzeile,
-            ZeilenFeld(weite=self.zeilen_w - fields_width + standardzeile + self.zeilen_seitenabstand,
-                       fontsize=self.zeilen_fontsize, titel='filler', text='', linie=vertical_line(x, y, height))
-        )
+        filler_pos = sum(1 for field in fields if not field.linie) + standardzeile
+        fillwidth = self.zeilen_w - fields_width + self.zeilen_seitenabstand
+        for i, field in enumerate(fields):
+            if i >= filler_pos and field.linie:
+                field.linie = (field.linie[0] + fillwidth, field.linie[1], field.linie[2] + fillwidth, field.linie[3])
+        print("Insert filler at {} of {}".format(filler_pos, len(fields)))
+        filler_xmax = sum(field.weite for field in fields[:filler_pos]) + fillwidth
+        filler = ZeilenFeld(weite=fillwidth, fontsize=self.zeilen_fontsize, titel='filler', text='',
+                            linie=(x() + filler_xmax, y(), x() + filler_xmax, y() + height))
+        fields.insert(filler_pos, filler)
+        # actually print line
         return print_line(self.pdf, fields, height, bottomline, headspace)
 
     def drucke_zeile(self, zeilenfelder={}, leerzeile=False, standardzeile=True, **kwd):
         """Konfiguriert und druckt dann eine Talentzeile oder deren Titel"""
-        #return self.print_line(zeilenfelder, leerzeile, standardzeile)  # TODO: Continue with this
+        # return self.print_line(zeilenfelder, leerzeile, standardzeile)  # TODO: Continue with this
         # Höhe der Zeile festlegen und Kopfabstand bei Titelzeilen setzen
         if standardzeile:
             hoehe = self.zeilen_h
@@ -95,7 +101,7 @@ class Heldenblatt(object):
                       self.pdf.get_x() + self.zeilen_w - self.zeilen_seitenabstand,
                       self.pdf.get_y() + hoehe)
         felder = self.konfiguriere_zeile(zeilenfelder, standardzeile)
-        # Felder und begrenzungslinien Drucken
+        # Felder und Begrenzungslinien Drucken
         for feld in felder:
             self.pdf.set_font(family=feld.font, style=feld.style, size=feld.fontsize)
             if leerzeile:
@@ -151,43 +157,33 @@ def vertical_line(xfunc, yfunc, height):
     return (xfunc(), yfunc(), xfunc(), yfunc() + height)
 
 
-def make_fixwidth_field(content, template):
-    # normal fixed-width field -- including a vertical line
-    return ZeilenFeld(**dict(template, text='{}'.format(content), linie=vertical_line(pdf.get_x, pdf.get_y, height)))
-
-
-def make_inline_field(content, template, name, height, pdf):
-    # preprocess field text
-    if name in ('probe', 'schwierigkeit'):
-        field_text = ' {} '.format(content)
-    elif name in ('hinweis', ):
-        field_text = ' [{}] '.format(content) if content else ' '
-    else:
-        field_text = '{}'.format(field)
-
+def preprocess_field_text(content, name, has_width):
+    if not has_width:
+        if name in ('probe', 'schwierigkeit'):
+            return ' ({}) '.format(content)
+        elif name in ('hinweis', ):
+            return ' [{}] '.format(content) if content else ' '
+    return '{}'.format(content)
 
 
 def configure_fields(fields, templates, height, pdf):
+    x = pdf.get_x()
+    y = pdf.get_y()
     for name, field in fields.items():
         if field is None:
             continue  # skip completely emtpty fields
         if name not in templates:
-            raise KeyError("Zeilenfeld {} hat kein Template".format(name))
+            raise KeyError("Zeilenfeld {} has no template!".format(name))
 
-        if 'weite' in templates[name]:
-            yield make_fixwidth_field(field, templates[name])
+        field_dict = templates[name].copy()
+        field_dict['text'] = preprocess_field_text(field, name, 'weite' in field_dict)
+        if 'weite' not in field_dict:  # inline field with dynamic width
+            pdf.set_font(family=field_dict['font'], style=field_dict['style'], size=field_dict['fontsize'])
+            field_dict['weite'] = pdf.get_string_width(field_dict['text'])
         else:
-            # inline field with dynamic width
-            pdf.set_font(family=templates[name]['font'], style=templates[name]['style'],
-                              size=templates[name]['fontsize'])
-            if name in ('probe', 'schwierigkeit'):
-                field_text = ' {} '.format(field)
-            elif name in ('hinweis', ):
-                field_text = ' [{}] '.format(field) if field else ' '
-            else:
-                field_text = '{}'.format(field)
-            width = pdf.get_string_width(field_text)
-            yield ZeilenFeld(text=field_text, weite=width, linie=[], **templates[name])
+            field_dict['linie'] = (x + field_dict['weite'], y, x + field_dict['weite'], y + height)
+        yield ZeilenFeld(**field_dict)
+        x += field_dict['weite']
 
 
 def print_line(pdf, fields, height, bottomline, headspace=0):
@@ -197,10 +193,12 @@ def print_line(pdf, fields, height, bottomline, headspace=0):
     # draw horizontal line below)
     pdf.line(*bottomline)
     # print fields and vertical lines
+    print('Neue Zeile')
     for field in fields:
         pdf.set_font(family=field.font, style=field.style, size=field.fontsize)
-        pdf.cell(field.weite, height, field.text, align=field.align)
+        pdf.cell(field.weite, height, field.text, align=field.align, border=0)
         if field.linie:
+            print("Vertical Line for {}: {}".format(field.titel, field.linie))
             pdf.line(*field.linie)
     # complete by performing line break
     pdf.ln(height)
