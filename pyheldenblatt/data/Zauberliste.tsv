@@ -6,7 +6,7 @@ Adlerschwinge	MU·IN·GE	20 Akt	speziell	P(f)	D	s	variabel	Form	16
 Aeolitus	KL·CH·KP	3 Akt	4	2	B	ZfP* x2 Schritt	augenblicklich	Umwe, Luft	18
 Aerofugo	MU·KO·KK	10 Akt	10 + 1 je 5m³	Z	D	ZfW Schritt	ZfP* KR	Umwe, Luft	19
 Aerogelo	MU·IN·KO	10 Akt	5 + 1 je 20m³	Z	D	ZfW x3 Schritt	ZfP* SR	Umwe, Luft	20
-Aeropulvis	KL·IN·GE	4 Akt	8	P(f)	C	S	ZfP* x 2 KR	Bewe,Luft	EG 103
+Aeropulvis	KL·IN·GE	4 Akt	8	P(f)	C	S	ZfP* x 2 KR	Tele,Luft	EG 103
 Alpgestalt	MU·CH·GE	20 Akt	MR, min 6	P	C	ZfW Schritt	ZfP* x5 KR	Einf, Herr	21
 Analys	KL·KL·IN	1+ SR	6 + 3 je 6SR	O,W	D	1 Schritt	Zauberdauer	Hell,Meta	22
 Ängste Lindern	MU·IN·CH	20 Akt	5	P(f)	C	B	augenblicklich	Einf	23
@@ -72,7 +72,7 @@ Exposami	KL·IN·IN	15 Akt	4	P(f)	B	s	15 Akt	Hell	83
 Falkenauge	IN·FF·GE	4 Akt	5	P(f)	B	s,B	ZfW KR	Eign	84
 Favilludo	IN·CH·FF	2 Akt	3	W,O	A	1 Schritt	ZfP* x10 KR (A)	Illu	85
 Fesselranken	KL·IN·KK	3 Akt	10	P	C	7 Schritt	ZfP* KR	Humu,Umwe	EG 103
-Feuermähne	IN·Ch·KO	10 Akt	15	W	E	Nähe	ZfP*/2 Std	EG 103
+Feuermähne	IN·CH·KO	10 Akt	15	W	E	Nähe	ZfP*/2 Std	Feur,Herb	EG 103
 Firnlauf	MU·KL·GE	6 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Eign,Eis	86
 Flim Flam	KL·KL·FF	2 Akt	1 je SR	Z	A	ZfW Schritt	variabel	Umwe	87
 Fluch der Pestilenz	MU·KL·CH	10 Akt	Stufe x2	P	D	3 Schritt	augenblicklich	Mish	88
@@ -109,9 +109,9 @@ Höllenpein	KL·CH·KO	2 AKt	11	P	C	B	ZfP* x3 KR	Einf	119
 Holterdiepolter	IN·IN·FF	4 Akt	17	Z	C	7 Schritt Radius	ZfW Minuten	Umwe	120
 Horriphobus	MU·IN·CH	3 Akt	7	P	C	7 Schritt	ZfP* /2 SR	Einf	121
 Ignifaxius	KL·FF·KO	4 Akt	TP	W	C	21 Schritt	augenblicklich	Feur,Scha	122
-Ignifugo	MU·KO·FF	8 Akt	8 + 1 je 3 R.Schritt	Z	C	ZfW Schritt	augenblicklich	Feue,Umwe	EG 103
-Ignimorpho	MU·FF·KO	4 Akt	5 je SR	ZfW R.Schritt	Feuer	D	ZfW Schritt	augenblicklich	Feue,Obje	EG 104
-Igniplano	MU·IN·KO	8 Akt	25, W6+2 LeP	Z	F	49 Schritt	augenblicklich	Feue,Scha,Umwe	EG 104
+Ignifugo	MU·KO·FF	8 Akt	8 + 1 je 3 R.Schritt	Z	C	ZfW Schritt	augenblicklich	Feur,Umwe	EG 103
+Ignimorpho	MU·FF·KO	4 Akt	5 je SR	ZfW R.Schrit Feuer	D	ZfW Schritt	augenblicklich	Feur,Objk	EG 104
+Igniplano	MU·IN·KO	8 Akt	25, W6+2 LeP	Z	F	49 Schritt	augenblicklich	Feur,Scha,Umwe	EG 104
 Ignisphaero	MU·IN·KO	4 Akt	TP	Z	D	49 Schritt	augenblicklich	Feur,Scha,Tele	124
 Ignoratia	IN·CH·GE	10 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Einf,Illu	125
 Illusion auflösen	KL·IN·CH	2 Akt	6+	Zauber	B	3 Schritt	augenblicklich	Anti,Illu	126
@@ -263,8 +263,8 @@ Vogelzwitschern	MU·IN·GE	5 Akt	8	P(f)	B	s,1 Schritt	ZfP* Std	Illu	274
 Wand aus Dornen	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Humu	275
 Wand aus Erz	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Erz	275
 Wand aus Flammen	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Feur	275
-Warmes Blut	MU·IN·IN	8 Akt	3 e SR	P(f)	B	s	variabel (A)	Eign,Hell,Feur	276
-Warmes Gefriere	MU·KL·KK	2 Akt	3 je R.schritt, min 7	O	B	C	ZfP* / 2 SR	Eis,Obje EG 106
+Warmes Blut	MU·IN·IN	8 Akt	3 je SR	P(f)	B	s	variabel (A)	Eign,Hell,Feur	276
+Warmes Gefriere	MU·KL·KK	2 Akt	3 je R.Schritt, min 7	O	B	C	ZfP* / 2 SR	Eis,Objk	EG 106
 Wasseratem	MU·KL·KO	30 Akt	6 + 3 je SR	P (f)	C	s,B	variabel	Form	277
 Wasserwand 	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Wass	275
 Weiches erstarre!	MU·KL·KK	5 Akt	17	Z	C	B	ZfP* SR	Erz,Umwe	278
