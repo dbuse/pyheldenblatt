@@ -6,11 +6,13 @@ Adlerschwinge	MU·IN·GE	20 Akt	speziell	P(f)	D	s	variabel	Form	16
 Aeolitus	KL·CH·KP	3 Akt	4	2	B	ZfP* x2 Schritt	augenblicklich	Umwe, Luft	18
 Aerofugo	MU·KO·KK	10 Akt	10 + 1 je 5m³	Z	D	ZfW Schritt	ZfP* KR	Umwe, Luft	19
 Aerogelo	MU·IN·KO	10 Akt	5 + 1 je 20m³	Z	D	ZfW x3 Schritt	ZfP* SR	Umwe, Luft	20
+Aeropulvis	KL·IN·GE	4 Akt	8	P(f)	C	S	ZfP* x 2 KR	Tele,Luft	EG 103
 Alpgestalt	MU·CH·GE	20 Akt	MR, min 6	P	C	ZfW Schritt	ZfP* x5 KR	Einf, Herr	21
 Analys	KL·KL·IN	1+ SR	6 + 3 je 6SR	O,W	D	1 Schritt	Zauberdauer	Hell,Meta	22
 Ängste Lindern	MU·IN·CH	20 Akt	5	P(f)	C	B	augenblicklich	Einf	23
 Animatio	KL·FF·GE	28+ Akt	12+	O	E	B	ZfP* Monate	Tele	24
 Applicatus	KL·FF·FF	40 Akt	2W6	O	C	B	SA	Objk,Meta	25
+Aquaqueris	MU·IN·KK	10 Akt	10 + 3 je KR (A)	P	D	B	max ZfP* KR	Scha,Wass	EG 102
 Arachnea	MU·IN·CH	40 Akt	11	Z	D	ZfW x50 Schritt	ZfP* x2 Std	Herb	26
 Arcarnovi	KL·KL·FF	1+ Std	10	O	E	B	speziell	Objk,Meta	27
 Armatrutz	IN·GE·KO	3 Akt	min 4	P(f)	B	s	1 SR (A)	Eign,Erz	28
@@ -41,6 +43,7 @@ Chamaelioni	IN·CH·GE	2 Akt	4	P(f)	C	s	ZfP* x10 KR (A)	Illu	54
 Chimaeroform	KL·IN·KO	1 Tag	min 40	WW	F	1 Schritt	p	Asfa,Form	55
 Chronoklassis	KL·IN·KO	Stunden	speziell	O,W	F	speziell	variabel	Herb,Temp	56
 Chrononautos	MU·CH·KO	12 Std	speziell	Z	F	1W20 Schritt	variabel	Temp	57
+Clacoflumen	IN·KO·GE	10 Akt	3 + 1 je R.Schritt	Z	E	3 Schritt	ZfP* x 10 KR	Eis,Umwe	EG 102
 Claudibus	KL·FF·KK	3 Akt	min 3	O	C	B	ZfP* SR	Objk	58
 Corpofresso	KL·KO·KK	5 Akt	8	W	C	7 Schritt	ZfP* x10 KR	Eign	59
 Corpofrigo	CH·GE·KO	2 Akt	9	W	C	7 Schritt	augenblicklich	Eign,Eis	60
@@ -68,6 +71,8 @@ Erinnerung verlasse dich	MU·IN·CH	3 Akt	11	P	D	B	ZfP* Std	Herr	82
 Exposami	KL·IN·IN	15 Akt	4	P(f)	B	s	15 Akt	Hell	83
 Falkenauge	IN·FF·GE	4 Akt	5	P(f)	B	s,B	ZfW KR	Eign	84
 Favilludo	IN·CH·FF	2 Akt	3	W,O	A	1 Schritt	ZfP* x10 KR (A)	Illu	85
+Fesselranken	KL·IN·KK	3 Akt	10	P	C	7 Schritt	ZfP* KR	Humu,Umwe	EG 103
+Feuermähne	IN·CH·KO	10 Akt	15	W	E	Nähe	ZfP*/2 Std	Feur,Herb	EG 103
 Firnlauf	MU·KL·GE	6 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Eign,Eis	86
 Flim Flam	KL·KL·FF	2 Akt	1 je SR	Z	A	ZfW Schritt	variabel	Umwe	87
 Fluch der Pestilenz	MU·KL·CH	10 Akt	Stufe x2	P	D	3 Schritt	augenblicklich	Mish	88
@@ -80,6 +85,7 @@ Gefäß der Jahre	MU·KL·KO	ca 6 Str	49 + W6 perm	P(f),O	E	s	permanent	Besw,For
 Gefunden!	KL·IN·GE	6 SR	17	O	C	ZfW x500 Schritt	speziell	Hell	96
 Geisterbann	MU·MU·CH	1 SR	min 1	W	C	ZfW x3 Schritt	speziell	Anti,Geis	97
 Geisterruf	MU·MU·CH	1 SR	9 je Geist	W	D	ZfW x20 Schritt	speziell	Geis,Herr	98
+Gletscherwand	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Eis	275
 Granit und Mamor	MU·CH·KO	10 Akt	30	W	D	3 Schritt	ZfP* Wochen	Erz,Form	99
 Große Gier	KL·KL·CH	5 Akt	6	P	C	B	ZfP* SR	Einf,Herr	100
 Große Verwirrung	KL·KL·CH	2 Akt	6	P	C	B	ZfP* SR	Eign	101
@@ -103,6 +109,9 @@ Höllenpein	KL·CH·KO	2 AKt	11	P	C	B	ZfP* x3 KR	Einf	119
 Holterdiepolter	IN·IN·FF	4 Akt	17	Z	C	7 Schritt Radius	ZfW Minuten	Umwe	120
 Horriphobus	MU·IN·CH	3 Akt	7	P	C	7 Schritt	ZfP* /2 SR	Einf	121
 Ignifaxius	KL·FF·KO	4 Akt	TP	W	C	21 Schritt	augenblicklich	Feur,Scha	122
+Ignifugo	MU·KO·FF	8 Akt	8 + 1 je 3 R.Schritt	Z	C	ZfW Schritt	augenblicklich	Feur,Umwe	EG 103
+Ignimorpho	MU·FF·KO	4 Akt	5 je SR	ZfW R.Schrit Feuer	D	ZfW Schritt	augenblicklich	Feur,Objk	EG 104
+Igniplano	MU·IN·KO	8 Akt	25, W6+2 LeP	Z	F	49 Schritt	augenblicklich	Feur,Scha,Umwe	EG 104
 Ignisphaero	MU·IN·KO	4 Akt	TP	Z	D	49 Schritt	augenblicklich	Feur,Scha,Tele	124
 Ignoratia	IN·CH·GE	10 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Einf,Illu	125
 Illusion auflösen	KL·IN·CH	2 Akt	6+	Zauber	B	3 Schritt	augenblicklich	Anti,Illu	126
@@ -124,6 +133,7 @@ Komm Kobold	IN·CH·CH	7 Akt	11	W	C	1 Meile	variabel	Herb	142
 Körperlose Reise	MU·KL·IN	6 SR	5 je SR	P(f)	E	s	variabel (A)	Limb,Vers	143
 Krabbelnder Schreckern	MU·MU·CH	20 Akt	15	W	C	7 Schritt	ZfP* KR	Herb,Mish	144
 Kraft des Erzes	KL·KO·KK	40 Akt	9	Z	D	ZfW Schritt	ZfP* SR	Erz,Objk	145
+Kraft des Humus	IN·CH·KO	40 Akt	12	Z	D	ZfW Schritt	ZfP* Std	Heil,Humu	EG 104
 Krähenruf	MU·CH·CH	7 Akt	11	WW	C	21 Schritt	20 KR	Einf,Herr,Limb	146
 Krötensprung	IN/GE(KK	7 Akt	3	P(f)	B	s,B	augenblicklich	Eign	148
 Kulminatio	MU·IN·FF	6 Akt	W20	W	D	ZfW x3	Schnitt ZfP* x2	Scha	149
@@ -163,12 +173,13 @@ Nebelwand	KL·FF·KO	5 Akt	min 4	Z	C	ZfW Schritt	ZfP* x2 SR	Luft,Wass,Umwe	187
 Nekropathia	MU·KL·CH	3 SR	9 + 7 je SR	O,P	E	B	max ZfP* SR	Geis,Vers	188
 Nihilogravo	KL·KO·KK	15 Akt	5 je Schritt	Z	E	ZfW Schritt	ZfP* x 10 KR (A)	Umwe	189
 Nuntiovolo	MU·KL·CH	20 Akt	5 + 1 je Std	W	C	variabel	max ZfW x 2 Std	Besw,Lolg	190
-Objecto Obscuro	KL·FF·KO	10 Akt	7 + 2 je SR	O	D	B	ZfP* SR (A)	Objk	191
 Objectofixo	KL·KL·KK	10 Akt	1 je Stein	O	D	B	ZfP* x5 SR	Objk,Temp	192
+Objecto Obscuro	KL·FF·KO	10 Akt	7 + 2 je SR	O	D	B	ZfP* SR (A)	Objk	191
 Objectovoco	KL·IN·CH	25 Akt	5 + 2 je Frage	O	C	B	1 SR	Vers	193
 Objekt entzaubern	KL·IN·FF	50 Akt	8+	O	C	B	augenblicklich	Anti,Objk	194
 Oculus Astralis	KL·IN·CH	15 Akt	11 + 3 je SR	P(f)	E	s	variabel (A)	Hell,Krft,Limb,Meta	196
 Odem Arcarnum	KL·IN·IN	4 Akt	4	P,O	A	ZfW Schritt	1 KR	Hell,Krft	197
+Orkanwand 	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Luft	275
 Pandaemonium	MU·MU·CH	20 Akt	9 + 1 je 100cm²	Z	D	21 Schritt	ZfP* SR	Besw,Dämo	199
 Panik überkomme euch!	MU·MU·CH	6 Akt	2W20	P(f)	E	s	1 SR je AsP	Einf,Amaz	200
 Papperlapapp	IN·IN·FF	10 Akt	27	Z	D	ZfW Schritt	ZfP* SR	Einf	201
@@ -177,11 +188,11 @@ Pectetondo	KL·CH·FF	6 Akt	4	P(f)	B	s	max ZfP* Tage	Form	203
 Penetritzzel	KL·KL·KO	min 6 Akt	3 + 1 je Spann	P(f)	C	s	ZfP* x2 KR (A)	Hell	204
 Pentagramma	MU·MU·CH	20 Akt	min 7	W	D	7 Schritt	augenblicklich	Anti,Besw,Dämo,Geis	205
 Pestilenz erspüren	KL·IN·CH	3 SR	6	W	C	s,B	ca. 3 SR	Hell	207
+Pfeil der Luft	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Luft	208
 Pfeil des Eises	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Eis	208
 Pfeil des Erzes	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Erz	208
 Pfeil des Feuers	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Feur	208
 Pfeil des Humus	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Humu	208
-Pfeil der Luft	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Luft	208
 Pfeil des Wassers	KL·IN·CH	20 Akt	8	O	C	B	ZfP* x10 KR	Wass	208
 Planastrale	MU·MU·KO	50 Akt	min 13	Z	F	3 Schritt	ZfP* x0,5 SR	Limb	210
 Plumbumbarum	CH·GE·KK	3 Akt	4 + 2 je Gegner	WW	B	7 Schritt	5 KR	Einf	211
@@ -205,8 +216,8 @@ Schelmenlaune	MU·IN·CH	10 Akt	6 + je Opfer	PP	D	ZfW Schritt	augenblicklich	Ant
 Schelmenmaske	IN·CH·GE	6 Akt	9 je SR	P(f)	D	s	variabel (A)	Illu	229
 Schelmenrausch	IN·CH·CH	5 Akt	8	P	C	3 Schritt	ZfP* x10 KR	Einf	230
 Schleier	KL·KL·FF	1 SR	speziell	O,P(f)	D	s,B	ZfP* Std	Eign,Meta	231
-Schwarz und Rot	MU·CH·KO	10 Akt	3 je Std	P	D	B	variabel	Eign,Scha	232
 Schwarzer Schrecken	MMU·IN·CH	3 Akt	10	P	D	B	ZfP* Tage	Einf	233
+Schwarz und Rot	MU·CH·KO	10 Akt	3 je Std	P	D	B	variabel	Eign,Scha	232
 Seelentier erkennen	IN·IN·CH	10 Akt	7	P	C	3 Schritt	20 Akt	Hell	234
 Seelenwanderung	MU·CH·KO	1 SR	Speziell	P	F	ZfW Meilen	variabel (A)	Eign,Vers	235
 Seidenweich	IN·FF·FF	10 Akt	8	O	C	B	ZfP* Std	Illu	236
@@ -225,10 +236,12 @@ Standfest	IN·GE·FF	4 Akt	6+2 je SR	P(f)	C	s	ZfP* x3 KR (A)	Eign	249
 Staub wandle!	MU·KL·CH	ca 7 Std	min 36	O	E	B	Sommersonnenwende	Erz	250
 Stein wandle!	MU·CH·KK	ca 7 Std	min 8W6	W	E	B	permanent	Besw,Dämo	251
 Stillstand	MU·IN·GE	7 Akt	11 je SR	Z	E	ZfW Schritt	ZfP* SR (A)	Eis,Umwe	252
+Stimme des Windes	MU·IN·IN	2 SR	3 + 3 je Std	E(f)	S	D	max ZfW Std	Form,Luft	EG 105
+Sumpfstrudel	MU·IN·KK	16 Akt	3 je Schritt Radius	Z	ZfW x 20 Schritt	D	30 KR (A)	Humu,Umwe	EG 105
 Sumus Elexiere	IN·CH·FF	1 SR	5	O	C	B	ZfP* Minuten	Humu	253
 Tauschrausch	IN·FF·KO	5 Akt	11	OO	D	ZfW Schritt	augenblicklich	Limb	254
 Tempus Stasis	MU·KL·KK	5 Akt	17	Z	E	7 Schritt	ZfW KR	Temp	255
-Tiere besprechen	MU·IN·CH	50 Akt	variabel	W	C	B	augenblicklich	Heil,Form	256
+Tiere Besprechen	MU·IN·CH	50 Akt	variabel	W	C	B	augenblicklich	Heil,Form	256
 Tiergedanken	MU·IN·CH	20 Akt	7 je SR	W	C	ZfW Schritt	variabel (A)	Hell,Vers	257
 Tlalucs Odem	MU·IN·GE	5 Akt	11	Z	C	7 Schritt	ZfP* SR	Besw,Dämo,Scha	258
 Totes handle!	MU·CH·KO	1 SR	speziell	O	D	B	permanent	Besw,Thar	259
@@ -247,14 +260,13 @@ Vipernblick	MU·MU·CH	5 Akt	4	P	B	3 Schritt	speziell	Einf	271
 Visibili	KL·IN·GE	je 3 Akt	4 je SR + Person	[W]W(f)	C	s,B	ZfP* SR (A)	Form	272
 Vocolimbo	KL·CH·FF	5 Akt	3	Z	B	ZfW x3 Schritt	max 10 KR	Illu	273
 Vogelzwitschern	MU·IN·GE	5 Akt	8	P(f)	B	s,1 Schritt	ZfP* Std	Illu	274
-Gletscherwand	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Eis	275
-Orkanwand 	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Luft	275
+Wand aus Dornen	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Humu	275
 Wand aus Erz	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Erz	275
 Wand aus Flammen	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Feur	275
-Wand aus Dornen	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Humu	275
-Wasserwand 	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Wass	275
-Warmes Blut	MU·IN·IN	8 Akt	3 e SR	P(f)	B	s	variabel (A)	Eign,Hell,Feur	276
+Warmes Blut	MU·IN·IN	8 Akt	3 je SR	P(f)	B	s	variabel (A)	Eign,Hell,Feur	276
+Warmes Gefriere	MU·KL·KK	2 Akt	3 je R.Schritt, min 7	O	B	C	ZfP* / 2 SR	Eis,Objk	EG 106
 Wasseratem	MU·KL·KO	30 Akt	6 + 3 je SR	P (f)	C	s,B	variabel	Form	277
+Wasserwand 	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Wass	275
 Weiches erstarre!	MU·KL·KK	5 Akt	17	Z	C	B	ZfP* SR	Erz,Umwe	278
 Weihrauchwolke	IN·CH·FF	5 Akt	6	P (f)	B	s,B	ZfP* Std	Illu	279
 Weisheit der Bäume	MU·IN·KO	6 SR	speziell	P(f)	D	s	ZfW Monate	Form,Humu	280
@@ -262,6 +274,7 @@ Weiße Mähn	KL·IN·CH	10 Akt	12	W	D	speziell	ZfP* Std	Besw	281
 Wellenlauf	MU·GE·GE	6 Akt	7 + 3 je SR	P (f)	D	s	variabel (A)	Eign,Wass	282
 Wettermeisterschaft	MU·CH·GE	1 SR	min 6	Z	E	ZfW x50 Schritt	3 SR	Luft,Umwe	283
 Widerwille	MU·IN·GE	2 SR	min 10	O,Z	D	B	ZfP* Wochen	Einf,Illu	285
+Windgeflüster	KL·IN·IN	5 Akt	6	P(f)	ZfP* Meilen	B	augenblicklich	Luft,Vers	EG 107
 Windhose	MU·IN·KK	15 Akt	1 je Schritt	Z	D	ZfW x20 Schritt	20 KR (A)	Luft,Umwe	286
 Windstille	KL·CH·KK	30 Akt	5 je SR	Z	C	ZfW x3 Schritt	variabel (A)	Luft,Umwe	287
 Wipfellauf	MU·IN·GE	6 Akt	6 + 2 je SR	P(f)	D	s	variabel (A)	Humu,Eign	288
