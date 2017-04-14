@@ -66,7 +66,7 @@ class Heldenblatt(object):
                       x() + self.zeilen_w - self.zeilen_seitenabstand, y() + height + headspace)
 
         # configure fields (build ZeilenFelder objects and detemine width of in-line fields)
-        fields = list(configure_fields(zeilenfelder, template, height, self.pdf))
+        fields = list(configure_fields(zeilenfelder, template, height, self.pdf, x(), y()))
         # insert filller
         fields_width = sum(field.weite for field in fields)
         filler_pos = sum(1 for field in fields if not field.linie) + standardzeile
@@ -166,9 +166,7 @@ def preprocess_field_text(content, name, has_width):
     return '{}'.format(content)
 
 
-def configure_fields(fields, templates, height, pdf):
-    x = pdf.get_x()
-    y = pdf.get_y()
+def configure_fields(fields, templates, height, pdf, x, y):
     for name, field in fields.items():
         if field is None:
             continue  # skip completely emtpty fields
@@ -193,11 +191,11 @@ def print_line(pdf, fields, height, bottomline, headspace=0):
     # draw horizontal line below)
     pdf.line(*bottomline)
     # print fields and vertical lines
-    print('Neue Zeile')
-    for field in fields:
+    print('Neue Zeile, headspace: {}, height: {}'.format(headspace, height))
+    for nr, field in enumerate(fields):
         pdf.set_font(family=field.font, style=field.style, size=field.fontsize)
         pdf.cell(field.weite, height, field.text, align=field.align, border=0)
-        if field.linie:
+        if field.linie and nr < len(fields) -1:
             print("Vertical Line for {}: {}".format(field.titel, field.linie))
             pdf.line(*field.linie)
     # complete by performing line break
