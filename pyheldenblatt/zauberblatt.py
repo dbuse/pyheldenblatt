@@ -65,7 +65,7 @@ class Zauberblatt(Heldenblatt):
             'KK': dict(weite=self.kopfleiste_attribut_w, heldenfeld='KK', abteil='Attribute'),
             'MR': dict(weite=self.kopfleiste_attribut_w, heldenfeld='MR', abteil='Basiswerte'),
             # Dritte Zeile
-            'Repräsentationen': dict(weite=50, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
+            'Repräsentationen': dict(weite=60, heldenfeld="Repräsentationen", abteil="Magische Sonderfertigkeiten"),
             'Begabungen': dict(weite=95, heldenfeld='Begabungen', abteil='Magische Sonderfertigkeiten'),
             'Merkmale': dict(weite=80, heldenfeld='Merkmale', abteil='Magische Sonderfertigkeiten'),
             'Unfähigkeiten': dict(weite=60, heldenfeld='Unfähigkeiten', abteil='Magische Sonderfertigkeiten'),
