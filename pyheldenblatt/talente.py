@@ -100,7 +100,7 @@ class Talentgruppe(object):
             BETalent('Singen', 'IN·CH·CH/KO', koerper, BE('BE-3'), ist_basis=True),
             BETalent('Sinnenschärfe', 'KL·IN·IN/FF', koerper, BE('0'), ist_basis=True),
             BETalent('Skifahren', 'GE·GE·KO', koerper, BE('BE-2')),
-            BETalent('Stimmen Immitieren', 'KL·IN·CH', koerper, BE('BE-4')),
+            BETalent('Stimmen imitieren', 'KL·IN·CH', koerper, BE('BE-4')),
             BETalent('Tanzen', 'CH·GE·GE', koerper, BE('BE*2'), ist_basis=True),
             BETalent('Taschendiebstahl', 'MU·IN·FF', koerper, BE('BEx2')),
             BETalent('Zechen', 'IN·KO·KK', koerper, BE('0'), ist_basis=True),
