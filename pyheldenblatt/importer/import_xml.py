@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from builtins import str
 import xml.etree.ElementTree as ET
 
-from pyheldenblatt.talente import Talent, Talentgruppe, KampfTalent
+from pyheldenblatt.talente import Talent, Talentgruppe, KampfTalent, ZauberTalent
 
 mappings = {}
 mappings['eigenschaften'] = {
@@ -40,6 +40,31 @@ mappings['talente'] = {
     'Urtulamidya': 'Ur-Tulamidya',
     '(Alt-)Imperiale Zeichen': 'Imperiale Zeichen',
     'Gimaril-Glyphen': 'Gimaril',
+}
+mappings['zauber'] = {
+    'Accuratum Zaubernadel': 'Accuratum',
+    'Applicatus Zauberspeicher': 'Applicatus',
+    'Aureolus Güldenglanz': 'Aureolus',
+    'Auris Nasus Oculus': 'Auris Nasus',
+    'Blitz dich find': 'Blitz',
+    'Claudibus Clavistibor': 'Claudibus',
+    'Delicioso Gaumenschmaus': 'Delicioso',
+    'Duplicatus Doppelbild': 'Duplicatus',
+    'Favilludo Funkentanz': 'Favilludo',
+    'Flim Flam Funkel': 'Flim Flam',
+    'Foramen Foraminor': 'Foramen',
+    'Ignorantia Ungesehn': 'Ignorantia',
+    'Impersona Maskenbild': 'Impersona',
+    'Manifesto Element': 'Manifesto',
+    'Menetekel Flammenschrift': 'Menetekel',
+    'Pectetondo Zauberhaar': 'Pectetondo',
+    'Plumbumbarum schwerer Arm': 'Plumbumbarum',
+    'Reflectimago Spiegelschein': 'Reflectimago',
+    'Sapefacta Zauberschwamm': 'Sapefacta',
+    'Somnigravis tiefer Schlaf': 'Somnigravis',
+    'Vocolimbo hohler Klang': 'Vocolimbo',
+    'Vogelzwitschern Glockenspiel': 'Vogelzwitschern',
+    'Weihrauchwolke Wohlgeruch': 'Weihrauchwolke',
 }
 
 
@@ -117,6 +142,39 @@ def import_xml(dateiname):
             data["Talente"][t.kategorie.name][t.name]['at'] = at_val
             data["Talente"][t.kategorie.name][t.name]['pa'] = pa_val
     # Zauber fehlen noch!
+
+    zauberliste = len(held.findall("zauberliste/")) > 0
+    if zauberliste:
+        data["Zauber"] = dict()
+        data["Magische Sonderfertigkeiten"] = {
+            "Repräsentationen": [],
+            "Merkmale": [],
+            "Begabungen": [],
+            "Unfähigkeiten": [],
+        }
+        zauberliste = ZauberTalent.alle()
+        for item in held.findall("zauberliste/"):
+            zn = str(item.attrib['name'])
+            val = str(item.attrib['value'])
+            zn = mappings['zauber'].get(zn, zn)
+
+            z = zauberliste[zn]
+            data["Zauber"][z.name] = {'taw': val}
+
+        for item in held.findall('vt/vorteil[@name="Begabung für [Merkmal]"]'):
+            val = str(item.get("value"))
+            data["Magische Sonderfertigkeiten"]["Begabungen"].append(val)
+
+        for item in held.findall('sf/'):
+            val = str(item.get("name"))
+            if "Merkmalskenntnis" in val:
+                data["Magische Sonderfertigkeiten"]["Begabungen"].append(
+                    val.replace("Sonderfertigkeit: ", "")
+                )
+            if "Repräsentation" in val:
+                data["Magische Sonderfertigkeiten"]["Repräsentationen"].append(
+                    val.replace("Repräsentation: ", "")
+                )
 
     # Fertig
     return data
