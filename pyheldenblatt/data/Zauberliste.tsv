@@ -113,7 +113,7 @@ Ignifugo	MU·KO·FF	8 Akt	8 + 1 je 3 R.Schritt	Z	C	ZfW Schritt	augenblicklich	Fe
 Ignimorpho	MU·FF·KO	4 Akt	5 je SR	ZfW R.Schrit Feuer	D	ZfW Schritt	augenblicklich	Feur,Objk	EG 104
 Igniplano	MU·IN·KO	8 Akt	25, W6+2 LeP	Z	F	49 Schritt	augenblicklich	Feur,Scha,Umwe	EG 104
 Ignisphaero	MU·IN·KO	4 Akt	TP	Z	D	49 Schritt	augenblicklich	Feur,Scha,Tele	124
-Ignoratia	IN·CH·GE	10 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Einf,Illu	125
+Ignorantia	IN·CH·GE	10 Akt	5 + 2 je SR	P(f)	D	s	variabel (A)	Einf,Illu	125
 Illusion auflösen	KL·IN·CH	2 Akt	6+	Zauber	B	3 Schritt	augenblicklich	Anti,Illu	126
 Immortalis	MU·CH·KO	speziell	speziell	P	F	s	augenblicklich	Form,Temp	127
 Imperavi	KL·CH·CH	10 Akt	13	P	E	1 Schritt	ZfP* Stunden	Herr	128
@@ -178,7 +178,7 @@ Objecto Obscuro	KL·FF·KO	10 Akt	7 + 2 je SR	O	D	B	ZfP* SR (A)	Objk	191
 Objectovoco	KL·IN·CH	25 Akt	5 + 2 je Frage	O	C	B	1 SR	Vers	193
 Objekt entzaubern	KL·IN·FF	50 Akt	8+	O	C	B	augenblicklich	Anti,Objk	194
 Oculus Astralis	KL·IN·CH	15 Akt	11 + 3 je SR	P(f)	E	s	variabel (A)	Hell,Krft,Limb,Meta	196
-Odem Arcarnum	KL·IN·IN	4 Akt	4	P,O	A	ZfW Schritt	1 KR	Hell,Krft	197
+Odem Arcanum	KL·IN·IN	4 Akt	4	P,O	A	ZfW Schritt	1 KR	Hell,Krft	197
 Orkanwand 	MU·KL·CH	30 Akt	5 + 2 je Schritt	Z	D	7 Schritt	ZfP* SR	Luft	275
 Pandaemonium	MU·MU·CH	20 Akt	9 + 1 je 100cm²	Z	D	21 Schritt	ZfP* SR	Besw,Dämo	199
 Panik überkomme euch!	MU·MU·CH	6 Akt	2W20	P(f)	E	s	1 SR je AsP	Einf,Amaz	200
