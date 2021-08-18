@@ -161,6 +161,9 @@ def import_xml(dateiname):
             z = zauberliste[zn]
             data["Zauber"][z.name] = {'taw': val}
 
+            if item.get("hauszauber", False):
+                data["Zauber"][z.name]["hauszauber"] = True
+
         for item in held.findall('vt/vorteil[@name="Begabung für [Merkmal]"]'):
             val = str(item.get("value"))
             data["Magische Sonderfertigkeiten"]["Begabungen"].append(val)
