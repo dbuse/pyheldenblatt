@@ -168,8 +168,8 @@ def import_xml(dateiname):
         for item in held.findall('sf/'):
             val = str(item.get("name"))
             if "Merkmalskenntnis" in val:
-                data["Magische Sonderfertigkeiten"]["Begabungen"].append(
-                    val.replace("Sonderfertigkeit: ", "")
+                data["Magische Sonderfertigkeiten"]["Merkmale"].append(
+                    val.replace("Merkmalskenntnis: ", "")
                 )
             if "Repräsentation" in val:
                 data["Magische Sonderfertigkeiten"]["Repräsentationen"].append(
